@@ -1,0 +1,25 @@
+{% extends "base.j2" %}
+{% set gcujs = True %}
+{% set kit_data = gcu['data'][grade][kit] %}
+{% set page_social_img = kit_data.img_url %}
+{% set page_title = kit_data.title %}
+{% set page_description = 'tactical grace presents: ' + kit_data.title %}
+{% set page_url = kit_data['canonical_url'] %}
+{% set nav_top = '/%s/' % grade %}
+{% if kit_data.prev %}
+{% set nav_prev = gcu['data'][grade][kit_data.prev]['canonical_url'] %}
+{% endif %}
+{% if kit_data.next %}
+{% set nav_next = gcu['data'][grade][kit_data.next]['canonical_url'] %}
+{% endif %}
+{% block content %}
+{% for post_name in gcu['grade_index'][grade][kit]|sort %}
+  {% set post = gcu.posts[post_name] %}
+  <div class='row voffset-top'>
+    <h2 id='{{ post['short_date'] }}'>{{ post['short_date'] }}</h2>
+  </div>
+  <div class='row voffset-small'>
+  {{ post['content'] }}
+  </div>
+{% endfor %}
+{% endblock %}

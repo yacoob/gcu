@@ -1,0 +1,12 @@
+{% extends "base.j2" %}
+{% set navbar = False %}
+{% set searchbar = True %}
+{% set page_url = '/' %}
+{% set page_description = 'Welcome to tactical grace!' %}
+{% block content %}
+<div class='row voffset-top'>
+{% for (post, title) in gcu['newest'][0:3] %}
+  {{ macros.thumbnail(post.redir_url, post.meta.cover_img, title, 4) }}
+{% endfor %}
+</div> <!-- row -->
+{% endblock %}

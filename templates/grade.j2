@@ -1,0 +1,13 @@
+{% extends "base.j2" %}
+{% set fancy_grade = grade|fancy_grade %}
+{% set page_url = '/%s/' % grade %}
+{% set page_title = fancy_grade %}
+{% set page_description = fancy_grade + ' kits at tactical grace' %}
+{% block content %}
+<div class='row voffset-top'>
+{% for kit_name in gcu['data'][grade] %}
+  {% set kit_data = gcu['data'][grade][kit_name] %}
+  {{ macros.thumbnail(kit_data.canonical_url, kit_data.img_url, kit_data.title) }}
+{% endfor %}
+</div> <!-- row -->
+{% endblock %}
