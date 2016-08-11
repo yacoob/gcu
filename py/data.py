@@ -2,6 +2,7 @@
 
 import codecs
 import collections
+import dateutil.parser
 import glob
 import jinja2
 import os
@@ -115,6 +116,13 @@ def _preprocess(data, posts):
 
 
 def getEverything(d=None):
+    # There's a bug in PyYAML that makes it parse the timestamps to naive
+    # datetime objects, discarding timezone information in the process.
+    # Workaround courtessy of http://stackoverflow.com/a/13295663
+    def timestamp_constructor(loader, node):
+        return dateutil.parser.parse(node.value)
+    yaml.add_constructor(u'tag:yaml.org,2002:timestamp', timestamp_constructor)
+
     return _preprocess(
         _loadKitData(os.path.join(d, 'data')),
         _loadPosts(os.path.join(d, 'posts'), os.path.join(d, 'templates')))
