@@ -28,3 +28,5 @@ updatesite: clean site
 
 publish: updatesite
 	git subtree push --prefix public origin gh-pages
+	git push origin
+	git push nas
