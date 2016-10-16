@@ -7,8 +7,8 @@ gcu-gallery() {
   grep -Eo "https?://lh.\.googleusercontent.com/[^']+/s144/[^']+" - | head -${1} | sed -E '
 s#/s144/#/s1920/#
 s/https?://
-s/$/" >}}/
-s/^/{{<photo title="" href="/
+s/$/") }}/
+s/^/{{ photo(title="", href="/
 ' | tail -r
 }
 
@@ -52,7 +52,7 @@ gcu-fetch-day() {
 # gcu-sync-photos -n
 #
 gcu-sync-photos() {
-  rsync --exclude .htaccess --exclude .gitignore --delete -airz $* . inferno.hell.pl:/srv/blogs/syn.tactical-grace.net/c/
+  rsync --exclude .htaccess --exclude .gitignore --delete -airz $* . inferno.hell.pl:/srv/web/syn.tactical-grace.net/c/
 }
 
 # Rewrites image links in post files from Google Photos to serving site.
