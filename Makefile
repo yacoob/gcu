@@ -3,6 +3,9 @@ VENV=gcu-deploy
 
 all: site
 
+rmorigs:
+	find posts -iname \*.orig -delete
+
 clean:
 	rm -rf public/*
 
