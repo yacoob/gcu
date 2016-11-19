@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://gcu.tactical-grace.net/hg/</loc>
-    <lastmod>2016-02-07T22:58:00+01:00</lastmod>
+    <lastmod>2016-11-19T19:34:39.605229+00:00</lastmod>
   </url>
   <url>
     <loc>http://gcu.tactical-grace.net/hg/ahead-smultron/</loc>
@@ -23,6 +23,10 @@
   <url>
     <loc>http://gcu.tactical-grace.net/hg/gouf-custom/</loc>
     <lastmod>2015-07-21T01:29:11+01:00</lastmod>
+  </url>
+  <url>
+    <loc>http://gcu.tactical-grace.net/hg/grimoire/</loc>
+    <lastmod>2016-11-19T19:34:39.605229+00:00</lastmod>
   </url>
   <url>
     <loc>http://gcu.tactical-grace.net/hg/guntank/</loc>
