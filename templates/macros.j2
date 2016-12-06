@@ -2,7 +2,7 @@
 {%- set imgsrc = thumb|default(href, true) -%}
 <div class='col-xs-6 col-md-3 col-lg-2'>
   <div class='voffset-bottom-small'>
-    <a class='gallery' rel='group' href='{{ href }}'>
+    <a class='gallery' href='{{ href }}'>
       <img class='img-rounded img-responsive' src='{{ imgsrc | replace("s1920", "s400-p") }}'{% if title %} title='{{ title|e }}' alt='{{ title|e }}'{% endif %} />
     </a>
   </div>
