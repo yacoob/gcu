@@ -3,6 +3,11 @@ var gcu = gcu || {
   hashPrefix: 'p/',
   dateHashPrefix: /\d\d\d\d-\d\d-\d\d/,
   isMobile: (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1),
+  lgOptions: {
+    selector: '.gallery',
+    speed: 300,
+    keyPress: true,
+  },
 };
 
 
@@ -40,10 +45,7 @@ gcu.postPageHandler = function() {
   //     $(elem).append(playbtn);
   // });
   // Enable lightbox.
-  // TODO: yeah, please do.
-  $('.gallery').lightGallery({
-    selector: 'this'
-  });
+  $('.container').lightGallery(gcu.lgOptions);
   // Inhibit hashchange-triggered updates to avoid double updates when user
   // clicks on the a.
   // gallery.click(function() {
