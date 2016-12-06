@@ -48,9 +48,8 @@ gcu.postPageHandler = function() {
   /* Set up kit page.
    */
   // Enable lightbox.
-  var container = $('.container');
-  container.lightGallery(gcu.lgOptions);
-  gcu.lg = container.data('lightGallery')
+  $('.container').lightGallery(gcu.lgOptions);
+  var gallery_elements = $('a' + gcu.lgOptions.selector);
   // Inhibit hashchange-triggered updates to avoid double updates when user
   // clicks on the a.
   // gallery.click(function() {
@@ -61,18 +60,17 @@ gcu.postPageHandler = function() {
   // Bring up lightbox for the first photo, if date hash was set.
   var hash_string = location.hash.substr(1);
   if (hash_string.match(gcu.dateHashPrefix)) {
-    var gallery = $('a.gallery');
     var first_photo_of_day = $('#' + hash_string).parent().next().find('a.gallery').first();
     if (first_photo_of_day) {
-      var pos = gallery.index(first_photo_of_day);
+      var pos = gallery_elements.index(first_photo_of_day);
       if (pos >= 0) {
-        gallery.eq(pos).trigger('click');
+        gallery_elements.eq(pos).trigger('click');
       }
     }
   }
   // Bring up lightbox with specific image, if required.
-  // var idx = gcu.getHashIdx();
-  // if (idx) {
-  //   gallery.eq(idx - 1).trigger('click');
-  // }
+  var idx = gcu.getHashIdx();
+  if (idx > 0) {
+    gallery_elements.eq(idx - 1).trigger('click');
+  }
 };
