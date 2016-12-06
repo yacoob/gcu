@@ -94,66 +94,6 @@ h1.title > a {
   opacity: 1;
 }
 
-
-/* Fancybox extras.
- */
-/* Kill extra <body> scrollbars.
- * https://github.com/fancyapps/fancyBox/issues/836
- */
-.fancybox-lock .fancybox-overlay {
-  overflow-y: auto;
-}
-
-/* Place nav arrows outside of the overlay for embedded content (like yt).
- * http://jsfiddle.net/VNPzA/
- */
-.fancybox-type-iframe .fancybox-nav {
-    width: 60px;
-}
-
-.fancybox-type-iframe .fancybox-nav span {
-    visibility: visible;
-    opacity: 0.5;
-}
-
-.fancybox-type-iframe .fancybox-nav:hover span {
-    opacity: 1;
-}
-
-.fancybox-type-iframe .fancybox-next {
-    right: -60px;
-}
-
-.fancybox-type-iframe .fancybox-prev {
-    left: -60px;
-}
-
-/* FS button for gallery.
- */
-.expander {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 10%;
-  height: 10%;
-  z-index: 99999;
-  cursor: pointer;
-}
-.expander .glyphicon {
-  position: absolute;
-  top: 7px;
-  left: 7px;
-  color: white;
-  background: black;
-  font-size: small;
-  border: 2px solid white;
-  padding: 5px;
-  display: none;
-}
-.expander:hover .glyphicon {
-  display: inline;
-}
-
 /* Play button for youtube thumbnails */
 a.gallery img.playbtn {
   position: absolute;

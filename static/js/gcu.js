@@ -3,67 +3,6 @@ var gcu = gcu || {
   hashPrefix: 'p/',
   dateHashPrefix: /\d\d\d\d-\d\d-\d\d/,
   isMobile: (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1),
-  lbSettings: {
-    nextEffect: 'none',
-    prevEffect: 'none',
-    padding: 0,
-    closeBtn: false,
-    keys: {
-      next : {
-        74 : 'J',
-        76 : 'L',
-        13 : 'left', // enter
-        34 : 'up',   // page down
-        39 : 'left', // right arrow
-        40 : 'up'    // down arrow
-      },
-      prev : {
-        72 : 'H',
-        75 : 'K',
-        8  : 'right',  // backspace
-        33 : 'down',   // page up
-        37 : 'right',  // left arrow
-        38 : 'down'    // up arrow
-      },
-      close  : [27], // escape key
-      play   : [32], // space - start/stop slideshow
-      toggle : [70]  // letter "f" - toggle fullscreen
-    },
-    helpers: {
-      media: {
-        youtube: {
-          params: {
-            autoplay: 0,
-          },
-        },
-      },
-      title: {
-        type: 'over',
-      },
-    },
-    beforeLoad: function() {
-      this.title = $(this.element).find('img').attr('title');
-    },
-    afterLoad: function(current) {
-      gcu.setHashIdx(current.index + 1);
-    },
-    afterClose: function() {
-      if (screenfull.enabled) {
-        screenfull.exit();
-      }
-      gcu.setHashIdx('');
-    },
-    afterShow: function() {
-      var isImage = $(this.wrap).hasClass('fancybox-type-image')
-      if (screenfull.enabled && !gcu.isMobile && isImage) {
-        var fs_icon = $('<div class="expander"><span class="glyphicon glyphicon-fullscreen img-rounded"></span></div>');
-        fs_icon.find('span').click(function() {
-          screenfull.toggle($('div.fancybox-overlay')[0]);
-        });
-        fs_icon.appendTo(this.inner);
-      }
-    },
-  },
 };
 
 
@@ -101,29 +40,14 @@ gcu.postPageHandler = function() {
       $(elem).append(playbtn);
   });
   // Enable lightbox.
-  var gallery = $('a.gallery');
-  gallery.fancybox(gcu.lbSettings);
+  // TODO: yeah, please do.
   // Inhibit hashchange-triggered updates to avoid double updates when user
   // clicks on the a.
   gallery.click(function() {
     gcu.inhibitHashChange = true;
   });
   // Handle hashchange event (user typing, history navigation, etc.)
-  $(window).bind('hashchange', function() {
-    var idx = gcu.getHashIdx();
-    if (!gcu.inhibitHashChange) {
-      if (idx) {
-        if ($.fancybox.isOpened) {
-          $.fancybox.jumpto(idx - 1);
-        } else {
-          gallery.eq(idx - 1).trigger('click');
-        }
-      } else {
-        $.fancybox.close();
-      }
-    }
-    gcu.inhibitHashChange = false;
-  });
+  // TODO: if needed with new lightbox.
   // Bring up lightbox for the first photo, if date hash was set.
   var hash_string = location.hash.substr(1);
   if (hash_string.match(gcu.dateHashPrefix)) {
