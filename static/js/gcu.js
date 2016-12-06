@@ -5,8 +5,16 @@ var gcu = gcu || {
   isMobile: (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1),
   lgOptions: {
     selector: '.gallery',
-    speed: 300,
+    speed: 200,
     keyPress: true,
+    showThumbByDefault: false,
+    youtubePlayerParams: {
+      autoplay: 0,
+      modestbranding: 0,
+      showinfo: 0,
+      rel: 0,
+      controls: 0,
+    }
   },
 };
 
