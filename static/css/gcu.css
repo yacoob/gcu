@@ -93,3 +93,17 @@ h1.title > a {
 .overlay:hover > h3 {
   opacity: 1;
 }
+
+/* Gallery elements icons. */
+.gallery > .glyphicon {
+  -webkit-text-stroke: 1px black;
+  color: white;
+  font-size: x-large;
+  position: absolute;
+  right: 3%;
+  top: 83%;
+}
+
+.gallery-entry {
+  position: relative;
+}
