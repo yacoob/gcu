@@ -93,13 +93,3 @@ h1.title > a {
 .overlay:hover > h3 {
   opacity: 1;
 }
-
-/* Play button for youtube thumbnails */
-a.gallery img.playbtn {
-  position: absolute;
-  left: 25px;
-  top: 10px;
-  width: 30px;
-  height: 30px;
-}
-

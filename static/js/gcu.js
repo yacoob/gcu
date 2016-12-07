@@ -1,24 +1,26 @@
 var gcu = gcu || {
-  ytRegexp: /youtu\.?be/,
   hashPrefix: 'p/',
   dateHashPrefix: /\d\d\d\d-\d\d-\d\d/,
-  isMobile: (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1),
   lgOptions: {
-    selector: '.gallery',
-    speed: 200,
     hideBarsDelay: 2000,
     keyPress: true,
+    selector: '.gallery',
     showThumbByDefault: false,
+    speed: 200,
     youtubePlayerParams: {
       autoplay: 0,
-      modestbranding: 0,
-      showinfo: 0,
-      rel: 0,
       controls: 0,
+      modestbranding: 0,
+      rel: 0,
+      showinfo: 0,
     }
   },
 };
 
+/*
+ * While Lightgallery has its own hash plugin, it's not customizable enough (eg.
+ * prefix string), so I'm rolling my own.
+ */
 
 gcu.setHashIdx = function(value) {
   /* Set location's hash to prefixed value.
@@ -51,14 +53,16 @@ gcu.postPageHandler = function() {
   // Enable lightbox.
   var lg = $('.container')
   lg.lightGallery(gcu.lgOptions);
+  // Set helper vars.
   gcu.lg_data = lg.data('lightGallery');
+  var gallery_elements = $('a' + gcu.lgOptions.selector);
+  // Bind lightbox events.
   lg.on('onAfterSlide.lg', function(event, prevIndex, index, fromTouch, fromThumb) {
     gcu.setHashIdx(index + 1);
   });
   lg.on('onCloseAfter.lg', function(event) {
     gcu.setHashIdx('');
   })
-  var gallery_elements = $('a' + gcu.lgOptions.selector);
   // Inhibit hashchange-triggered updates to avoid double updates when user
   // clicks on the a.
   gallery_elements.click(function() {
@@ -80,8 +84,7 @@ gcu.postPageHandler = function() {
     }
     gcu.inhibitHashChange = false;
   });
-  // TODO: if needed with new lightbox.
-  // Bring up lightbox for the first photo, if date hash was set.
+  // If a date hash was set, bring up lightbox for the first photo of that day.
   var hash_string = location.hash.substr(1);
   if (hash_string.match(gcu.dateHashPrefix)) {
     var first_photo_of_day = $('#' + hash_string).parent().next().find('a.gallery').first();
@@ -92,7 +95,7 @@ gcu.postPageHandler = function() {
       }
     }
   }
-  // Bring up lightbox with specific image, if required.
+  // If a photo has was set, bring up lightbox for that photo.
   var idx = gcu.getHashIdx();
   if (idx > 0 && idx <= gallery_elements.length) {
     gallery_elements.eq(idx - 1).trigger('click');
