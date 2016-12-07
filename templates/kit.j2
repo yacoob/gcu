@@ -2,7 +2,7 @@
 {% set gcujs = True %}
 {% set kit_data = gcu['data'][grade][kit] %}
 {% set page_social_img = kit_data.img_url %}
-{% set page_title = kit_data.title %}
+{% set page_title = grade|fancy_grade + ': ' + kit_data.title %}
 {% set page_description = 'tactical grace presents: ' + kit_data.title %}
 {% set page_url = kit_data['canonical_url'] %}
 {% set nav_top = '/%s/' % grade %}

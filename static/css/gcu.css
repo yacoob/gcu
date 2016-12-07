@@ -81,17 +81,18 @@ h1.title > a {
   background: black;
   color: white;
   padding: 1% 3%;
-  top: 10%;
+  margin: 0;
+  bottom: 0;
   left: 0;
-  opacity: 0;
-  max-width: 75%;
+  opacity: 0.75;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .overlay:hover > a {
   opacity: 0.4
-}
-.overlay:hover > h3 {
-  opacity: 1;
 }
 
 /* Gallery elements icons. */
