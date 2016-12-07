@@ -96,12 +96,13 @@ h1.title > a {
 
 /* Gallery elements icons. */
 .gallery > .glyphicon {
-  -webkit-text-stroke: 1px black;
-  color: white;
-  font-size: x-large;
   position: absolute;
   right: 3%;
-  top: 83%;
+  top: 3%;
+  font-size: x-large;
+  color: white;
+  opacity: 0.6;
+  -webkit-text-stroke: 1px black;
 }
 
 .gallery-entry {
