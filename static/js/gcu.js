@@ -6,6 +6,7 @@ var gcu = gcu || {
   lgOptions: {
     selector: '.gallery',
     speed: 200,
+    hideBarsDelay: 2000,
     keyPress: true,
     showThumbByDefault: false,
     youtubePlayerParams: {
@@ -48,14 +49,37 @@ gcu.postPageHandler = function() {
   /* Set up kit page.
    */
   // Enable lightbox.
-  $('.container').lightGallery(gcu.lgOptions);
+  var lg = $('.container')
+  lg.lightGallery(gcu.lgOptions);
+  gcu.lg_data = lg.data('lightGallery');
+  lg.on('onAfterSlide.lg', function(event, prevIndex, index, fromTouch, fromThumb) {
+    gcu.setHashIdx(index + 1);
+  });
+  lg.on('onCloseAfter.lg', function(event) {
+    gcu.setHashIdx('');
+  })
   var gallery_elements = $('a' + gcu.lgOptions.selector);
   // Inhibit hashchange-triggered updates to avoid double updates when user
   // clicks on the a.
-  // gallery.click(function() {
-  //   gcu.inhibitHashChange = true;
-  // });
+  gallery_elements.click(function() {
+    gcu.inhibitHashChange = true;
+  });
   // Handle hashchange event (user typing, history navigation, etc.)
+  $(window).bind('hashchange', function() {
+    var idx = gcu.getHashIdx();
+    if (!gcu.inhibitHashChange) {
+      if (idx > 0 && idx <= gallery_elements.length) {
+        if (gcu.lg_data.lGalleryOn) {
+          gcu.lg_data.slide(idx - 1);
+        } else {
+          gallery_elements.eq(idx - 1).trigger('click');
+        }
+      } else {
+        gcu.lg_data.destroy();
+      }
+    }
+    gcu.inhibitHashChange = false;
+  });
   // TODO: if needed with new lightbox.
   // Bring up lightbox for the first photo, if date hash was set.
   var hash_string = location.hash.substr(1);
@@ -70,7 +94,7 @@ gcu.postPageHandler = function() {
   }
   // Bring up lightbox with specific image, if required.
   var idx = gcu.getHashIdx();
-  if (idx > 0) {
+  if (idx > 0 && idx <= gallery_elements.length) {
     gallery_elements.eq(idx - 1).trigger('click');
   }
 };
