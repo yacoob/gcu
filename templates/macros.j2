@@ -1,10 +1,15 @@
 {% macro photo(href, title, thumb) -%}
 {%- set imgsrc = thumb|default(href, true) -%}
+{%- if 'youtu' in href -%}
+{%- set icon = 'glyphicon-play-circle' -%}
+{%- else -%}
+{%- set icon = 'glyphicon-fullscreen' -%}
+{%- endif -%}
 <div class='col-xs-6 col-md-3 col-lg-2'>
   <div class='gallery-entry voffset-bottom-small'>
     <a class='gallery' href='{{ href }}'>
       <img class='img-rounded img-responsive' src='{{ imgsrc | replace("s1920", "s400-p") }}'{% if title %} title='{{ title|e }}' alt='{{ title|e }}'{% endif %} />
-      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+      <span class='glyphicon {{icon}} gallery-icon'></span>
     </a>
   </div>
 </div>
