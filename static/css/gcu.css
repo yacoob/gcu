@@ -51,6 +51,11 @@ h1.title > a {
   margin-bottom: 25px;
 }
 
+/* Animation settings */
+.overlay > *, .gallery-entry > * {
+  transition: all 0.2s ease-out;
+}
+
 /* Cover photos */
 .overlay {
   position: absolute;
@@ -59,10 +64,6 @@ h1.title > a {
   left: 0;
   width: 100%;
   height: 100%;
-}
-
-.overlay > * {
-  transition: all 0.2s ease-out;
 }
 
 .overlay > a {
@@ -74,6 +75,7 @@ h1.title > a {
   opacity: 0;
   border-radius: 6px;
 }
+
 .overlay > h3 {
   display: block;
   position: absolute;
@@ -95,7 +97,7 @@ h1.title > a {
   opacity: 0.4
 }
 
-/* Gallery elements icons. */
+/* Gallery elements. */
 .gallery > .glyphicon {
   position: absolute;
   right: 3%;
@@ -108,4 +110,8 @@ h1.title > a {
 
 .gallery-entry {
   position: relative;
+}
+
+.gallery-entry:hover {
+  opacity: 0.6;
 }
