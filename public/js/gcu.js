@@ -1,71 +1,26 @@
 var gcu = gcu || {
-  ytRegexp: /youtu\.?be/,
   hashPrefix: 'p/',
   dateHashPrefix: /\d\d\d\d-\d\d-\d\d/,
-  isMobile: (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1),
-  lbSettings: {
-    nextEffect: 'none',
-    prevEffect: 'none',
-    padding: 0,
-    closeBtn: false,
-    keys: {
-      next : {
-        74 : 'J',
-        76 : 'L',
-        13 : 'left', // enter
-        34 : 'up',   // page down
-        39 : 'left', // right arrow
-        40 : 'up'    // down arrow
-      },
-      prev : {
-        72 : 'H',
-        75 : 'K',
-        8  : 'right',  // backspace
-        33 : 'down',   // page up
-        37 : 'right',  // left arrow
-        38 : 'down'    // up arrow
-      },
-      close  : [27], // escape key
-      play   : [32], // space - start/stop slideshow
-      toggle : [70]  // letter "f" - toggle fullscreen
-    },
-    helpers: {
-      media: {
-        youtube: {
-          params: {
-            autoplay: 0,
-          },
-        },
-      },
-      title: {
-        type: 'over',
-      },
-    },
-    beforeLoad: function() {
-      this.title = $(this.element).find('img').attr('title');
-    },
-    afterLoad: function(current) {
-      gcu.setHashIdx(current.index + 1);
-    },
-    afterClose: function() {
-      if (screenfull.enabled) {
-        screenfull.exit();
-      }
-      gcu.setHashIdx('');
-    },
-    afterShow: function() {
-      var isImage = $(this.wrap).hasClass('fancybox-type-image')
-      if (screenfull.enabled && !gcu.isMobile && isImage) {
-        var fs_icon = $('<div class="expander"><span class="glyphicon glyphicon-fullscreen img-rounded"></span></div>');
-        fs_icon.find('span').click(function() {
-          screenfull.toggle($('div.fancybox-overlay')[0]);
-        });
-        fs_icon.appendTo(this.inner);
-      }
-    },
+  lgOptions: {
+    hideBarsDelay: 2000,
+    keyPress: true,
+    selector: '.gallery',
+    showThumbByDefault: false,
+    speed: 200,
+    youtubePlayerParams: {
+      autoplay: 0,
+      controls: 0,
+      modestbranding: 0,
+      rel: 0,
+      showinfo: 0,
+    }
   },
 };
 
+/*
+ * While Lightgallery has its own hash plugin, it's not customizable enough (eg.
+ * prefix string), so I'm rolling my own.
+ */
 
 gcu.setHashIdx = function(value) {
   /* Set location's hash to prefixed value.
@@ -95,50 +50,54 @@ gcu.getHashIdx = function() {
 gcu.postPageHandler = function() {
   /* Set up kit page.
    */
-  // Add play button to youtube thumbs
-  var playbtn = $('<img class="playbtn" src="/i/playbtn.png">');
-  $('a.gallery[href*=youtu]').each(function(idx, elem) {
-      $(elem).append(playbtn);
-  });
   // Enable lightbox.
-  var gallery = $('a.gallery');
-  gallery.fancybox(gcu.lbSettings);
+  var lg = $('.container')
+  lg.lightGallery(gcu.lgOptions);
+  // Set helper vars.
+  gcu.lg_data = lg.data('lightGallery');
+  var gallery_elements = $('a' + gcu.lgOptions.selector);
+  // Bind lightbox events.
+  lg.on('onAfterSlide.lg', function(event, prevIndex, index, fromTouch, fromThumb) {
+    gcu.setHashIdx(index + 1);
+  });
+  lg.on('onCloseAfter.lg', function(event) {
+    gcu.setHashIdx('');
+  })
   // Inhibit hashchange-triggered updates to avoid double updates when user
   // clicks on the a.
-  gallery.click(function() {
+  gallery_elements.click(function() {
     gcu.inhibitHashChange = true;
   });
   // Handle hashchange event (user typing, history navigation, etc.)
   $(window).bind('hashchange', function() {
     var idx = gcu.getHashIdx();
     if (!gcu.inhibitHashChange) {
-      if (idx) {
-        if ($.fancybox.isOpened) {
-          $.fancybox.jumpto(idx - 1);
+      if (idx > 0 && idx <= gallery_elements.length) {
+        if (gcu.lg_data.lGalleryOn) {
+          gcu.lg_data.slide(idx - 1);
         } else {
-          gallery.eq(idx - 1).trigger('click');
+          gallery_elements.eq(idx - 1).trigger('click');
         }
       } else {
-        $.fancybox.close();
+        gcu.lg_data.destroy();
       }
     }
     gcu.inhibitHashChange = false;
   });
-  // Bring up lightbox for the first photo, if date hash was set.
+  // If a date hash was set, bring up lightbox for the first photo of that day.
   var hash_string = location.hash.substr(1);
   if (hash_string.match(gcu.dateHashPrefix)) {
-    var gallery = $('a.gallery');
     var first_photo_of_day = $('#' + hash_string).parent().next().find('a.gallery').first();
     if (first_photo_of_day) {
-      var pos = gallery.index(first_photo_of_day);
+      var pos = gallery_elements.index(first_photo_of_day);
       if (pos >= 0) {
-        gallery.eq(pos).trigger('click');
+        gallery_elements.eq(pos).trigger('click');
       }
     }
   }
-  // Bring up lightbox with specific image, if required.
+  // If a photo has was set, bring up lightbox for that photo.
   var idx = gcu.getHashIdx();
-  if (idx) {
-    gallery.eq(idx - 1).trigger('click');
+  if (idx > 0 && idx <= gallery_elements.length) {
+    gallery_elements.eq(idx - 1).trigger('click');
   }
 };
