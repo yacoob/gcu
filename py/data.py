@@ -48,6 +48,7 @@ def _loadPosts(d, tmpl_dir):
                 sys.exit(
                     'post %s malformed, doesn\'t contain following headers: %s'
                     % (fn, ', '.join([str(x) for x in missing_meta_fields])))
+            post['raw'] = md_bit.strip()
             post_tmpl = jinja2.Template(macros + md_bit.strip())
             post['content'] = post_tmpl.render().strip()
             post['fn'] = fn
@@ -126,3 +127,47 @@ def getEverything(d=None):
     return _preprocess(
         _loadKitData(os.path.join(d, 'data')),
         _loadPosts(os.path.join(d, 'posts'), os.path.join(d, 'templates')))
+
+
+def toYaml(d=None, od=None):
+    import re
+    rx = re.compile('{{ *photo\((?:title=["\'](?P<title>.*)["\'], )?href="(?P<href>.+)"\) }}')
+    gcu = getEverything(d)
+    for grade in gcu['grade_index']:
+        kit_names = gcu['grade_index'][grade]
+        for kit in kit_names:
+            output = {}
+            data_entry = gcu['data'][grade][kit]
+            output['slug'] = kit
+            output['title'] = data_entry['title']
+            output['kit_cover'] = data_entry['img_url']
+            post_names = gcu['grade_index'][grade][kit]
+            entries = {}
+            for post_name in  post_names:
+                entry = {}
+                post = gcu['posts'][post_name]
+                entry['entry_cover'] = post['meta']['cover_img']
+                entry_date = post['meta']['date'].isoformat()
+                entry['photo'] = []
+                for line in post['raw'].split('\n'):
+                    photo_entry = {}
+                    m = rx.match(line)
+                    assert m is not None, line
+                    photo_entry['href'] = m.group('href')
+                    if m.group('title') not in [u"''", u'""', u'', None]:
+                        photo_entry['title'] = m.group('title')
+                    entry['photo'].append(photo_entry)
+                entries[entry_date] = entry
+            output['entries'] = entries
+
+            with codecs.open(os.path.join(od, grade, '%s.yaml' % kit), 'w', 'utf-8') as f:
+                f.write('---\n')
+                yaml.safe_dump(
+                        output,
+                        f,
+                        default_style='',
+                        default_flow_style=False,
+                        width='999',
+                        encoding='utf-8',
+                        allow_unicode=True,
+                )
