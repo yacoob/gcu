@@ -147,7 +147,7 @@ def toYaml(d=None, od=None):
                 entry = {}
                 post = gcu['posts'][post_name]
                 entry['entry_cover'] = post['meta']['cover_img']
-                entry_date = post['meta']['date'].isoformat()
+                entry_date = post['meta']['date']
                 entry['photo'] = []
                 for line in post['raw'].split('\n'):
                     photo_entry = {}
