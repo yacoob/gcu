@@ -138,7 +138,6 @@ def toYaml(d=None, od=None):
         for kit in kit_names:
             output = {}
             data_entry = gcu['data'][grade][kit]
-            output['slug'] = kit
             output['title'] = data_entry['title']
             output['kit_cover'] = data_entry['img_url']
             post_names = gcu['grade_index'][grade][kit]
