@@ -37,6 +37,8 @@ def _loadKits(d):
             slug = os.path.splitext(os.path.basename(fp))[0]
             parsed['slug'] = slug
             parsed['fp'] = fp
+            # Add a canonical url to each kit.
+            parsed['canonical_url'] = '/%s/%s/' % (parsed['grade'], parsed['slug'])
             data.setdefault(grade, []).append(parsed)
     return data
 
@@ -46,17 +48,17 @@ def _preprocess(data):
     for grade in data:
         data[grade] = sorted(data[grade], key=lambda x: x['slug'])
         for idx, kit in enumerate(data[grade]):
-            # Add a canonical url to each kit.
-            kit['canonical_url'] = '/%s/%s/' % (kit['grade'], kit['slug'])
+            kit['entries'] = sorted(kit['entries'], key=lambda x: x['date'])
             # Add prev/next links.
             if idx > 0:
-                kit['prev'] = data[grade][idx-1]['slug']
+                kit['prev'] = data[grade][idx-1]['canonical_url']
             if idx + 1 < len(data[grade]):
-                kit['next'] = data[grade][idx+1]['slug']
+                kit['next'] = data[grade][idx+1]['canonical_url']
             # Create a list of newest posts, one per kit.
-            last_post_date = sorted(kit['entries'].keys(), reverse=True)[0]
-            newest.append((last_post_date, kit))
-    newest = sorted(newest, reverse=True, key=lambda x: x[0])
+            last_post_date = kit['entries'][-1]['date']
+            kit['last_updated'] = last_post_date
+            newest.append(kit)
+    newest = sorted(newest, reverse=True, key=lambda x: x['last_updated'])
     gcu = {}
     gcu['grade_index'] = data
     gcu['newest'] = newest
