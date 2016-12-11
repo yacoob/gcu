@@ -2,71 +2,71 @@
 title: 00 Raiser
 kit_cover: //syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20161030_214738.jpg
 entries:
-  2016-06-19 22:03:36+01:00:
-    entry_cover: //syn.tactical-grace.net/c/2016-06-19/s1920/DSC01446.jpg
-    photo:
-    - href: //syn.tactical-grace.net/c/2016-06-19/s1920/DSC01442.jpg
-      title: It's a Spanish story about a guy called \"Manual\"
-    - href: //syn.tactical-grace.net/c/2016-06-19/s1920/DSC01443.jpg
-      title: Boxes for the kit and the extra clear parts.
-    - href: //syn.tactical-grace.net/c/2016-06-19/s1920/DSC01444.jpg
-      title: Kit box unpacked; more boxes inside!
-    - href: //syn.tactical-grace.net/c/2016-06-19/s1920/DSC01445.jpg
-      title: Manual lists all runners needed for specific part; those are for the feet.
-    - href: //syn.tactical-grace.net/c/2016-06-19/s1920/DSC01446.jpg
-      title: Foot w/ clear parts.
-    - href: //syn.tactical-grace.net/c/2016-06-19/s1920/DSC01447.jpg
-    - href: //syn.tactical-grace.net/c/2016-06-19/s1920/IMG_20160612_185409.jpg
-      title: Decided to build the inner frame first.
-    - href: //syn.tactical-grace.net/c/2016-06-19/s1920/image-20160612_222359.jpg
-      title: Hollow leg without GN condenser.
-    - href: //syn.tactical-grace.net/c/2016-06-19/s1920/IMG_20160612_223556.jpg
-    - href: //syn.tactical-grace.net/c/2016-06-19/s1920/IMG_20160619_165939.jpg
-      title: Spring for GN condenser.
-    - href: //syn.tactical-grace.net/c/2016-06-19/s1920/IMG_20160619_172926.jpg
-      title: Leg with GN condenser; it locks the joint in position.
-    - href: //syn.tactical-grace.net/c/2016-06-19/s1920/image-20160619_173000.jpg
-      title: One leg completed.
-    - href: //syn.tactical-grace.net/c/2016-06-19/s1920/IMG_20160619_214049.jpg
-      title: Both legs ready.
-    - href: //syn.tactical-grace.net/c/2016-06-19/s1920/IMG_20160619_215836.jpg
-      title: Empty runners after building both legs and feet.
-  2016-07-24 19:20:07+01:00:
-    entry_cover: //syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160710_230112.jpg
-    photo:
-    - href: //syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160625_171651.jpg
-      title: Early prototype of Gekko.
-    - href: //syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160703_003517.jpg
-      title: Imagine, if you will, a pair of tiny T-Rex arms there...
-    - href: //syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160703_230335.jpg
-      title: Lots of disassembly, after I put one piece in a wrong way, early on.
-    - href: //syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160710_211709.jpg
-      title: Skull.
-    - href: //syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160710_230018.jpg
-    - href: //syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160710_230112.jpg
-      title: Head online.
-    - href: //syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160710_231332.jpg
-      title: Torso is ready.
-    - href: //syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160711_223648.jpg
-      title: When you find that the hand design is just right.
-  2016-10-16 01:32:29.542104+01:00:
-    entry_cover: //syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20161030_214738.jpg
-    photo:
-    - href: //syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20160814_224318.jpg
-    - href: //syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20160814_231430.jpg
-      title: Ready to teleport.
-    - href: //syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20160814_231711.jpg
-    - href: //syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20160818_225428.jpg
-      title: BLAM!
-    - href: //syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20160923_000312.jpg
-    - href: //syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20160923_000348.jpg
-    - href: //syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20160924_232236.jpg
-      title: They actually spin up.
-    - href: //syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20161014_231752.jpg
-    - href: //syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20161014_231942.jpg
-      title: All lit up.
-    - href: //syn.tactical-grace.net/c/2016-10-16/s1920/DSC01644-HDR.jpg
-    - href: //syn.tactical-grace.net/c/2016-10-16/s1920/DSC01656-HDR.jpg
-      title: 我らがビッグ・ファイアのために！
-    - href: //syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20161030_214738.jpg
-      title: Stand by for titanfall!
+- date: 2016-10-16 01:32:29.542104+01:00
+  entry_cover: //syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20161030_214738.jpg
+  photos:
+  - href: //syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20160814_224318.jpg
+  - href: //syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20160814_231430.jpg
+    title: Ready to teleport.
+  - href: //syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20160814_231711.jpg
+  - href: //syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20160818_225428.jpg
+    title: BLAM!
+  - href: //syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20160923_000312.jpg
+  - href: //syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20160923_000348.jpg
+  - href: //syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20160924_232236.jpg
+    title: They actually spin up.
+  - href: //syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20161014_231752.jpg
+  - href: //syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20161014_231942.jpg
+    title: All lit up.
+  - href: //syn.tactical-grace.net/c/2016-10-16/s1920/DSC01644-HDR.jpg
+  - href: //syn.tactical-grace.net/c/2016-10-16/s1920/DSC01656-HDR.jpg
+    title: 我らがビッグ・ファイアのために！
+  - href: //syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20161030_214738.jpg
+    title: Stand by for titanfall!
+- date: 2016-07-24 19:20:07+01:00
+  entry_cover: //syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160710_230112.jpg
+  photos:
+  - href: //syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160625_171651.jpg
+    title: Early prototype of Gekko.
+  - href: //syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160703_003517.jpg
+    title: Imagine, if you will, a pair of tiny T-Rex arms there...
+  - href: //syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160703_230335.jpg
+    title: Lots of disassembly, after I put one piece in a wrong way, early on.
+  - href: //syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160710_211709.jpg
+    title: Skull.
+  - href: //syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160710_230018.jpg
+  - href: //syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160710_230112.jpg
+    title: Head online.
+  - href: //syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160710_231332.jpg
+    title: Torso is ready.
+  - href: //syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160711_223648.jpg
+    title: When you find that the hand design is just right.
+- date: 2016-06-19 22:03:36+01:00
+  entry_cover: //syn.tactical-grace.net/c/2016-06-19/s1920/DSC01446.jpg
+  photos:
+  - href: //syn.tactical-grace.net/c/2016-06-19/s1920/DSC01442.jpg
+    title: It's a Spanish story about a guy called \"Manual\"
+  - href: //syn.tactical-grace.net/c/2016-06-19/s1920/DSC01443.jpg
+    title: Boxes for the kit and the extra clear parts.
+  - href: //syn.tactical-grace.net/c/2016-06-19/s1920/DSC01444.jpg
+    title: Kit box unpacked; more boxes inside!
+  - href: //syn.tactical-grace.net/c/2016-06-19/s1920/DSC01445.jpg
+    title: Manual lists all runners needed for specific part; those are for the feet.
+  - href: //syn.tactical-grace.net/c/2016-06-19/s1920/DSC01446.jpg
+    title: Foot w/ clear parts.
+  - href: //syn.tactical-grace.net/c/2016-06-19/s1920/DSC01447.jpg
+  - href: //syn.tactical-grace.net/c/2016-06-19/s1920/IMG_20160612_185409.jpg
+    title: Decided to build the inner frame first.
+  - href: //syn.tactical-grace.net/c/2016-06-19/s1920/image-20160612_222359.jpg
+    title: Hollow leg without GN condenser.
+  - href: //syn.tactical-grace.net/c/2016-06-19/s1920/IMG_20160612_223556.jpg
+  - href: //syn.tactical-grace.net/c/2016-06-19/s1920/IMG_20160619_165939.jpg
+    title: Spring for GN condenser.
+  - href: //syn.tactical-grace.net/c/2016-06-19/s1920/IMG_20160619_172926.jpg
+    title: Leg with GN condenser; it locks the joint in position.
+  - href: //syn.tactical-grace.net/c/2016-06-19/s1920/image-20160619_173000.jpg
+    title: One leg completed.
+  - href: //syn.tactical-grace.net/c/2016-06-19/s1920/IMG_20160619_214049.jpg
+    title: Both legs ready.
+  - href: //syn.tactical-grace.net/c/2016-06-19/s1920/IMG_20160619_215836.jpg
+    title: Empty runners after building both legs and feet.

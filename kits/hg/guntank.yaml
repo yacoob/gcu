@@ -2,14 +2,14 @@
 title: Guntank RX-75-4
 kit_cover: //syn.tactical-grace.net/c/2015-11-21/s1920/IMG_20150927_225225.jpg
 entries:
-  2015-11-21 23:20:39+01:00:
-    entry_cover: //syn.tactical-grace.net/c/2015-11-21/s1920/IMG_20150927_225225.jpg
-    photo:
-    - href: //syn.tactical-grace.net/c/2015-11-21/s1920/IMG_20150927_211520.jpg
-      title: Simple and clean.
-    - href: //syn.tactical-grace.net/c/2015-11-21/s1920/IMG_20150927_225225.jpg
-      title: Too bad the wheels don't move.
-    - href: //syn.tactical-grace.net/c/2015-11-21/s1920/gplus-71636124.jpg
-      title: Traversing fluffy terrain.
-    - href: //syn.tactical-grace.net/c/2015-11-21/s1920/IMG_20150928_235326.jpg
-      title: Family photo!
+- date: 2015-11-21 23:20:39+01:00
+  entry_cover: //syn.tactical-grace.net/c/2015-11-21/s1920/IMG_20150927_225225.jpg
+  photos:
+  - href: //syn.tactical-grace.net/c/2015-11-21/s1920/IMG_20150927_211520.jpg
+    title: Simple and clean.
+  - href: //syn.tactical-grace.net/c/2015-11-21/s1920/IMG_20150927_225225.jpg
+    title: Too bad the wheels don't move.
+  - href: //syn.tactical-grace.net/c/2015-11-21/s1920/gplus-71636124.jpg
+    title: Traversing fluffy terrain.
+  - href: //syn.tactical-grace.net/c/2015-11-21/s1920/IMG_20150928_235326.jpg
+    title: Family photo!

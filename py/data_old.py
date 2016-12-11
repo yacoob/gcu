@@ -141,13 +141,13 @@ def toYaml(d=None, od=None):
             output['title'] = data_entry['title']
             output['kit_cover'] = data_entry['img_url']
             post_names = gcu['grade_index'][grade][kit]
-            entries = {}
+            entries = []
             for post_name in  post_names:
                 entry = {}
                 post = gcu['posts'][post_name]
                 entry['entry_cover'] = post['meta']['cover_img']
-                entry_date = post['meta']['date']
-                entry['photo'] = []
+                entry['date'] = post['meta']['date']
+                entry['photos'] = []
                 for line in post['raw'].split('\n'):
                     photo_entry = {}
                     m = rx.match(line)
@@ -155,8 +155,8 @@ def toYaml(d=None, od=None):
                     photo_entry['href'] = m.group('href')
                     if m.group('title') not in [u"''", u'""', u'', None]:
                         photo_entry['title'] = m.group('title')
-                    entry['photo'].append(photo_entry)
-                entries[entry_date] = entry
+                    entry['photos'].append(photo_entry)
+                entries.append(entry)
             output['entries'] = entries
 
             with codecs.open(os.path.join(od, grade, '%s.yaml' % kit), 'w', 'utf-8') as f:

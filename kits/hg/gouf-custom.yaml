@@ -2,18 +2,18 @@
 title: Gouf Custom
 kit_cover: //syn.tactical-grace.net/c/2015-07-21/s1920/IMG_20150719_163259.jpg
 entries:
-  2015-07-21 01:29:11+01:00:
-    entry_cover: //syn.tactical-grace.net/c/2015-07-21/s1920/IMG_20150719_163259.jpg
-    photo:
-    - href: //syn.tactical-grace.net/c/2015-07-21/s1920/IMG_20150713_231732.jpg
-      title: Few runners, plenty of style.
-    - href: //syn.tactical-grace.net/c/2015-07-21/s1920/IMG_20150716_233941.jpg
-    - href: //syn.tactical-grace.net/c/2015-07-21/s1920/IMG_20150716_234859.jpg
-      title: '*glare*'
-    - href: //syn.tactical-grace.net/c/2015-07-21/s1920/IMG_20150718_013126.jpg
-      title: Spikey.
-    - href: //syn.tactical-grace.net/c/2015-07-21/s1920/IMG_20150718_203331.jpg
-    - href: //syn.tactical-grace.net/c/2015-07-21/s1920/IMG_20150718_210448.jpg
-      title: \"Notice me, Ez8 senpai!\"
-    - href: //syn.tactical-grace.net/c/2015-07-21/s1920/IMG_20150719_163259.jpg
-      title: '*thwpt*'
+- date: 2015-07-21 01:29:11+01:00
+  entry_cover: //syn.tactical-grace.net/c/2015-07-21/s1920/IMG_20150719_163259.jpg
+  photos:
+  - href: //syn.tactical-grace.net/c/2015-07-21/s1920/IMG_20150713_231732.jpg
+    title: Few runners, plenty of style.
+  - href: //syn.tactical-grace.net/c/2015-07-21/s1920/IMG_20150716_233941.jpg
+  - href: //syn.tactical-grace.net/c/2015-07-21/s1920/IMG_20150716_234859.jpg
+    title: '*glare*'
+  - href: //syn.tactical-grace.net/c/2015-07-21/s1920/IMG_20150718_013126.jpg
+    title: Spikey.
+  - href: //syn.tactical-grace.net/c/2015-07-21/s1920/IMG_20150718_203331.jpg
+  - href: //syn.tactical-grace.net/c/2015-07-21/s1920/IMG_20150718_210448.jpg
+    title: \"Notice me, Ez8 senpai!\"
+  - href: //syn.tactical-grace.net/c/2015-07-21/s1920/IMG_20150719_163259.jpg
+    title: '*thwpt*'

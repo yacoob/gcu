@@ -2,14 +2,14 @@
 title: Juaggu
 kit_cover: //syn.tactical-grace.net/c/2016-01-17/s1920/IMG_20160102_233605.jpg
 entries:
-  2016-01-17 18:33:20+01:00:
-    entry_cover: //syn.tactical-grace.net/c/2016-01-17/s1920/IMG_20160102_233605.jpg
-    photo:
-    - href: //syn.tactical-grace.net/c/2016-01-17/s1920/IMG_20151227_190855.jpg
-    - href: //syn.tactical-grace.net/c/2016-01-17/s1920/IMG_20151227_194331.jpg
-      title: Clever use of a coated wire.
-    - href: //syn.tactical-grace.net/c/2016-01-17/s1920/IMG_20151227_202117.jpg
-      title: \"Hi. Got any ants?\"
-    - href: //syn.tactical-grace.net/c/2016-01-17/s1920/IMG_20151231_002714.jpg
-    - href: //syn.tactical-grace.net/c/2016-01-17/s1920/IMG_20160102_233605.jpg
-      title: '*snort*'
+- date: 2016-01-17 18:33:20+01:00
+  entry_cover: //syn.tactical-grace.net/c/2016-01-17/s1920/IMG_20160102_233605.jpg
+  photos:
+  - href: //syn.tactical-grace.net/c/2016-01-17/s1920/IMG_20151227_190855.jpg
+  - href: //syn.tactical-grace.net/c/2016-01-17/s1920/IMG_20151227_194331.jpg
+    title: Clever use of a coated wire.
+  - href: //syn.tactical-grace.net/c/2016-01-17/s1920/IMG_20151227_202117.jpg
+    title: \"Hi. Got any ants?\"
+  - href: //syn.tactical-grace.net/c/2016-01-17/s1920/IMG_20151231_002714.jpg
+  - href: //syn.tactical-grace.net/c/2016-01-17/s1920/IMG_20160102_233605.jpg
+    title: '*snort*'
