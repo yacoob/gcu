@@ -13,6 +13,12 @@ OBLIGATORY_FIELDS = ('entries', 'kit_cover', 'title')
 
 
 def _loadKits(d):
+    # There's a bug in PyYAML that makes it parse the timestamps to naive
+    # datetime objects, discarding timezone information in the process.
+    # Workaround courtessy of http://stackoverflow.com/a/13295663
+    def timestamp_constructor(loader, node):
+        return dateutil.parser.parse(node.value)
+    yaml.add_constructor(u'tag:yaml.org,2002:timestamp', timestamp_constructor)
     data = {}
     for dirpath, dirnames, filenames in os.walk(d, followlinks=True):
         for filename in filenames:
@@ -31,27 +37,27 @@ def _loadKits(d):
             slug = os.path.splitext(os.path.basename(fp))[0]
             parsed['slug'] = slug
             parsed['fp'] = fp
-            data[slug] = parsed
+            data.setdefault(grade, []).append(parsed)
+    for grade in data:
+        data[grade] = sorted(data[grade], key=lambda x: x['slug'])
     return data
 
 
 def _preprocess(data):
-    # Add a canonical url to each kit
-    for kit in data:
-        k = data[kit]
-        k['canonical_url'] = '/%s/%s/' % (k['grade'], k['slug'])
+    newest = []
+    for grade in data:
+        for kit in data[grade]:
+            # Add a canonical url to each kit.
+            kit['canonical_url'] = '/%s/%s/' % (kit['grade'], kit['slug'])
+            # Create a list of newest posts, one per kit.
+            last_post_date = sorted(kit['entries'].keys(), reverse=True)[0]
+            newest.append((last_post_date, kit))
+    newest = sorted(newest, reverse=True, key=lambda x: x[0])
     gcu = {}
-    gcu['data'] = data
-    # gcu['posts'] = posts
-    # gcu['grade_index'] = grade_index
-    # gcu['newest'] = newest
+    gcu['grade_index'] = data
+    gcu['newest'] = newest
     return gcu
 
+
 def getEverything(d=None):
-    # There's a bug in PyYAML that makes it parse the timestamps to naive
-    # datetime objects, discarding timezone information in the process.
-    # Workaround courtessy of http://stackoverflow.com/a/13295663
-    def timestamp_constructor(loader, node):
-        return dateutil.parser.parse(node.value)
-    yaml.add_constructor(u'tag:yaml.org,2002:timestamp', timestamp_constructor)
     return _preprocess(_loadKits(os.path.join(d, 'kits')))
