@@ -1,4 +1,4 @@
-{% macro photo(href, title, thumb) -%}
+{% macro photo(href, title, thumb) %}
 {%- set imgsrc = thumb|default(href, true) -%}
 {%- if 'youtu' in href -%}
 {%- set icon = 'glyphicon-play-circle' -%}
@@ -13,15 +13,15 @@
     </a>
   </div>
 </div>
-{%- endmacro %}
+{% endmacro %}
 
-{% macro title_row(title, href) -%}
+{% macro title_row(title, href) %}
 <div class='col-sm-12 col-md-8 text-right'>
   <h1 class='title'><a href='{{ href }}'>{{ title }}</a></h1>
 </div> <!-- column -->
-{%- endmacro %}
+{% endmacro %}
 
-{% macro thumbnail(href_url, img_url, title, width=3) -%}
+{% macro thumbnail(href_url, img_url, title, width=3) %}
 <div class='col-xs-12 col-sm-4 col-md-{{ width }} text-center'>
   <div class='model'>
     <img class='img-rounded img-responsive' src='{{ img_url|replace('s1920', 's400-p') }}'>
@@ -31,4 +31,12 @@
     </div>
   </div>
 </div>
-{%- endmacro %}
+{% endmacro %}
+
+{% macro entry_photos(entry) %}
+<div class='row voffset-small'>
+{% for p in entry.photos %}
+{{ photo(p.href, p.title) }}
+{% endfor %}
+</div>
+{% endmacro %}

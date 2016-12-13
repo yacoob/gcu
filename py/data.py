@@ -9,7 +9,7 @@ import os
 import sys
 import yaml
 
-OBLIGATORY_FIELDS = ('entries', 'kit_cover', 'title')
+OBLIGATORY_FIELDS = ('entries', 'cover', 'title')
 
 
 def _loadKits(d):
@@ -44,24 +44,35 @@ def _loadKits(d):
 
 
 def _preprocess(data):
-    newest = []
+    newest_kits = []
+    newest_entries = []
     for grade in data:
         data[grade] = sorted(data[grade], key=lambda x: x['slug'])
         for idx, kit in enumerate(data[grade]):
             kit['entries'] = sorted(kit['entries'], key=lambda x: x['date'])
+            # Add canonical urls to each entry.
+            for entry in kit['entries']:
+                entry['canonical_url'] = (
+                        kit['canonical_url'] + '#' +
+                        entry['date'].strftime('%Y-%m-%d'))
             # Add prev/next links.
             if idx > 0:
                 kit['prev'] = data[grade][idx-1]['canonical_url']
             if idx + 1 < len(data[grade]):
                 kit['next'] = data[grade][idx+1]['canonical_url']
-            # Create a list of newest posts, one per kit.
+            # Create a list of newest kits and newest entries.
             last_post_date = kit['entries'][-1]['date']
             kit['last_updated'] = last_post_date
-            newest.append(kit)
-    newest = sorted(newest, reverse=True, key=lambda x: x['last_updated'])
+            newest_kits.append(kit)
+            newest_entries.extend(kit['entries'])
+    newest_kits = sorted(
+            newest_kits, reverse=True, key=lambda x: x['last_updated'])
+    newest_entries = sorted(
+            newest_entries, reverse=True, key=lambda x: x['date'])
     gcu = {}
     gcu['grade_index'] = data
-    gcu['newest'] = newest
+    gcu['newest_kits'] = newest_kits
+    gcu['newest_entries'] = newest_entries
     return gcu
 
 

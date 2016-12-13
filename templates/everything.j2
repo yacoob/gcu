@@ -3,14 +3,13 @@
 {% set page_title = 'Everything!' %}
 {% set page_description = 'All of the kits at tactical grace' %}
 {% block content %}
-{% for grade in gcu['data']|sort %}
+{% for grade in gcu['grade_index']|sort %}
 <div class='row voffset-top'>
   <h2>{{ grade|fancy_grade }}</h2>
 </div>
 <div class='row voffset-small'>
-{% for kit_name in gcu['data'][grade] %}
-  {% set kit_data = gcu['data'][grade][kit_name] %}
-  {{ macros.thumbnail(kit_data.canonical_url, kit_data.img_url, kit_data.title) }}
+{% for kit in gcu['grade_index'][grade] %}
+  {{ macros.thumbnail(kit.canonical_url, kit.cover, kit.title) }}
 {% endfor %}
 </div> <!-- row -->
 {% endfor %}

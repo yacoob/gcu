@@ -15,9 +15,6 @@ SPECIAL_PAGES = {
     'index.xml': 'rss.j2',
     'sitemap.xml': 'sitemap.j2',
 }
-SPECIAL_REDIRECTS = {
-    'post/index.html': '/everything/',
-}
 BASE_URL = 'http://gcu.tactical-grace.net'
 
 
@@ -89,20 +86,16 @@ def renderEverything(d=None, gcu=None):
                 os.path.join(outdir, grade, kit['slug'], 'index.html'),
                 tmpl_fn='kit.j2', gcu=gcu, grade=grade, kit=kit)
             sitemap_urls.append((
-                '/%s/%s/' % (grade, kit), kit['last_updated']))
+                '/%s/%s/' % (grade, kit['slug']), kit['last_updated']))
         latest_grade_post_date = max(
                 [x[1] for x in sitemap_urls
                     if x[0].startswith('/%s/' % grade)])
         sitemap_urls.append(('/%s/' % grade, latest_grade_post_date))
 
     # generate special pages
-    # last_update_date = max(x['meta']['date'] for x in gcu['posts'].values())
-    # for (fn, tmpl) in SPECIAL_PAGES.items():
-    #     r.render(
-    #         os.path.join(outdir, fn),
-    #         tmpl_fn=tmpl, gcu=gcu, last_update_date=last_update_date,
-    #         sitemap_urls=sitemap_urls)
-    # for (fn, url) in SPECIAL_REDIRECTS.items():
-    #     r.render(
-    #         os.path.join(outdir, fn),
-    #         tmpl_fn='redir.j2', url=url)
+    last_site_update_date = gcu['newest_kits'][0]['last_updated']
+    for (fn, tmpl) in SPECIAL_PAGES.items():
+        r.render(
+            os.path.join(outdir, fn),
+            tmpl_fn=tmpl, gcu=gcu, last_site_update_date=last_site_update_date,
+            sitemap_urls=sitemap_urls)

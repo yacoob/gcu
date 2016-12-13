@@ -6,7 +6,7 @@
 {% block content %}
 <div class='row voffset-top'>
 {% for kit in gcu['grade_index'][grade] %}
-  {{ macros.thumbnail(kit.canonical_url, kit.kit_cover, kit.title) }}
+  {{ macros.thumbnail(kit.canonical_url, kit.cover, kit.title) }}
 {% endfor %}
 </div> <!-- row -->
 {% endblock %}

@@ -5,8 +5,8 @@
 {% set page_description = 'Welcome to tactical grace!' %}
 {% block content %}
 <div class='row voffset-top'>
-{% for (post, title) in gcu['newest'][0:3] %}
-  {{ macros.thumbnail(post.redir_url, post.meta.cover_img, title, 4) }}
+{% for kit in gcu['newest_kits'][0:3] %}
+  {{ macros.thumbnail(kit.entries[-1].canonical_url, kit.entries[-1].cover, kit.title, 4) }}
 {% endfor %}
 </div> <!-- row -->
 {% endblock %}
