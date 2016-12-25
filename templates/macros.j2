@@ -36,7 +36,7 @@
 {% macro entry_photos(entry) %}
 <div class='row voffset-small'>
 {% for p in entry.photos %}
-{{ photo(p.href, p.title) }}
+{{ photo(p.href, p.title, p.thumb) }}
 {% endfor %}
 </div>
 {% endmacro %}
