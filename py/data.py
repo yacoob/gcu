@@ -64,7 +64,10 @@ def _preprocess(data):
             last_post_date = kit['entries'][-1]['date']
             kit['last_updated'] = last_post_date
             newest_kits.append(kit)
-            newest_entries.extend(kit['entries'])
+            for entry in kit['entries']:
+                ec = entry.copy()
+                ec['kit'] = kit['title']
+                newest_entries.append(ec)
     newest_kits = sorted(
             newest_kits, reverse=True, key=lambda x: x['last_updated'])
     newest_entries = sorted(

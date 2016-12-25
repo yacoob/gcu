@@ -1,22 +1,28 @@
 {% import 'macros.j2' as macros %}
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
     <title>tactical grace</title>
     <link>{{ base_url }}</link>
     <description>Newest kits from GCU tactical grace.</description>
+    <dc:creator>yacoob</dc:creator>
+    <language>en-us</language>
     <lastBuildDate>{{ last_site_update_date|datetime_to_rfc822 }}</lastBuildDate>
     <atom:link href="{{ base_url }}/index.xml" rel="self" type="application/rss+xml" />
 {% for entry in gcu['newest_entries'][0:15] %}
 <item>
 {% set url = base_url + entry.canonical_url %}
 {% set date = entry.date|short_date %}
-  <title>{{ date }}</title>
+{% set title = date + ': ' + entry.kit %}
+  <title>{{ title }}</title>
   <link>{{ url }}</link>
   <pubDate>{{ entry.date|datetime_to_rfc822 }}</pubDate>
   <guid>{{ url }}</guid>
+  <dc:creator>yacoob</dc:creator>
   <content:encoded><![CDATA[
-    <h2>{{ date }}</h2>
     {{ macros.entry_photos(entry) }}
   ]]></content:encoded>
 </item>
