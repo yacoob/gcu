@@ -27,7 +27,10 @@ def _loadKits(d):
             fp = os.path.join(dirpath, filename)
             f = codecs.open(fp, 'r', 'utf-8')
             parsed = yaml.load(f)
-            missing_fields = set(OBLIGATORY_FIELDS) - set(parsed.keys())
+            if parsed:
+                missing_fields = set(OBLIGATORY_FIELDS) - set(parsed.keys())
+            else:
+                missing_fields = OBLIGATORY_FIELDS
             if missing_fields:
                 sys.exit(
                     'post %s malformed, doesn\'t contain following headers: %s'
