@@ -1,35 +1,36 @@
-# Reads a feed of newest photos from Google Photos, outputs markdown code for
+# Reads a feed of newest photos from Google Photos, outputs yaml data for the
 # gallery. Can run wherever, expects the feed on stdin.
 #
 # gcu-gallery 12 < feedfile
 #
 gcu-gallery() {
+echo '  photos:'
   grep -Eo "https?://lh.\.googleusercontent.com/[^']+/s144/[^']+" - | head -${1} | sed -E '
 s#/s144/#/s1920/#
 s/https?://
-s/$/") }}/
-s/^/{{ photo(title="", href="/
+s/^/  - href: /
 ' | tail -r
 }
 
-# Extracts Google Photos urls from files, creates per post lists of URLs. Must
-# run in photo/, expects post files as arguments.
+# Extracts Google Photos urls from files, creates per date lists of URLs. Must
+# run in photos/, expects kit files as arguments.
 #
-# gcu-make-list ../posts/2015-11-21.zee.zulu.goes.blub.md
+# gcu-make-list ../kits/hg/exia.yaml
 #
 gcu-make-list() {
   foreach file ("$@") {
-    local day=$(basename ${file} | cut -b 1-10)
+    local new_content=$(git diff -U0 ${file})
+    local day=$(echo "${new_content}" | grep 'date: ' | grep -Eo '\d\d\d\d-\d\d-\d\d')
     mkdir -p ${day}
-    grep -Eo '//lh[0-9]\.googleusercontent.+/s1920/[^"]+' ${file} | sort -u | sed 's/^/http:/' >> ${day}/urllist
-    ls -lh ${day}/urllist
+    echo "${new_content}" | grep -Eo '//lh[0-9]\.googleusercontent.+/s1920/[^"]+' | sort -u | sed 's/^/http:/' >> ${day}/urllist
+    echo ${day}
   }
 }
 
 # Given a list of photos, fetches all needed variants of it. Must run in
 # photo/, expects dir names (YYYY-MM-DD) as arguments.
 #
-# gcu-fetch-day 2015-11-21
+# gcu-fetch-day 2016-12-26
 #
 gcu-fetch-day() {
   foreach day ("$@") {
@@ -41,7 +42,6 @@ gcu-fetch-day() {
       cd ${dir}
       sed "s#/s1920/#/${dir}/#" ../urllist | xargs -- curl -s --remote-name-all
     }
-    find ${daydir}
     cd ${photodir}
   }
 }
@@ -55,16 +55,30 @@ gcu-sync-photos() {
   rsync --exclude .htaccess --exclude .gitignore --delete -airz $* . inferno.hell.pl:/srv/web/syn.tactical-grace.net/c/
 }
 
-# Rewrites image links in post files from Google Photos to serving site.
-# Can run wherever, expects post files as arguments, named like this: YYYY-MM-DD.title.md.
+# Rewrites image links in kit files from Google Photos to serving site.
+# Can run wherever, expects kit files as arguments.
 #
-# gcu-rewrite-links posts/2015-11-21.zee.zulu.goes.blub.md
+# gcu-rewrite-links ../kits/hg/exia.yaml
 #
 gcu-rewrite-links() {
   local base='//syn.tactical-grace.net/c/'
   foreach file ("$*") {
-    local day=$(basename ${file} | cut -b 1-10)
+    local day=$(git diff -U0 ${file} | grep 'date: ' | grep -Eo '\d\d\d\d-\d\d-\d\d')
     local new_parent=${base}${day}
-    perl -i.orig -lpe 's#//lh[0-9]\.googleusercontent.+(?=/s[0-9]+[^/]+/)#'${new_parent}'#' ${file}
+    perl -lpe 's#//lh[0-9]\.googleusercontent.+(?=/s[0-9]+[^/]+/)#'${new_parent}'#' ${file}
+  }
+}
+
+# Convenience function for new entries: extracts list of photos, fetches them
+# and edits the links. Doesn't sync the photos to the serving site.
+#
+# gcu-process-photos ../kits/hg/exia.yaml
+gcu-process-photos() {
+  foreach file ("$@") {
+    local day=$(gcu-make-list ${file})
+    ls -l ${day}
+    gcu-fetch-day ${day}
+    find ${day}
+    gcu-rewrite-links ${file}
   }
 }
