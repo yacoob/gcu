@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
     <title>tactical grace</title>
     <link>http://gcu.tactical-grace.net</link>
     <description>Newest kits from GCU tactical grace.</description>
+    <dc:creator>yacoob</dc:creator>
+    <language>en-us</language>
     <lastBuildDate>Sat, 19 Nov 2016 19:34:39 -0000</lastBuildDate>
     <atom:link href="http://gcu.tactical-grace.net/index.xml" rel="self" type="application/rss+xml" />
 <item>
-  <title>Grimoire</title>
+  <title>2016-11-19: Grimoire</title>
   <link>http://gcu.tactical-grace.net/hg/grimoire/#2016-11-19</link>
   <pubDate>Sat, 19 Nov 2016 19:34:39 -0000</pubDate>
   <guid>http://gcu.tactical-grace.net/hg/grimoire/#2016-11-19</guid>
+  <dc:creator>yacoob</dc:creator>
   <content:encoded><![CDATA[
-    <div class='col-xs-6 col-md-3 col-lg-2'>
+    <div class='row voffset-small'>
+<div class='col-xs-6 col-md-3 col-lg-2'>
   <div class='gallery-entry voffset-bottom-small'>
     <a class='gallery' href='//syn.tactical-grace.net/c/2016-11-19/s1920/IMG_20161018_215338.jpg'>
       <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-11-19/s400-p/IMG_20161018_215338.jpg' title='Modest part count.' alt='Modest part count.' />
@@ -92,15 +99,18 @@
     </a>
   </div>
 </div>
+</div>
   ]]></content:encoded>
 </item>
 <item>
-  <title>00 Raiser</title>
+  <title>2016-10-16: 00 Raiser</title>
   <link>http://gcu.tactical-grace.net/pg/00-raiser/#2016-10-16</link>
   <pubDate>Sun, 16 Oct 2016 01:32:29 -0000</pubDate>
   <guid>http://gcu.tactical-grace.net/pg/00-raiser/#2016-10-16</guid>
+  <dc:creator>yacoob</dc:creator>
   <content:encoded><![CDATA[
-    <div class='col-xs-6 col-md-3 col-lg-2'>
+    <div class='row voffset-small'>
+<div class='col-xs-6 col-md-3 col-lg-2'>
   <div class='gallery-entry voffset-bottom-small'>
     <a class='gallery' href='//syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20160814_224318.jpg'>
       <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-10-16/s400-p/IMG_20160814_224318.jpg' />
@@ -183,7 +193,7 @@
 <div class='col-xs-6 col-md-3 col-lg-2'>
   <div class='gallery-entry voffset-bottom-small'>
     <a class='gallery' href='//syn.tactical-grace.net/c/2016-10-16/s1920/DSC01656-HDR.jpg'>
-      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-10-16/s400-p/DSC01656-HDR.jpg' title='我らがビッグ・ファイアのために！' alt='我らがビッグ・ファイアのために！' />
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-10-16/s400-p/DSC01656-HDR.jpg' title='「我らがビッグ・ファイアのために！」' alt='「我らがビッグ・ファイアのために！」' />
       <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
     </a>
   </div>
@@ -191,20 +201,221 @@
 <div class='col-xs-6 col-md-3 col-lg-2'>
   <div class='gallery-entry voffset-bottom-small'>
     <a class='gallery' href='//syn.tactical-grace.net/c/2016-10-16/s1920/IMG_20161030_214738.jpg'>
-      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-10-16/s400-p/IMG_20161030_214738.jpg' title='Stand by for titanfall!' alt='Stand by for titanfall!' />
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-10-16/s400-p/IMG_20161030_214738.jpg' title='&#34;Stand by for titanfall!&#34;' alt='&#34;Stand by for titanfall!&#34;' />
       <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
     </a>
   </div>
 </div>
+</div>
   ]]></content:encoded>
 </item>
 <item>
-  <title>Astray Red Frame</title>
+  <title>2016-07-24: 00 Raiser</title>
+  <link>http://gcu.tactical-grace.net/pg/00-raiser/#2016-07-24</link>
+  <pubDate>Sun, 24 Jul 2016 19:20:07 -0000</pubDate>
+  <guid>http://gcu.tactical-grace.net/pg/00-raiser/#2016-07-24</guid>
+  <dc:creator>yacoob</dc:creator>
+  <content:encoded><![CDATA[
+    <div class='row voffset-small'>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160625_171651.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-07-24/s400-p/IMG_20160625_171651.jpg' title='Early prototype of Gekko.' alt='Early prototype of Gekko.' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160703_003517.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-07-24/s400-p/IMG_20160703_003517.jpg' title='Imagine, if you will, a pair of tiny T-Rex arms there...' alt='Imagine, if you will, a pair of tiny T-Rex arms there...' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160703_230335.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-07-24/s400-p/IMG_20160703_230335.jpg' title='Lots of disassembly, after I put one piece in a wrong way, early on.' alt='Lots of disassembly, after I put one piece in a wrong way, early on.' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160710_211709.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-07-24/s400-p/IMG_20160710_211709.jpg' title='Skull.' alt='Skull.' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160710_230018.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-07-24/s400-p/IMG_20160710_230018.jpg' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160710_230112.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-07-24/s400-p/IMG_20160710_230112.jpg' title='Head online.' alt='Head online.' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160710_231332.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-07-24/s400-p/IMG_20160710_231332.jpg' title='Torso is ready.' alt='Torso is ready.' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/c/2016-07-24/s1920/IMG_20160711_223648.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-07-24/s400-p/IMG_20160711_223648.jpg' title='When you find that the hand design is just right.' alt='When you find that the hand design is just right.' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+</div>
+  ]]></content:encoded>
+</item>
+<item>
+  <title>2016-06-19: 00 Raiser</title>
+  <link>http://gcu.tactical-grace.net/pg/00-raiser/#2016-06-19</link>
+  <pubDate>Sun, 19 Jun 2016 22:03:36 -0000</pubDate>
+  <guid>http://gcu.tactical-grace.net/pg/00-raiser/#2016-06-19</guid>
+  <dc:creator>yacoob</dc:creator>
+  <content:encoded><![CDATA[
+    <div class='row voffset-small'>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/c/2016-06-19/s1920/DSC01442.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-06-19/s400-p/DSC01442.jpg' title='It&#39;s a Spanish story about a guy called &#34;Manual&#34;' alt='It&#39;s a Spanish story about a guy called &#34;Manual&#34;' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/c/2016-06-19/s1920/DSC01443.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-06-19/s400-p/DSC01443.jpg' title='Boxes for the kit and the extra clear parts.' alt='Boxes for the kit and the extra clear parts.' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/c/2016-06-19/s1920/DSC01444.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-06-19/s400-p/DSC01444.jpg' title='Kit box unpacked; more boxes inside!' alt='Kit box unpacked; more boxes inside!' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/c/2016-06-19/s1920/DSC01445.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-06-19/s400-p/DSC01445.jpg' title='Manual lists all runners needed for specific part; those are for the feet.' alt='Manual lists all runners needed for specific part; those are for the feet.' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/c/2016-06-19/s1920/DSC01446.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-06-19/s400-p/DSC01446.jpg' title='Foot w/ clear parts.' alt='Foot w/ clear parts.' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/c/2016-06-19/s1920/DSC01447.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-06-19/s400-p/DSC01447.jpg' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/c/2016-06-19/s1920/IMG_20160612_185409.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-06-19/s400-p/IMG_20160612_185409.jpg' title='Decided to build the inner frame first.' alt='Decided to build the inner frame first.' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/c/2016-06-19/s1920/image-20160612_222359.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-06-19/s400-p/image-20160612_222359.jpg' title='Hollow leg without GN condenser.' alt='Hollow leg without GN condenser.' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/c/2016-06-19/s1920/IMG_20160612_223556.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-06-19/s400-p/IMG_20160612_223556.jpg' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/c/2016-06-19/s1920/IMG_20160619_165939.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-06-19/s400-p/IMG_20160619_165939.jpg' title='Spring for GN condenser.' alt='Spring for GN condenser.' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/c/2016-06-19/s1920/IMG_20160619_172926.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-06-19/s400-p/IMG_20160619_172926.jpg' title='Leg with GN condenser; it locks the joint in position.' alt='Leg with GN condenser; it locks the joint in position.' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/c/2016-06-19/s1920/image-20160619_173000.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-06-19/s400-p/image-20160619_173000.jpg' title='One leg completed.' alt='One leg completed.' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/c/2016-06-19/s1920/IMG_20160619_214049.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-06-19/s400-p/IMG_20160619_214049.jpg' title='Both legs ready.' alt='Both legs ready.' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/c/2016-06-19/s1920/IMG_20160619_215836.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-06-19/s400-p/IMG_20160619_215836.jpg' title='Empty runners after building both legs and feet.' alt='Empty runners after building both legs and feet.' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+</div>
+  ]]></content:encoded>
+</item>
+<item>
+  <title>2016-05-02: Astray Red Frame</title>
   <link>http://gcu.tactical-grace.net/mg/red-frame/#2016-05-02</link>
   <pubDate>Mon, 02 May 2016 01:40:56 -0000</pubDate>
   <guid>http://gcu.tactical-grace.net/mg/red-frame/#2016-05-02</guid>
+  <dc:creator>yacoob</dc:creator>
   <content:encoded><![CDATA[
-    <div class='col-xs-6 col-md-3 col-lg-2'>
+    <div class='row voffset-small'>
+<div class='col-xs-6 col-md-3 col-lg-2'>
   <div class='gallery-entry voffset-bottom-small'>
     <a class='gallery' href='//syn.tactical-grace.net/c/2016-05-02/s1920/DSC01322.jpg'>
       <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-05-02/s400-p/DSC01322.jpg' title='Finally standing! Took me two years to get/fix all the parts I&#39;ve broken o_O' alt='Finally standing! Took me two years to get/fix all the parts I&#39;ve broken o_O' />
@@ -428,15 +639,18 @@
     </a>
   </div>
 </div>
+</div>
   ]]></content:encoded>
 </item>
 <item>
-  <title>Odaiba RX-78-2</title>
+  <title>2016-04-24: Odaiba RX-78-2</title>
   <link>http://gcu.tactical-grace.net/varia/odaiba-rx-78-2/#2016-04-24</link>
   <pubDate>Sun, 24 Apr 2016 15:11:44 -0000</pubDate>
   <guid>http://gcu.tactical-grace.net/varia/odaiba-rx-78-2/#2016-04-24</guid>
+  <dc:creator>yacoob</dc:creator>
   <content:encoded><![CDATA[
-    <div class='col-xs-6 col-md-3 col-lg-2'>
+    <div class='row voffset-small'>
+<div class='col-xs-6 col-md-3 col-lg-2'>
   <div class='gallery-entry voffset-bottom-small'>
     <a class='gallery' href='//syn.tactical-grace.net/c/2016-04-24/s1920/DSC01166.jpg'>
       <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-04-24/s400-p/DSC01166.jpg' title='One of the few non-gibberish decals.' alt='One of the few non-gibberish decals.' />
@@ -540,15 +754,18 @@
     </a>
   </div>
 </div>
+</div>
   ]]></content:encoded>
 </item>
 <item>
-  <title>Kotobukiya Tachikoma</title>
+  <title>2016-03-26: Kotobukiya Tachikoma</title>
   <link>http://gcu.tactical-grace.net/varia/kotobukiya-tachikoma/#2016-03-26</link>
   <pubDate>Sat, 26 Mar 2016 23:32:03 -0000</pubDate>
   <guid>http://gcu.tactical-grace.net/varia/kotobukiya-tachikoma/#2016-03-26</guid>
+  <dc:creator>yacoob</dc:creator>
   <content:encoded><![CDATA[
-    <div class='col-xs-6 col-md-3 col-lg-2'>
+    <div class='row voffset-small'>
+<div class='col-xs-6 col-md-3 col-lg-2'>
   <div class='gallery-entry voffset-bottom-small'>
     <a class='gallery' href='//syn.tactical-grace.net/c/2016-03-26/s1920/IMG_20160316_231147.jpg'>
       <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-03-26/s400-p/IMG_20160316_231147.jpg' title='This looks familiar. A different tachikoma kit was my first SF kit ever.' alt='This looks familiar. A different tachikoma kit was my first SF kit ever.' />
@@ -676,15 +893,18 @@
     </a>
   </div>
 </div>
+</div>
   ]]></content:encoded>
 </item>
 <item>
-  <title>Exia Repair</title>
+  <title>2016-03-04: Exia Repair</title>
   <link>http://gcu.tactical-grace.net/rg/exia/#2016-03-04</link>
   <pubDate>Fri, 04 Mar 2016 22:46:20 -0000</pubDate>
   <guid>http://gcu.tactical-grace.net/rg/exia/#2016-03-04</guid>
+  <dc:creator>yacoob</dc:creator>
   <content:encoded><![CDATA[
-    <div class='col-xs-6 col-md-3 col-lg-2'>
+    <div class='row voffset-small'>
+<div class='col-xs-6 col-md-3 col-lg-2'>
   <div class='gallery-entry voffset-bottom-small'>
     <a class='gallery' href='//syn.tactical-grace.net/c/2016-03-04/s1920/DSC00114.jpg'>
       <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-03-04/s400-p/DSC00114.jpg' />
@@ -764,15 +984,18 @@
     </a>
   </div>
 </div>
+</div>
   ]]></content:encoded>
 </item>
 <item>
-  <title>Turn A Gundam</title>
+  <title>2016-02-07: Turn A Gundam</title>
   <link>http://gcu.tactical-grace.net/hg/turn-a/#2016-02-07</link>
   <pubDate>Sun, 07 Feb 2016 22:58:00 -0000</pubDate>
   <guid>http://gcu.tactical-grace.net/hg/turn-a/#2016-02-07</guid>
+  <dc:creator>yacoob</dc:creator>
   <content:encoded><![CDATA[
-    <div class='col-xs-6 col-md-3 col-lg-2'>
+    <div class='row voffset-small'>
+<div class='col-xs-6 col-md-3 col-lg-2'>
   <div class='gallery-entry voffset-bottom-small'>
     <a class='gallery' href='//syn.tactical-grace.net/c/2016-02-07/s1920/turn-a-018.jpg'>
       <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-02-07/s400-p/turn-a-018.jpg' title='&#39;stache represent.' alt='&#39;stache represent.' />
@@ -900,15 +1123,18 @@
     </a>
   </div>
 </div>
+</div>
   ]]></content:encoded>
 </item>
 <item>
-  <title>Juaggu</title>
+  <title>2016-01-17: Juaggu</title>
   <link>http://gcu.tactical-grace.net/hg/juaggu/#2016-01-17</link>
   <pubDate>Sun, 17 Jan 2016 18:33:20 -0000</pubDate>
   <guid>http://gcu.tactical-grace.net/hg/juaggu/#2016-01-17</guid>
+  <dc:creator>yacoob</dc:creator>
   <content:encoded><![CDATA[
-    <div class='col-xs-6 col-md-3 col-lg-2'>
+    <div class='row voffset-small'>
+<div class='col-xs-6 col-md-3 col-lg-2'>
   <div class='gallery-entry voffset-bottom-small'>
     <a class='gallery' href='//syn.tactical-grace.net/c/2016-01-17/s1920/IMG_20151227_190855.jpg'>
       <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2016-01-17/s400-p/IMG_20151227_190855.jpg' />
@@ -948,15 +1174,18 @@
     </a>
   </div>
 </div>
+</div>
   ]]></content:encoded>
 </item>
 <item>
-  <title>Guntank RX-75-4</title>
+  <title>2015-11-21: Guntank RX-75-4</title>
   <link>http://gcu.tactical-grace.net/hg/guntank/#2015-11-21</link>
   <pubDate>Sat, 21 Nov 2015 23:20:39 -0000</pubDate>
   <guid>http://gcu.tactical-grace.net/hg/guntank/#2015-11-21</guid>
+  <dc:creator>yacoob</dc:creator>
   <content:encoded><![CDATA[
-    <div class='col-xs-6 col-md-3 col-lg-2'>
+    <div class='row voffset-small'>
+<div class='col-xs-6 col-md-3 col-lg-2'>
   <div class='gallery-entry voffset-bottom-small'>
     <a class='gallery' href='//syn.tactical-grace.net/c/2015-11-21/s1920/IMG_20150927_211520.jpg'>
       <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2015-11-21/s400-p/IMG_20150927_211520.jpg' title='Simple and clean.' alt='Simple and clean.' />
@@ -988,15 +1217,18 @@
     </a>
   </div>
 </div>
+</div>
   ]]></content:encoded>
 </item>
 <item>
-  <title>Zee Zulu</title>
+  <title>2015-11-21: Zee Zulu</title>
   <link>http://gcu.tactical-grace.net/hg/zee-zulu/#2015-11-21</link>
   <pubDate>Sat, 21 Nov 2015 23:20:39 -0000</pubDate>
   <guid>http://gcu.tactical-grace.net/hg/zee-zulu/#2015-11-21</guid>
+  <dc:creator>yacoob</dc:creator>
   <content:encoded><![CDATA[
-    <div class='col-xs-6 col-md-3 col-lg-2'>
+    <div class='row voffset-small'>
+<div class='col-xs-6 col-md-3 col-lg-2'>
   <div class='gallery-entry voffset-bottom-small'>
     <a class='gallery' href='//syn.tactical-grace.net/c/2015-11-21/s1920/IMG_20151023_210923.jpg'>
       <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2015-11-21/s400-p/IMG_20151023_210923.jpg' title='I can&#39;t believe it&#39;s still an HG!' alt='I can&#39;t believe it&#39;s still an HG!' />
@@ -1060,15 +1292,18 @@
     </a>
   </div>
 </div>
+</div>
   ]]></content:encoded>
 </item>
 <item>
-  <title>Frame Arms #14 Kagutsuchi-kou</title>
+  <title>2015-09-13: Frame Arms #14 Kagutsuchi-kou</title>
   <link>http://gcu.tactical-grace.net/varia/kagutsuchi/#2015-09-13</link>
   <pubDate>Sun, 13 Sep 2015 20:41:00 -0000</pubDate>
   <guid>http://gcu.tactical-grace.net/varia/kagutsuchi/#2015-09-13</guid>
+  <dc:creator>yacoob</dc:creator>
   <content:encoded><![CDATA[
-    <div class='col-xs-6 col-md-3 col-lg-2'>
+    <div class='row voffset-small'>
+<div class='col-xs-6 col-md-3 col-lg-2'>
   <div class='gallery-entry voffset-bottom-small'>
     <a class='gallery' href='//syn.tactical-grace.net/c/2015-09-13/s1920/IMG_20150801_230521.jpg'>
       <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2015-09-13/s400-p/IMG_20150801_230521.jpg' title='Almost duotone.' alt='Almost duotone.' />
@@ -1116,15 +1351,18 @@
     </a>
   </div>
 </div>
+</div>
   ]]></content:encoded>
 </item>
 <item>
-  <title>Gouf Custom</title>
+  <title>2015-07-21: Gouf Custom</title>
   <link>http://gcu.tactical-grace.net/hg/gouf-custom/#2015-07-21</link>
   <pubDate>Tue, 21 Jul 2015 01:29:11 -0000</pubDate>
   <guid>http://gcu.tactical-grace.net/hg/gouf-custom/#2015-07-21</guid>
+  <dc:creator>yacoob</dc:creator>
   <content:encoded><![CDATA[
-    <div class='col-xs-6 col-md-3 col-lg-2'>
+    <div class='row voffset-small'>
+<div class='col-xs-6 col-md-3 col-lg-2'>
   <div class='gallery-entry voffset-bottom-small'>
     <a class='gallery' href='//syn.tactical-grace.net/c/2015-07-21/s1920/IMG_20150713_231732.jpg'>
       <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2015-07-21/s400-p/IMG_20150713_231732.jpg' title='Few runners, plenty of style.' alt='Few runners, plenty of style.' />
@@ -1180,15 +1418,18 @@
     </a>
   </div>
 </div>
+</div>
   ]]></content:encoded>
 </item>
 <item>
-  <title>Display case</title>
+  <title>2015-06-29: Display case</title>
   <link>http://gcu.tactical-grace.net/varia/detolf/#2015-06-29</link>
   <pubDate>Mon, 29 Jun 2015 20:31:23 -0000</pubDate>
   <guid>http://gcu.tactical-grace.net/varia/detolf/#2015-06-29</guid>
+  <dc:creator>yacoob</dc:creator>
   <content:encoded><![CDATA[
-    <div class='col-xs-6 col-md-3 col-lg-2'>
+    <div class='row voffset-small'>
+<div class='col-xs-6 col-md-3 col-lg-2'>
   <div class='gallery-entry voffset-bottom-small'>
     <a class='gallery' href='//syn.tactical-grace.net/c/2015-06-29/s1920/IMG_20150519_201628.jpg'>
       <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2015-06-29/s400-p/IMG_20150519_201628.jpg' />
@@ -1212,109 +1453,6 @@
     </a>
   </div>
 </div>
-  ]]></content:encoded>
-</item>
-<item>
-  <title>Ez8</title>
-  <link>http://gcu.tactical-grace.net/hg/ez8/#2015-06-29</link>
-  <pubDate>Mon, 29 Jun 2015 20:31:23 -0000</pubDate>
-  <guid>http://gcu.tactical-grace.net/hg/ez8/#2015-06-29</guid>
-  <content:encoded><![CDATA[
-    <div class='col-xs-6 col-md-3 col-lg-2'>
-  <div class='gallery-entry voffset-bottom-small'>
-    <a class='gallery' href='//syn.tactical-grace.net/c/2015-06-29/s1920/IMG_20150621_225243.jpg'>
-      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2015-06-29/s400-p/IMG_20150621_225243.jpg' title='&#34;Hello there, ladies!&#34;' alt='&#34;Hello there, ladies!&#34;' />
-      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
-    </a>
-  </div>
-</div>
-<div class='col-xs-6 col-md-3 col-lg-2'>
-  <div class='gallery-entry voffset-bottom-small'>
-    <a class='gallery' href='//syn.tactical-grace.net/c/2015-06-29/s1920/IMG_20150622_002311.jpg'>
-      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2015-06-29/s400-p/IMG_20150622_002311.jpg' />
-      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
-    </a>
-  </div>
-</div>
-<div class='col-xs-6 col-md-3 col-lg-2'>
-  <div class='gallery-entry voffset-bottom-small'>
-    <a class='gallery' href='//syn.tactical-grace.net/c/2015-06-29/s1920/IMG_20150628_214015.jpg'>
-      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2015-06-29/s400-p/IMG_20150628_214015.jpg' />
-      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
-    </a>
-  </div>
-</div>
-<div class='col-xs-6 col-md-3 col-lg-2'>
-  <div class='gallery-entry voffset-bottom-small'>
-    <a class='gallery' href='//syn.tactical-grace.net/c/2015-06-29/s1920/IMG_20150628_214101.jpg'>
-      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2015-06-29/s400-p/IMG_20150628_214101.jpg' title='Not bad, for an HG.' alt='Not bad, for an HG.' />
-      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
-    </a>
-  </div>
-</div>
-<div class='col-xs-6 col-md-3 col-lg-2'>
-  <div class='gallery-entry voffset-bottom-small'>
-    <a class='gallery' href='//syn.tactical-grace.net/c/2015-06-29/s1920/IMG_20150628_231528.jpg'>
-      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2015-06-29/s400-p/IMG_20150628_231528.jpg' />
-      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
-    </a>
-  </div>
-</div>
-  ]]></content:encoded>
-</item>
-<item>
-  <title>Gundam Front Tokyo</title>
-  <link>http://gcu.tactical-grace.net/varia/gft/#2015-05-14</link>
-  <pubDate>Thu, 14 May 2015 22:28:51 -0000</pubDate>
-  <guid>http://gcu.tactical-grace.net/varia/gft/#2015-05-14</guid>
-  <content:encoded><![CDATA[
-    <div class='col-xs-6 col-md-3 col-lg-2'>
-  <div class='gallery-entry voffset-bottom-small'>
-    <a class='gallery' href='//syn.tactical-grace.net/c/2015-05-12/s1920/IMG_20150417_150136.jpg'>
-      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2015-05-12/s400-p/IMG_20150417_150136.jpg' title='Almost every gunpla every made is present in this room.' alt='Almost every gunpla every made is present in this room.' />
-      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
-    </a>
-  </div>
-</div>
-<div class='col-xs-6 col-md-3 col-lg-2'>
-  <div class='gallery-entry voffset-bottom-small'>
-    <a class='gallery' href='//syn.tactical-grace.net/c/2015-05-12/s1920/PANO_20150417_152606.jpg'>
-      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2015-05-12/s400-p/PANO_20150417_152606.jpg' title='Dome-G corridor.' alt='Dome-G corridor.' />
-      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
-    </a>
-  </div>
-</div>
-<div class='col-xs-6 col-md-3 col-lg-2'>
-  <div class='gallery-entry voffset-bottom-small'>
-    <a class='gallery' href='//syn.tactical-grace.net/c/2015-05-12/s1920/IMG_20150417_154224.jpg'>
-      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2015-05-12/s400-p/IMG_20150417_154224.jpg' />
-      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
-    </a>
-  </div>
-</div>
-<div class='col-xs-6 col-md-3 col-lg-2'>
-  <div class='gallery-entry voffset-bottom-small'>
-    <a class='gallery' href='//syn.tactical-grace.net/c/2015-05-12/s1920/IMG_20150417_160541.jpg'>
-      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2015-05-12/s400-p/IMG_20150417_160541.jpg' title='Gundam pellets!' alt='Gundam pellets!' />
-      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
-    </a>
-  </div>
-</div>
-<div class='col-xs-6 col-md-3 col-lg-2'>
-  <div class='gallery-entry voffset-bottom-small'>
-    <a class='gallery' href='//syn.tactical-grace.net/c/2015-05-12/s1920/IMG_20150417_160611.jpg'>
-      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2015-05-12/s400-p/IMG_20150417_160611.jpg' />
-      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
-    </a>
-  </div>
-</div>
-<div class='col-xs-6 col-md-3 col-lg-2'>
-  <div class='gallery-entry voffset-bottom-small'>
-    <a class='gallery' href='//syn.tactical-grace.net/c/2015-05-12/s1920/IMG_20150417_160630.jpg'>
-      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/c/2015-05-12/s400-p/IMG_20150417_160630.jpg' title='Actual uniforms of people working at Bandai gunpla factory.' alt='Actual uniforms of people working at Bandai gunpla factory.' />
-      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
-    </a>
-  </div>
 </div>
   ]]></content:encoded>
 </item>

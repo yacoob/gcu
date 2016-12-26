@@ -10,7 +10,7 @@ var gcu = gcu || {
     youtubePlayerParams: {
       autoplay: 0,
       controls: 0,
-      modestbranding: 0,
+      modestbranding: 1,
       rel: 0,
       showinfo: 0,
     }
