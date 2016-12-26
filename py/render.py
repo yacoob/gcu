@@ -36,8 +36,8 @@ class Renderer(object):
 
 
         self.jinja = jinja2.Environment(
-                trim_blocks=True, lstrip_blocks=True,
-                loader=jinja2.FileSystemLoader(d))
+            trim_blocks=True, lstrip_blocks=True,
+            loader=jinja2.FileSystemLoader(d))
         self.jinja.globals['base_url'] = BASE_URL
         self.jinja.filters['datetime_to_iso'] = datetimeToISO
         self.jinja.filters['datetime_to_rfc822'] = datetimeToRFC822
@@ -95,8 +95,8 @@ def renderEverything(d=None, gcu=None):
             sitemap_urls.append((
                 '/%s/%s/' % (grade, kit['slug']), kit['last_updated']))
         latest_grade_post_date = max(
-                [x[1] for x in sitemap_urls
-                    if x[0].startswith('/%s/' % grade)])
+            [x[1] for x in sitemap_urls
+             if x[0].startswith('/%s/' % grade)])
         sitemap_urls.append(('/%s/' % grade, latest_grade_post_date))
 
     # generate special pages

@@ -1,13 +1,10 @@
 #!/usr/bin/env python
 
 import codecs
-import collections
-import dateutil.parser
-import glob
-import jinja2
 import os
 import sys
 import yaml
+import dateutil.parser
 
 OBLIGATORY_FIELDS = ('entries', 'cover', 'title')
 
@@ -20,7 +17,7 @@ def _loadKits(d):
         return dateutil.parser.parse(node.value)
     yaml.add_constructor(u'tag:yaml.org,2002:timestamp', timestamp_constructor)
     data = {}
-    for dirpath, dirnames, filenames in os.walk(d, followlinks=True):
+    for dirpath, _, filenames in os.walk(d, followlinks=True):
         for filename in filenames:
             if not filename.endswith('.yaml'):
                 continue
@@ -56,8 +53,8 @@ def _preprocess(data):
             # Add canonical urls to each entry.
             for entry in kit['entries']:
                 entry['canonical_url'] = (
-                        kit['canonical_url'] + '#' +
-                        entry['date'].strftime('%Y-%m-%d'))
+                    kit['canonical_url'] + '#' +
+                    entry['date'].strftime('%Y-%m-%d'))
             # Add prev/next links.
             if idx > 0:
                 kit['prev'] = data[grade][idx-1]['canonical_url']
@@ -72,9 +69,9 @@ def _preprocess(data):
                 ec['kit'] = kit['title']
                 newest_entries.append(ec)
     newest_kits = sorted(
-            newest_kits, reverse=True, key=lambda x: x['last_updated'])
+        newest_kits, reverse=True, key=lambda x: x['last_updated'])
     newest_entries = sorted(
-            newest_entries, reverse=True, key=lambda x: x['date'])
+        newest_entries, reverse=True, key=lambda x: x['date'])
     gcu = {}
     gcu['grade_index'] = data
     gcu['newest_kits'] = newest_kits

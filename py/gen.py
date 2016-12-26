@@ -1,10 +1,6 @@
 #!/usr/bin/env python
 
-import data
-import render
-
 import datetime
-import logging
 import os
 import sys
 import threading
@@ -12,6 +8,9 @@ import traceback
 import time
 import BaseHTTPServer
 import SimpleHTTPServer
+
+import data
+import render
 
 from watchdog import observers, events
 
@@ -45,8 +44,8 @@ class GCUFileChangedHandler(events.PatternMatchingEventHandler):
     optionally reloads GCU data and rerenders everything."""
     def __init__(self, reload_data=False, patterns=None):
         self.reload_data = reload_data
-        super(GCUFileChangedHandler, self).__init__(patterns=patterns,
-                ignore_directories=True)
+        super(GCUFileChangedHandler, self).__init__(
+            patterns=patterns, ignore_directories=True)
 
     def on_any_event(self, event):
         _tsprint(event)
@@ -62,7 +61,7 @@ class GCUFileChangedHandler(events.PatternMatchingEventHandler):
 def serve():
     os.chdir(os.path.join(WORKDIR, 'public'))
     server = BaseHTTPServer.HTTPServer(
-            ('', 8000), SimpleHTTPServer.SimpleHTTPRequestHandler)
+        ('', 8000), SimpleHTTPServer.SimpleHTTPRequestHandler)
     thread = threading.Thread(target=server.serve_forever)
     thread.daemon = True
     thread.start()
@@ -73,14 +72,14 @@ def watch():
     serve()
     observer = observers.Observer()
     observer.schedule(
-            GCUFileChangedHandler(patterns=('*.yaml',), reload_data=True),
-            os.path.join(WORKDIR, 'kits'), recursive=True)
+        GCUFileChangedHandler(patterns=('*.yaml',), reload_data=True),
+        os.path.join(WORKDIR, 'kits'), recursive=True)
     observer.schedule(
-            GCUFileChangedHandler(patterns=('*.j2',)),
-            os.path.join(WORKDIR, 'templates'), recursive=True)
+        GCUFileChangedHandler(patterns=('*.j2',)),
+        os.path.join(WORKDIR, 'templates'), recursive=True)
     observer.schedule(
-            GCUFileChangedHandler(), os.path.join(WORKDIR, 'static'),
-            recursive=True)
+        GCUFileChangedHandler(), os.path.join(WORKDIR, 'static'),
+        recursive=True)
     observer.start()
     try:
         while True:
