@@ -1,5 +1,4 @@
 Jinja2
 PyYAML
 python-dateutil
-pytz
-tzlocal
+watchdog
