@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 
-from distutils.dir_util import copy_tree
-
 import codecs
 import email
 import os
+import shutil
 import jinja2
 
 
@@ -70,7 +69,15 @@ def renderEverything(d=None, gcu=None):
             os.rmdir(os.path.join(root, name))
 
     # copy static content
-    copy_tree(os.path.join(d, 'static'), outdir)
+    static_dir = os.path.join(d, 'static')
+    for item in os.listdir(static_dir):
+        src = os.path.join(static_dir, item)
+        dst = os.path.join(outdir, item)
+        if os.path.isdir(src):
+            shutil.copytree(src, dst)
+        else:
+            shutil.copy2(src, dst)
+
 
     sitemap_urls = []
     # for every grade:
