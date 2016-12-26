@@ -19,7 +19,7 @@ s/^/  - href: /
 #
 gcu-make-list() {
   foreach file ("$@") {
-    local new_content=$(git diff -U0 ${file})
+    local new_content=$(git diff --cached -U0 ${file})
     local day=$(echo "${new_content}" | grep 'date: ' | grep -Eo '\d\d\d\d-\d\d-\d\d')
     mkdir -p ${day}
     echo "${new_content}" | grep -Eo '//lh[0-9]\.googleusercontent.+/s1920/[^"]+' | sort -u | sed 's/^/http:/' >> ${day}/urllist
@@ -63,9 +63,9 @@ gcu-sync-photos() {
 gcu-rewrite-links() {
   local base='//syn.tactical-grace.net/c/'
   foreach file ("$*") {
-    local day=$(git diff -U0 ${file} | grep 'date: ' | grep -Eo '\d\d\d\d-\d\d-\d\d')
+    local day=$(git diff --cached -U0 ${file} | grep 'date: ' | grep -Eo '\d\d\d\d-\d\d-\d\d')
     local new_parent=${base}${day}
-    perl -lpe 's#//lh[0-9]\.googleusercontent.+(?=/s[0-9]+[^/]+/)#'${new_parent}'#' ${file}
+    perl -i -lpe 's#//lh[0-9]\.googleusercontent.+(?=/s[0-9]+[^/]+/)#'${new_parent}'#' ${file}
   }
 }
 
