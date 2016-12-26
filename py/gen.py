@@ -10,6 +10,8 @@ import sys
 import threading
 import traceback
 import time
+import BaseHTTPServer
+import SimpleHTTPServer
 
 from watchdog import observers, events
 
@@ -57,8 +59,18 @@ class GCUFileChangedHandler(events.PatternMatchingEventHandler):
             os._exit(1)
 
 
+def serve():
+    os.chdir(os.path.join(WORKDIR, 'public'))
+    server = BaseHTTPServer.HTTPServer(
+            ('', 8000), SimpleHTTPServer.SimpleHTTPRequestHandler)
+    thread = threading.Thread(target=server.serve_forever)
+    thread.daemon = True
+    thread.start()
+
+
 def watch():
     once()
+    serve()
     observer = observers.Observer()
     observer.schedule(
             GCUFileChangedHandler(patterns=('*.yaml',), reload_data=True),

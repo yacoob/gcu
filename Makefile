@@ -23,7 +23,7 @@ site:
 	python py/gen.py
 
 serve:
-	cd public && python -m SimpleHTTPServer 8000
+	python py/gen.py serve
 
 updatesite: clean site
 	git add -A public
