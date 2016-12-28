@@ -1,4 +1,5 @@
 Jinja2
 PyYAML
+git+https://github.com/hhatto/smartcrop.py.git
 python-dateutil
 watchdog
