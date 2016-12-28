@@ -1,23 +1,7 @@
-PVER=2.7.12
-VENV=gcu-deploy
-
 all: site
-
-rmorigs:
-	find posts -iname \*.orig -delete
 
 clean:
 	rm -rf public/*
-
-setup:
-	pyenv install -s ${PVER}
-	-pyenv virtualenv-delete -f ${VENV}
-	pyenv virtualenv ${PVER} -f ${VENV}
-	PYENV_VERSION=${VENV} pyenv exec pip install -rrequirements.txt
-	pyenv local ${VENV}
-
-newpost:
-	python py/newpost.py
 
 site:
 	python py/gen.py
