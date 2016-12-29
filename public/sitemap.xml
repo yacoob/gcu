@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://gcu.tactical-grace.net/hg/</loc>
-    <lastmod>2016-11-19T19:34:39.605229+00:00</lastmod>
+    <lastmod>2016-12-28T23:22:00+01:00</lastmod>
   </url>
   <url>
     <loc>http://gcu.tactical-grace.net/hg/ahead-smultron/</loc>
@@ -59,6 +59,10 @@
   <url>
     <loc>http://gcu.tactical-grace.net/hg/zaku-i-sniper/</loc>
     <lastmod>2013-02-10T23:18:10+01:00</lastmod>
+  </url>
+  <url>
+    <loc>http://gcu.tactical-grace.net/hg/zaku-tri-star/</loc>
+    <lastmod>2016-12-28T23:22:00+01:00</lastmod>
   </url>
   <url>
     <loc>http://gcu.tactical-grace.net/hg/zee-zulu/</loc>
