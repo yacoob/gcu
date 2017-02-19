@@ -38,18 +38,20 @@
   {{ macros.title_row(page_title, page_url) }}
   {% if navbar|default(True) %}
   <div class='col-sm-12 col-md-4 text-right voffset-top'>
-    <a href='/'>
+    <a data-toggle='tooltip' title='main page' href='/'>
     <button class='btn btn-default btn-sm' type='button'><span class='glyphicon glyphicon-home'></span></button></a>
+    <a data-toggle='tooltip' title='contact the author' href='https://goo.gl/forms/iJEsfLjBy1FE86aQ2'>
+    <button class='btn btn-default btn-sm' type='button'><span class='glyphicon glyphicon-envelope'></span></button></a>
     {% if nav_top %}
-    <a href='{{ nav_top }}'>
+    <a data-toggle='tooltip' title='grade page' href='{{ nav_top }}'>
     <button class='btn btn-default btn-sm' type='button'><span class='glyphicon glyphicon-th'></span></button></a>
     {% endif %}
     {% if nav_prev %}
-    <a href='{{ nav_prev }}'>
+    <a data-toggle='tooltip' title='previous kit' href='{{ nav_prev }}'>
     <button class='btn btn-default btn-sm' type='button'><span class='glyphicon glyphicon-chevron-left'></span></button></a>
     {% endif %}
     {% if nav_next %}
-    <a href='{{ nav_next }}'>
+    <a data-toggle='tooltip' title='next kit' href='{{ nav_next }}'>
     <button class='btn btn-default btn-sm' type='button'><span class='glyphicon glyphicon-chevron-right'></span></button></a>
     {% endif %}
   </div>
