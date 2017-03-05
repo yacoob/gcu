@@ -3,11 +3,12 @@ GCU_ROOT_DIR=$(git rev-parse --show-toplevel)
 
 # Generate YAML bit for last N photos.
 gcu-gallery() {
+  local prefix='gcu-'
   local last=${$(basename $(ls ${GCU_ROOT_DIR}/photo/full | tail -1))%.*}
-  last=${last#gcu-}
+  last=${last#${prefix}}
   echo '  photos:'
   foreach n ($(seq -f %05g $(($last - ${1} + 1)) ${last})) {
-    echo "  - href: //syn.tactical-grace.net/f/full/$n.jpg"
+    echo "  - href: //syn.tactical-grace.net/f/full/${prefix}${n}.jpg"
   }
 }
 
