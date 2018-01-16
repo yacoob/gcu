@@ -9,8 +9,107 @@
     <description>Newest kits from GCU tactical grace.</description>
     <dc:creator>yacoob</dc:creator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Nov 2017 20:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jan 2018 13:40:00 -0000</lastBuildDate>
     <atom:link href="http://gcu.tactical-grace.net/index.xml" rel="self" type="application/rss+xml" />
+<item>
+  <title>2018-01-16: Zaku I Thunderbolt Ver.</title>
+  <link>http://gcu.tactical-grace.net/hg/zaku-i-thunderbolt/#2018-01-16</link>
+  <pubDate>Tue, 16 Jan 2018 13:40:00 -0000</pubDate>
+  <guid>http://gcu.tactical-grace.net/hg/zaku-i-thunderbolt/#2018-01-16</guid>
+  <dc:creator>yacoob</dc:creator>
+  <content:encoded><![CDATA[
+    <div class='row voffset-small'>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/f/full/gcu-00918.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/f/thumb/gcu-00918.jpg' title='Standard fare, although look at them stickers!' alt='Standard fare, although look at them stickers!' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/f/full/gcu-00919.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/f/thumb/gcu-00919.jpg' title='Decent color separation.' alt='Decent color separation.' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/f/full/gcu-00920.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/f/thumb/gcu-00920.jpg' title='They did away with &#34;crumpled fabric&#34; thingy. Less realistic, but also less tacky IMO.' alt='They did away with &#34;crumpled fabric&#34; thingy. Less realistic, but also less tacky IMO.' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/f/full/gcu-00921.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/f/thumb/gcu-00921.jpg' title='Too bad that top of the hand isn&#39;t a different color.' alt='Too bad that top of the hand isn&#39;t a different color.' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/f/full/gcu-00922.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/f/thumb/gcu-00922.jpg' title='&#34;I&#39;m a teapot, short and stout&#34;' alt='&#34;I&#39;m a teapot, short and stout&#34;' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/f/full/gcu-00923.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/f/thumb/gcu-00923.jpg' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/f/full/gcu-00924.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/f/thumb/gcu-00924.jpg' title='Good weapon selection, but it could use some color separation on the bazookas.' alt='Good weapon selection, but it could use some color separation on the bazookas.' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/f/full/gcu-00925.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/f/thumb/gcu-00925.jpg' title='OOB looks surprisingly well!' alt='OOB looks surprisingly well!' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/f/full/gcu-00926.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/f/thumb/gcu-00926.jpg' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/f/full/gcu-00927.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/f/thumb/gcu-00927.jpg' title='*click*' alt='*click*' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='//syn.tactical-grace.net/f/full/gcu-00928.jpg'>
+      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/f/thumb/gcu-00928.jpg' title='&#34;Who wants some?&#34;' alt='&#34;Who wants some?&#34;' />
+      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
+    </a>
+  </div>
+</div>
+</div>
+  ]]></content:encoded>
+</item>
 <item>
   <title>2017-11-18: 00 Raiser</title>
   <link>http://gcu.tactical-grace.net/pg/00-raiser/#2017-11-18</link>
@@ -1886,49 +1985,6 @@
   <div class='gallery-entry voffset-bottom-small'>
     <a class='gallery' href='//syn.tactical-grace.net/f/full/gcu-00707.jpg'>
       <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/f/thumb/gcu-00707.jpg' title='*snort*' alt='*snort*' />
-      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
-    </a>
-  </div>
-</div>
-</div>
-  ]]></content:encoded>
-</item>
-<item>
-  <title>2015-11-21: Guntank RX-75-4</title>
-  <link>http://gcu.tactical-grace.net/hg/guntank/#2015-11-21</link>
-  <pubDate>Sat, 21 Nov 2015 23:20:39 -0000</pubDate>
-  <guid>http://gcu.tactical-grace.net/hg/guntank/#2015-11-21</guid>
-  <dc:creator>yacoob</dc:creator>
-  <content:encoded><![CDATA[
-    <div class='row voffset-small'>
-<div class='col-xs-6 col-md-3 col-lg-2'>
-  <div class='gallery-entry voffset-bottom-small'>
-    <a class='gallery' href='//syn.tactical-grace.net/f/full/gcu-00691.jpg'>
-      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/f/thumb/gcu-00691.jpg' title='Simple and clean.' alt='Simple and clean.' />
-      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
-    </a>
-  </div>
-</div>
-<div class='col-xs-6 col-md-3 col-lg-2'>
-  <div class='gallery-entry voffset-bottom-small'>
-    <a class='gallery' href='//syn.tactical-grace.net/f/full/gcu-00692.jpg'>
-      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/f/thumb/gcu-00692.jpg' title='Too bad the wheels don&#39;t move.' alt='Too bad the wheels don&#39;t move.' />
-      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
-    </a>
-  </div>
-</div>
-<div class='col-xs-6 col-md-3 col-lg-2'>
-  <div class='gallery-entry voffset-bottom-small'>
-    <a class='gallery' href='//syn.tactical-grace.net/f/full/gcu-00693.jpg'>
-      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/f/thumb/gcu-00693.jpg' title='Traversing fluffy terrain.' alt='Traversing fluffy terrain.' />
-      <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
-    </a>
-  </div>
-</div>
-<div class='col-xs-6 col-md-3 col-lg-2'>
-  <div class='gallery-entry voffset-bottom-small'>
-    <a class='gallery' href='//syn.tactical-grace.net/f/full/gcu-00694.jpg'>
-      <img class='img-rounded img-responsive' src='//syn.tactical-grace.net/f/thumb/gcu-00694.jpg' title='Family photo!' alt='Family photo!' />
       <span class='glyphicon glyphicon-fullscreen gallery-icon'></span>
     </a>
   </div>
