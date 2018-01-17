@@ -34,6 +34,10 @@ class Renderer(object):
         def datetimeToShortDate(dt):
             return dt.strftime('%Y-%m-%d')
 
+        def entryNumberedImageLink(url, n):
+            return url.rsplit('#',1)[0] + '#p/%s' % n
+
+
 
         self.jinja = jinja2.Environment(
             trim_blocks=True, lstrip_blocks=True,
@@ -41,6 +45,7 @@ class Renderer(object):
         self.jinja.globals['base_url'] = BASE_URL
         self.jinja.filters['datetime_to_iso'] = datetimeToISO
         self.jinja.filters['datetime_to_rfc822'] = datetimeToRFC822
+        self.jinja.filters['entry_image_link'] = entryNumberedImageLink
         self.jinja.filters['short_date'] = datetimeToShortDate
         self.jinja.filters['fancy_grade'] = fancyGradeFilter
 
