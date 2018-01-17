@@ -23,7 +23,7 @@
   <guid>{{ url }}</guid>
   <dc:creator>yacoob</dc:creator>
   <content:encoded><![CDATA[
-    {{ macros.entry_photos(entry) }}
+    {{ macros.entry_photos(entry, rss=1, entry_url=url) }}
   ]]></content:encoded>
 </item>
 {% endfor %}
