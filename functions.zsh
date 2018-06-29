@@ -15,7 +15,8 @@ gcu-gallery() {
 # Update thumbnails for selected photos.
 gcu-update-thumbs() {
   local -a list
-  local photos=(${GCU_ROOT_DIR}/photo/full/*jpg)
+  local photodir=${GCU_ROOT_DIR}/photo
+  local photos=(${photodir}/full/*jpg)
   if [[ "${1}" =~ "[0-9]+" ]] {
     list=($photos[-${1},-1])
   } elif [[ "${1}" == "-f" ]] {
@@ -23,16 +24,16 @@ gcu-update-thumbs() {
   } else {
     foreach file ($photos[@]) {
       local sn=$(basename ${file})
-      if [[ ${file} -nt ${GCU_ROOT_DIR}/photo/thumb/${sn} ]] {
+      if [[ ${file} -nt ${photodir}/thumb/${sn} ]] {
         list+=${file}
       }
     }
   }
   foreach file ($list[@]) {
-    local thumbfile=${GCU_ROOT_DIR}/photo/thumb/$(basename ${file})
+    local thumbfile=${photodir}/thumb/$(basename ${file})
     smartcroppy --width 400 --height 400 ${file} ${thumbfile} && ls -l ${thumbfile}
   }
-
+  chmod -R a+rX ${photodir}
 }
 
 # Sync photo dir to the serving site.
