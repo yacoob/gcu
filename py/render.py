@@ -79,6 +79,9 @@ def renderEverything(d=None, gcu=None):
             continue
         raise RuntimeError('Unexpected item: %s is not a file, symlink or a directory' % fp)
 
+    # Make sure new files are a+rX.
+    old_umask = os.umask(022)
+
     # copy static content
     static_dir = os.path.join(d, 'static')
     for item in os.listdir(static_dir):
@@ -120,3 +123,6 @@ def renderEverything(d=None, gcu=None):
 
     # symlink photo dir
     os.symlink(os.path.join(d, 'photo'), os.path.join(outdir, 'p'))
+
+    # Restore previous umask.
+    os.umask(old_umask)
