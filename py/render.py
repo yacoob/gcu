@@ -12,6 +12,7 @@ SPECIAL_PAGES = {
     'everything/index.html': 'everything.j2',
     'index.html': 'mainpage.j2',
     'index.xml': 'rss.j2',
+    'robots.txt': 'robots_txt.j2',
     'sitemap.xml': 'sitemap.j2',
 }
 BASE_URL = 'http://gcu.tactical-grace.net'
