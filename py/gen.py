@@ -36,6 +36,7 @@ def renderSite():
     dataLock.acquire()
     _tsprint('rendering site')
     render.renderEverything(WORKDIR, gcu_data)
+    _tsprint('site rendered')
     dataLock.release()
 
 
