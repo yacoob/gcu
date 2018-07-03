@@ -15,7 +15,8 @@ SPECIAL_PAGES = {
     'robots.txt': 'robots_txt.j2',
     'sitemap.xml': 'sitemap.j2',
 }
-BASE_URL = 'http://gcu.tactical-grace.net'
+DEFAULT_BASE_URL = 'https://gcu.tactical-grace.net'
+BASE_URL_ENV_NAME = 'GCU_BASE_URL'
 
 
 class Renderer(object):
@@ -43,7 +44,11 @@ class Renderer(object):
         self.jinja = jinja2.Environment(
             trim_blocks=True, lstrip_blocks=True,
             loader=jinja2.FileSystemLoader(d))
-        self.jinja.globals['base_url'] = BASE_URL
+        if BASE_URL_ENV_NAME in os.environ:
+            base_url = os.environ[BASE_URL_ENV_NAME]
+        else:
+            base_url = DEFAULT_BASE_URL
+        self.jinja.globals['base_url'] = base_url
         self.jinja.filters['datetime_to_iso'] = datetimeToISO
         self.jinja.filters['datetime_to_rfc822'] = datetimeToRFC822
         self.jinja.filters['entry_image_link'] = entryNumberedImageLink
