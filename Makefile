@@ -22,3 +22,9 @@ updatesite: clean site
 publish: updatesite
 	git push origin
 	git push nas
+
+verifysite:
+	wget --spider --execute robots=off --no-directories --recursive --span-hosts \
+		--page-requisites --domains=tactical-grace.net https://$(HOST) 2>&1 \
+		| tee /tmp/log.$(shell date +'%Y%m%d%H%M') \
+		| grep 'response... ' | sort | uniq -c
