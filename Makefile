@@ -2,6 +2,7 @@ all: site
 
 clean:
 	rm -rf public/*
+	find . -iname \*~ | xargs rm -f
 
 site:
 	python py/gen.py
