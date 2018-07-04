@@ -1,4 +1,4 @@
-HOST:=shin.tactical-grace.net
+HOST:=p.tactical-grace.net
 
 all: site
 
@@ -13,11 +13,12 @@ site:
 serve:
 	python py/gen.py serve
 
-updatesite: LFTP_USER:=vLm0A59A@tactical-grace.net
-updatesite: LFTP_URI:=ftp://genesis.bgocloud.com
+updatesite: LFTP_USER:=tacticcj
+updatesite: LFTP_URI:=ftp://www493.your-server.de
+updatesite: REMOTE_DIR:=/public_html/$(HOST)
 updatesite: export LFTP_PASSWORD:=$(shell /usr/bin/security find-generic-password -s gcuftp -w)
 updatesite: clean site
-	lftp -c 'set ftp:ssl-force yes; open --env-password -u $(LFTP_USER) $(LFTP_URI) && mirror -c -e -P5 -L -x .DS_Store -x .gitignore -R public /$(HOST)'
+	lftp -c 'set ftp:ssl-force yes; open --env-password -u $(LFTP_USER) $(LFTP_URI) && mirror -c -e -P5 -L -x .DS_Store -x .gitignore -R public $(REMOTE_DIR)'
 
 publish: updatesite
 	git push origin
