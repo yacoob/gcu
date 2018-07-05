@@ -1,4 +1,4 @@
-HOST:=p.tactical-grace.net
+HOST:=gcu.tactical-grace.net
 
 all: site
 
