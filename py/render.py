@@ -3,6 +3,7 @@
 import codecs
 import email
 import os
+import re
 import shutil
 import jinja2
 
@@ -39,6 +40,9 @@ class Renderer(object):
         def entryNumberedImageLink(url, n):
             return url.rsplit('#',1)[0] + '#p/%s' % n
 
+        def stripUrlForCustomSearch(url):
+            return re.sub('^https?://', '', url)
+
 
 
         self.jinja = jinja2.Environment(
@@ -52,8 +56,9 @@ class Renderer(object):
         self.jinja.filters['datetime_to_iso'] = datetimeToISO
         self.jinja.filters['datetime_to_rfc822'] = datetimeToRFC822
         self.jinja.filters['entry_image_link'] = entryNumberedImageLink
-        self.jinja.filters['short_date'] = datetimeToShortDate
         self.jinja.filters['fancy_grade'] = fancyGradeFilter
+        self.jinja.filters['short_date'] = datetimeToShortDate
+        self.jinja.filters['strip_url_for_custom_search'] = stripUrlForCustomSearch
 
     def render(self, fn, tmpl_fn=None, **kwargs):
         try:

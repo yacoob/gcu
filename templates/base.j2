@@ -62,7 +62,7 @@
       <div class='input-group input-group-sm'>
         <span class='input-group-addon'><span class='glyphicon glyphicon-search'></span></span>
         <input name='q' type='search' class='form-control' placeholder='Search...'>
-        <input name='sitesearch' type='hidden' value='{{ base_url + '/' }}'/>
+        <input name='sitesearch' type='hidden' value='{{ base_url|strip_url_for_custom_search }}'/>
       </div> <!-- input group -->
     </form>
   </div> <!-- column -->

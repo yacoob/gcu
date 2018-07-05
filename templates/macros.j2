@@ -33,7 +33,7 @@
 <div class='row voffset-small'>
 {% for p in entry.photos %}
 {%- set forced_url = entry_url|entry_image_link(loop.index) if rss else '' -%}
-{%- set img_url = 'http:' + p.href if rss else p.href -%}
+{%- set img_url = base_url + p.href if rss else p.href -%}
 {{ photo(img_url, p.title, p.thumb, forced_url) }}
 {% endfor %}
 </div>
