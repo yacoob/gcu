@@ -1,4 +1,4 @@
 .python-version
 .venv/
 Pipfile.lock
-public/
+public/p
