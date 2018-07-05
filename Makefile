@@ -13,14 +13,16 @@ site:
 serve:
 	python py/gen.py serve
 
-updatesite: LFTP_USER:=tacticcj
-updatesite: LFTP_URI:=ftp://www493.your-server.de
-updatesite: REMOTE_DIR:=/public_html/$(HOST)
-updatesite: export LFTP_PASSWORD:=$(shell /usr/bin/security find-generic-password -s gcuftp -w)
 updatesite: clean site
-	lftp -c 'set ftp:ssl-force yes; open --env-password -u $(LFTP_USER) $(LFTP_URI) && mirror -c -e -P5 -L -x .DS_Store -x .gitignore -R public $(REMOTE_DIR)'
+	git add -A public
+	-[ `git status --porcelain | grep -Ev '^ ' | wc -l` -gt 0  ] && git commit -m 'Update site.' public
 
+publish: LFTP_USER:=tacticcj
+publish: LFTP_URI:=ftp://www493.your-server.de
+publish: REMOTE_DIR:=/public_html/$(HOST)
+publish: export LFTP_PASSWORD:=$(shell /usr/bin/security find-generic-password -s gcuftp -w)
 publish: updatesite
+	lftp -c 'set ftp:ssl-force yes; open --env-password -u $(LFTP_USER) $(LFTP_URI) && mirror -c -e -P5 -L -x .DS_Store -x .gitignore -R public $(REMOTE_DIR)'
 	git push origin
 	git push nas
 
