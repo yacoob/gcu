@@ -8,7 +8,7 @@ gcu-gallery() {
   last=${last#${prefix}}
   echo '  photos:'
   foreach n ($(seq -f %05g $(($last - ${1} + 1)) ${last})) {
-    echo "  - href: //syn.tactical-grace.net/f/full/${prefix}${n}.jpg"
+    echo "  - href: /p/full/${prefix}${n}.jpg"
   }
 }
 
@@ -36,19 +36,10 @@ gcu-update-thumbs() {
   chmod -R a+rX ${photodir}
 }
 
-# Sync photo dir to the serving site.
-gcu-sync-photos() {
-  rsync --exclude .htaccess --exclude .gitignore \
-        --delete -airz $* \
-        $GCU_ROOT_DIR/photo/ \
-        inferno.hell.pl:/srv/web/syn.tactical-grace.net/f/
-}
-
-# Convenience function. No sync, though.
+# Convenience function.
 gcu-process-photos() {
   if [[ "${1}" =~ "[0-9]+" ]] {
     gcu-gallery ${1}
     gcu-update-thumbs ${1}
-    gcu-sync-photos -n
   }
 }
