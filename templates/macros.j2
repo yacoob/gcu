@@ -1,6 +1,6 @@
 {% macro photo(img_url, title, thumb, forced_url='') -%}
 {%- set imgsrc = thumb|default(img_url, true) -%}
-{%- set icon = 'glyphicon-play-circle' if 'youtu' in img_url else 'glyphicon-fullscreen' -%}
+{%- set icon = 'glyphicon-play-circle' if 'youtu' in img_url -%}
 <div class='col-xs-6 col-md-3 col-lg-2'>
   <div class='gallery-entry voffset-bottom-small'>
     <a class='gallery' href='{{ forced_url|default(img_url, true) }}'>
