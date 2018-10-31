@@ -19,7 +19,7 @@
   <link href='/i/favicon.ico' rel='icon' type='image/x-icon'/>
 {% if page_social_img %}
   <link href='{{ page_social_img  }}' rel='image_src'/>
-  <meta property='og:image' content='https:{{ page_social_img }}'/>
+  <meta property='og:image' content='{{ base_url}}{{ page_social_img }}'/>
 {% endif %}
 {% if page_description %}
   <meta name='description' content='{{ page_description }}'/>
