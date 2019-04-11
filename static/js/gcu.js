@@ -51,7 +51,7 @@ gcu.postPageHandler = function() {
   /* Set up kit page.
    */
   // Enable lightbox.
-  var lg = $('.container')
+  var lg = $('.container');
   lg.lightGallery(gcu.lgOptions);
   // Set helper vars.
   gcu.lg_data = lg.data('lightGallery');
@@ -62,7 +62,7 @@ gcu.postPageHandler = function() {
   });
   lg.on('onCloseAfter.lg', function(event) {
     gcu.setHashIdx('');
-  })
+  });
   // Inhibit hashchange-triggered updates to avoid double updates when user
   // clicks on the a.
   gallery_elements.click(function() {
