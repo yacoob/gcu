@@ -119,11 +119,7 @@
 <script src="https://cdn.jsdelivr.net/npm/lg-autoplay.js@1/dist/lg-autoplay.min.js"></script>
 <script src='/js/gcu.js'></script>
 <script type='text/javascript'>
-if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-  gcu.postPageHandler();
-} else {
-  document.addEventListener('DOMContentLoaded', gcu.postPageHandler);
-}
+document.addEventListener('DOMContentLoaded', gcu.postPageHandler);
 </script>
 {% endif %}
 </body></html>
