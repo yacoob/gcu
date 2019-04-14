@@ -7,7 +7,6 @@ import re
 import shutil
 import jinja2
 
-
 SPECIAL_PAGES = {
     '404.html': '404.j2',
     'everything/index.html': 'everything.j2',
@@ -38,16 +37,14 @@ class Renderer(object):
             return dt.strftime('%Y-%m-%d')
 
         def entryNumberedImageLink(url, n):
-            return url.rsplit('#',1)[0] + '#p/%s' % n
+            return url.rsplit('#', 1)[0] + '#p/%s' % n
 
         def stripUrlForCustomSearch(url):
             return re.sub('^https?://', '', url)
 
-
-
-        self.jinja = jinja2.Environment(
-            trim_blocks=True, lstrip_blocks=True,
-            loader=jinja2.FileSystemLoader(d))
+        self.jinja = jinja2.Environment(trim_blocks=True,
+                                        lstrip_blocks=True,
+                                        loader=jinja2.FileSystemLoader(d))
         if BASE_URL_ENV_NAME in os.environ:
             base_url = os.environ[BASE_URL_ENV_NAME]
         else:
@@ -58,7 +55,8 @@ class Renderer(object):
         self.jinja.filters['entry_image_link'] = entryNumberedImageLink
         self.jinja.filters['fancy_grade'] = fancyGradeFilter
         self.jinja.filters['short_date'] = datetimeToShortDate
-        self.jinja.filters['strip_url_for_custom_search'] = stripUrlForCustomSearch
+        self.jinja.filters[
+            'strip_url_for_custom_search'] = stripUrlForCustomSearch
 
     def render(self, fn, tmpl_fn=None, **kwargs):
         try:
@@ -88,7 +86,8 @@ def renderEverything(d=None, gcu=None):
         if os.path.isdir(fp):
             shutil.rmtree(fp)
             continue
-        raise RuntimeError('Unexpected item: %s is not a file, symlink or a directory' % fp)
+        raise RuntimeError(
+            'Unexpected item: %s is not a file, symlink or a directory' % fp)
 
     # copy static content
     static_dir = os.path.join(d, 'static')
@@ -100,34 +99,36 @@ def renderEverything(d=None, gcu=None):
         else:
             shutil.copy2(src, dst)
 
-
     sitemap_urls = []
     # for every grade:
     for (grade, kits) in gcu['grade_index'].items():
         # render a page with all kits
-        r.render(
-            os.path.join(outdir, grade, 'index.html'),
-            tmpl_fn='grade.j2', gcu=gcu, grade=grade)
+        r.render(os.path.join(outdir, grade, 'index.html'),
+                 tmpl_fn='grade.j2',
+                 gcu=gcu,
+                 grade=grade)
         # for every kit:
         for kit in kits:
             # render a kit page with all entries
-            r.render(
-                os.path.join(outdir, grade, kit['slug'], 'index.html'),
-                tmpl_fn='kit.j2', gcu=gcu, grade=grade, kit=kit)
-            sitemap_urls.append((
-                '/%s/%s/' % (grade, kit['slug']), kit['last_updated']))
+            r.render(os.path.join(outdir, grade, kit['slug'], 'index.html'),
+                     tmpl_fn='kit.j2',
+                     gcu=gcu,
+                     grade=grade,
+                     kit=kit)
+            sitemap_urls.append(
+                ('/%s/%s/' % (grade, kit['slug']), kit['last_updated']))
         latest_grade_post_date = max(
-            [x[1] for x in sitemap_urls
-             if x[0].startswith('/%s/' % grade)])
+            [x[1] for x in sitemap_urls if x[0].startswith('/%s/' % grade)])
         sitemap_urls.append(('/%s/' % grade, latest_grade_post_date))
 
     # generate special pages
     last_site_update_date = gcu['newest_kits'][0]['last_updated']
     for (fn, tmpl) in SPECIAL_PAGES.items():
-        r.render(
-            os.path.join(outdir, fn),
-            tmpl_fn=tmpl, gcu=gcu, last_site_update_date=last_site_update_date,
-            sitemap_urls=sitemap_urls)
+        r.render(os.path.join(outdir, fn),
+                 tmpl_fn=tmpl,
+                 gcu=gcu,
+                 last_site_update_date=last_site_update_date,
+                 sitemap_urls=sitemap_urls)
 
     # symlink photo dir
     os.symlink(os.path.join(d, 'photo'), os.path.join(outdir, 'p'))
