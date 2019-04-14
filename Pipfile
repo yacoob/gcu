@@ -1,23 +1,18 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [packages]
-
 "jinja2" = "*"
 pyyaml = "*"
 smartcroppy = {git = "https://github.com/hhatto/smartcrop.py"}
-"python-dateutil" = "*"
 watchdog = "*"
 
-
 [dev-packages]
-
-
+flake8 = "*"
+python-language-server = "*"
+yapf = "*"
 
 [requires]
-
 python_version = "2.7"
