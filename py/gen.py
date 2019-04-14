@@ -15,6 +15,7 @@ import render
 from watchdog import observers, events
 
 WORKDIR = os.path.abspath(os.path.curdir)
+IGNORED_FILES = ('*~', '.*.swp', '.*.swo')
 gcu_data = None
 dataLock = threading.Lock()
 
@@ -43,10 +44,10 @@ def renderSite():
 class GCUFileChangedHandler(events.PatternMatchingEventHandler):
     """File event handler for fs watcher. Watches files only, on event
     optionally reloads GCU data and rerenders everything."""
-    def __init__(self, reload_data=False, patterns=None):
+
+    def __init__(self, reload_data=False, **kwargs):
         self.reload_data = reload_data
-        super(GCUFileChangedHandler, self).__init__(
-            patterns=patterns, ignore_directories=True)
+        super(GCUFileChangedHandler, self).__init__(**kwargs)
 
     def on_any_event(self, event):
         _tsprint(event)
@@ -54,7 +55,7 @@ class GCUFileChangedHandler(events.PatternMatchingEventHandler):
             if self.reload_data:
                 reloadData()
             renderSite()
-        except:
+        except Exception:
             traceback.print_exc()
             os._exit(1)
 
@@ -72,15 +73,18 @@ def watch():
     once()
     serve()
     observer = observers.Observer()
-    observer.schedule(
-        GCUFileChangedHandler(patterns=('*.yaml',), reload_data=True),
-        os.path.join(WORKDIR, 'kits'), recursive=True)
-    observer.schedule(
-        GCUFileChangedHandler(patterns=('*.j2',)),
-        os.path.join(WORKDIR, 'templates'), recursive=True)
-    observer.schedule(
-        GCUFileChangedHandler(), os.path.join(WORKDIR, 'static'),
-        recursive=True)
+    observer.schedule(GCUFileChangedHandler(patterns=('*.yaml', ),
+                                            ignore_patterns=IGNORED_FILES,
+                                            reload_data=True),
+                      os.path.join(WORKDIR, 'kits'),
+                      recursive=True)
+    observer.schedule(GCUFileChangedHandler(patterns=('*.j2', ),
+                                            ignore_patterns=IGNORED_FILES),
+                      os.path.join(WORKDIR, 'templates'),
+                      recursive=True)
+    observer.schedule(GCUFileChangedHandler(ignore_patterns=IGNORED_FILES),
+                      os.path.join(WORKDIR, 'static'),
+                      recursive=True)
     observer.start()
     try:
         while True:
