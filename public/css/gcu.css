@@ -10,8 +10,10 @@ body {
   color: white;
 }
 
-h1, h2, h3 {
-  font-family: 'Exo', sans-serif;
+h1,
+h2,
+h3 {
+  font-family: "Exo", sans-serif;
 }
 
 h1.title {
@@ -27,19 +29,23 @@ h1.title > a {
   color: white;
 }
 
-.voffset-top, .voffset {
+.voffset-top,
+.voffset {
   margin-top: 50px;
 }
 
-.voffset-bottom, .voffset {
+.voffset-bottom,
+.voffset {
   margin-bottom: 50px;
 }
 
-.voffset-top-small, .voffset-small{
+.voffset-top-small,
+.voffset-small {
   margin-top: 25px;
 }
 
-.voffset-bottom-small, .voffset-small {
+.voffset-bottom-small,
+.voffset-small {
   margin-bottom: 25px;
 }
 
@@ -51,7 +57,8 @@ h1.title > a {
 }
 
 /* Animation settings */
-.overlay > *, .gallery-entry > * {
+.overlay > *,
+.gallery-entry > * {
   transition: all 0.2s ease-out;
 }
 
@@ -93,7 +100,7 @@ h1.title > a {
 }
 
 .overlay:hover > a {
-  opacity: 0.4
+  opacity: 0.4;
 }
 
 /* Gallery elements. */

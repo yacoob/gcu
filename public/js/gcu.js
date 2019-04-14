@@ -1,20 +1,23 @@
+/* jshint browser: true, strict: implied */
+/* globals lightGallery,HashChangeEvent */
+
 var gcu = gcu || {
-  hashPrefix: 'p/',
+  hashPrefix: "p/",
   dateHashPrefix: /\d\d\d\d-\d\d-\d\d/,
+  // FIXME: captions seem to be gone :(
   lgOptions: {
     hideBarsDelay: 2000,
     keyPress: true,
-    selector: '.gallery',
-    showThumbByDefault: false,
+    selector: ".gallery",
     speed: 200,
     youtubePlayerParams: {
       autoplay: 0,
       controls: 0,
       modestbranding: 1,
       rel: 0,
-      showinfo: 0,
+      showinfo: 0
     }
-  },
+  }
 };
 
 /*
@@ -30,74 +33,81 @@ gcu.setHashIdx = function(value) {
     hash_string = gcu.hashPrefix + value;
     location.hash = hash_string;
   } else {
-    history.pushState("", document.title, window.location.pathname + window.location.search);
+    history.pushState(
+      "",
+      document.title,
+      window.location.pathname + window.location.search
+    );
   }
 };
-
 
 gcu.getHashIdx = function() {
   /* Returns hash value, with prefix stripped.
    */
   var hash_string = location.hash.substr(1);
+  // Handle #YYYY-MM-DD; translate it to index of first photo for that date.
+  if (hash_string.match(gcu.dateHashPrefix)) {
+    var first_photo_of_day = document
+      .getElementById(hash_string)
+      .parentNode.nextElementSibling.querySelector(gcu.lgOptions.selector);
+    if (first_photo_of_day) {
+      var pos = -1;
+      for (var i = 0; i < gcu.lg_data.items.length; i++) {
+        if (gcu.lg_data.items[i] == first_photo_of_day) {
+          pos = i;
+        }
+      }
+      if (pos >= 0) {
+        return pos + 1;
+      }
+    }
+  }
+  // Handle normal prefix.
   if (hash_string.indexOf(gcu.hashPrefix) === 0) {
     return hash_string.substring(gcu.hashPrefix.length);
   } else {
-    return '';
+    return "";
   }
 };
-
 
 gcu.postPageHandler = function() {
   /* Set up kit page.
    */
   // Enable lightbox.
-  var lg = $('.container')
-  lg.lightGallery(gcu.lgOptions);
-  // Set helper vars.
-  gcu.lg_data = lg.data('lightGallery');
-  var gallery_elements = $('a' + gcu.lgOptions.selector);
-  // Bind lightbox events.
-  lg.on('onAfterSlide.lg', function(event, prevIndex, index, fromTouch, fromThumb) {
-    gcu.setHashIdx(index + 1);
+  var lg = document.querySelector(".container");
+  lightGallery(lg, gcu.lgOptions);
+  gcu.lg_data = window.lgData[lg.getAttribute("lg-uid")];
+  // Bind lightbox events for hash updating.
+  lg.addEventListener("onAfterSlide", function(event) {
+    gcu.setHashIdx(event.detail.index + 1);
   });
-  lg.on('onCloseAfter.lg', function(event) {
-    gcu.setHashIdx('');
-  })
-  // Inhibit hashchange-triggered updates to avoid double updates when user
-  // clicks on the a.
-  gallery_elements.click(function() {
-    gcu.inhibitHashChange = true;
+  lg.addEventListener("onCloseAfter", function(event) {
+    gcu.setHashIdx("");
   });
   // Handle hashchange event (user typing, history navigation, etc.)
-  $(window).bind('hashchange', function() {
-    var idx = gcu.getHashIdx();
-    if (!gcu.inhibitHashChange) {
-      if (idx > 0 && idx <= gallery_elements.length) {
+  window.addEventListener(
+    "hashchange",
+    function() {
+      var idx = gcu.getHashIdx();
+      if (idx > 0 && idx <= gcu.lg_data.items.length) {
         if (gcu.lg_data.lGalleryOn) {
           gcu.lg_data.slide(idx - 1);
         } else {
-          gallery_elements.eq(idx - 1).trigger('click');
+          gcu.lg_data.items[idx - 1].dispatchEvent(
+            new MouseEvent("click", {
+              view: window,
+              bubbles: true,
+              cancelable: true
+            })
+          );
         }
       } else {
+        // Hide the lightbox.
         gcu.lg_data.destroy();
       }
-    }
-    gcu.inhibitHashChange = false;
-  });
-  // If a date hash was set, bring up lightbox for the first photo of that day.
-  var hash_string = location.hash.substr(1);
-  if (hash_string.match(gcu.dateHashPrefix)) {
-    var first_photo_of_day = $('#' + hash_string).parent().next().find('a.gallery').first();
-    if (first_photo_of_day) {
-      var pos = gallery_elements.index(first_photo_of_day);
-      if (pos >= 0) {
-        gallery_elements.eq(pos).trigger('click');
-      }
-    }
-  }
-  // If a photo has was set, bring up lightbox for that photo.
-  var idx = gcu.getHashIdx();
-  if (idx > 0 && idx <= gallery_elements.length) {
-    gallery_elements.eq(idx - 1).trigger('click');
-  }
+    },
+    false
+  );
+  // Trigger handler once to handle first load.
+  window.dispatchEvent(new HashChangeEvent("hashchange"));
 };
