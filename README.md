@@ -7,8 +7,7 @@ Plus some [Python libraries](Pipfile).
 
 ## TODO
 
-* automatic hiding of the address bar on mobile?
 * rewrite the generator in rust
-* better caching headers
-* jenkins deployment
 * new layout to get rid of bootstrap dep
+* better caching headers
+* push-on-green deployment
