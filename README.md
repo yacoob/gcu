@@ -1,4 +1,4 @@
-# GCU is using following 3rd party JS
+# GCU has following dependencies
 
 * [Bootstrap](http://getbootstrap.com/)
 * [lightgallery](https://github.com/sachinchoolur/lightGallery.js)
