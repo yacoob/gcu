@@ -58,49 +58,36 @@ gcu.postPageHandler = function() {
   // Enable lightbox.
   var lg = document.querySelector(".container");
   lightGallery(lg, gcu.lgOptions);
-  // Set helper vars.
   gcu.lg_data = window.lgData[lg.getAttribute("lg-uid")];
-  // Bind lightbox events.
+  // Bind lightbox events for hash updating.
   lg.addEventListener("onAfterSlide", function(event) {
     gcu.setHashIdx(event.detail.index + 1);
   });
   lg.addEventListener("onCloseAfter", function(event) {
     gcu.setHashIdx("");
   });
-  // Inhibit hashchange-triggered updates to avoid double updates when user
-  // clicks on the a.
-  var gallery_selector = "a" + gcu.lgOptions.selector;
-  var gallery_elements = document.querySelectorAll(gallery_selector);
-  gallery_elements.forEach(function(item, idx) {
-    item.addEventListener("click", function() {
-      gcu.inhibitHashChange = true;
-    });
-  });
   // We'll be clicking on things.
-  // FIXME: verify whether this behaves as expected (eg. doesn't actually open
-  // the image).
   var click = new MouseEvent("click", {
     view: window,
     bubbles: true,
     cancelable: true
   });
   // Handle hashchange event (user typing, history navigation, etc.)
+  var gallery_selector = "a" + gcu.lgOptions.selector;
+  var gallery_elements = document.querySelectorAll(gallery_selector);
   window.addEventListener(
     "hashchange",
     function() {
       var idx = gcu.getHashIdx();
-      if (!gcu.inhibitHashChange) {
-        if (idx > 0 && idx <= gallery_elements.length) {
-          if (gcu.lg_data.lGalleryOn) {
-            gcu.lg_data.slide(idx - 1);
-          } else {
-            gallery_elements[idx - 1].dispatchEvent(click);
-          }
+      if (idx > 0 && idx <= gallery_elements.length) {
+        if (gcu.lg_data.lGalleryOn) {
+          gcu.lg_data.slide(idx - 1);
         } else {
-          gcu.lg_data.destroy();
+          gallery_elements[idx - 1].dispatchEvent(click);
         }
+      } else {
+        gcu.lg_data.destroy();
       }
-      gcu.inhibitHashChange = false;
     },
     false
   );
@@ -122,9 +109,9 @@ gcu.postPageHandler = function() {
       }
     }
   }
-  // // If a photo has was set, bring up lightbox for that photo.
-  // var idx = gcu.getHashIdx();
-  // if (idx > 0 && idx <= gallery_elements.length) {
-  //   gallery_elements[idx - 1].dispatchEvent(click);
-  // }
+  // If a photo has was set, bring up lightbox for that photo.
+  var idx = gcu.getHashIdx();
+  if (idx > 0 && idx <= gallery_elements.length) {
+    gallery_elements[idx - 1].dispatchEvent(click);
+  }
 };
