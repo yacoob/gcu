@@ -90,7 +90,6 @@ def renderEverything(d=None, gcu=None):
             continue
         raise RuntimeError(
             'Unexpected item: %s is not a file, symlink or a directory' % fp)
-    return
 
     # copy static content
     static_dir = os.path.join(d, 'static')
