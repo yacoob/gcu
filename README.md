@@ -7,7 +7,8 @@ Plus some [Python libraries](Pipfile).
 
 ## TODO
 
-* rewrite the generator in rust
+* consider Netlify for hosting
 * new layout to get rid of bootstrap dep
 * better caching headers
-* push-on-green deployment
+* consider switching away from YAML
+* rewrite the generator in rust
