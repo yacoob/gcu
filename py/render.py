@@ -17,6 +17,7 @@ SPECIAL_PAGES = {
 }
 DEFAULT_BASE_URL = 'https://gcu.tactical-grace.net'
 BASE_URL_ENV_NAME = 'GCU_BASE_URL'
+PHOTOS_SUBDIR = 'photos'
 
 
 class Renderer(object):
@@ -76,18 +77,20 @@ def renderEverything(d=None, gcu=None):
     r = Renderer(os.path.join(d, 'templates'))
 
     # Remove old output.
-    # Can't just rmtree outdir, as we want httpd to reuse it. Need to remove
-    # outdir/* instead.
+    # Can't just rmtree outdir, as we want httpd to reuse it, plus we keep
+    # photos/* there checked in. Instead, we just remove outdir/* instead.
     for p in os.listdir(outdir):
         fp = os.path.join(outdir, p)
         if os.path.isfile(fp) or os.path.islink(fp):
             os.remove(fp)
             continue
         if os.path.isdir(fp):
-            shutil.rmtree(fp)
+            if fp != os.path.join(outdir, PHOTOS_SUBDIR):
+                shutil.rmtree(fp)
             continue
         raise RuntimeError(
             'Unexpected item: %s is not a file, symlink or a directory' % fp)
+    return
 
     # copy static content
     static_dir = os.path.join(d, 'static')
@@ -129,9 +132,6 @@ def renderEverything(d=None, gcu=None):
                  gcu=gcu,
                  last_site_update_date=last_site_update_date,
                  sitemap_urls=sitemap_urls)
-
-    # symlink photo dir
-    os.symlink(os.path.join(d, 'photo'), os.path.join(outdir, 'p'))
 
     # chmod a+rX for a good measure
     for root, dirs, files in os.walk(outdir, followlinks=False):
