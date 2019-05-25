@@ -16,7 +16,9 @@ def _loadKits(d):
     def timestamp_constructor(loader, node):
         return dateutil.parser.parse(node.value)
 
-    yaml.add_constructor(u'tag:yaml.org,2002:timestamp', timestamp_constructor)
+    yaml.add_constructor(u'tag:yaml.org,2002:timestamp',
+                         timestamp_constructor,
+                         Loader=yaml.SafeLoader)
     data = {}
     for dirpath, _, filenames in os.walk(d, followlinks=True):
         for filename in filenames:
@@ -24,7 +26,7 @@ def _loadKits(d):
                 continue
             fp = os.path.join(dirpath, filename)
             f = codecs.open(fp, 'r', 'utf-8')
-            parsed = yaml.load(f)
+            parsed = yaml.load(f, Loader=yaml.SafeLoader)
             if parsed:
                 missing_fields = set(OBLIGATORY_FIELDS) - set(parsed.keys())
             else:
