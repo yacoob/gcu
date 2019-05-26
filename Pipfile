@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 "jinja2" = "*"
+python-dateutil = "*"
 pyyaml = "*"
 smartcroppy = {git = "https://github.com/hhatto/smartcrop.py"}
 watchdog = "*"
