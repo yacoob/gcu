@@ -18,7 +18,6 @@ SPECIAL_PAGES = {
 }
 DEFAULT_BASE_URL = 'https://gcu.tactical-grace.net'
 BASE_URL_ENV_NAME = 'GCU_BASE_URL'
-PHOTOS_SUBDIR = 'photos'
 
 
 class Renderer(object):
