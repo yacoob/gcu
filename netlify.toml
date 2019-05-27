@@ -1,0 +1,3 @@
+[build]
+  publish = "public"
+  command = "python py/gen.py build"
