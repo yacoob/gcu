@@ -3,7 +3,7 @@ HOST:=gcu.tactical-grace.net
 all: build
 
 clean:
-	rm -rf public/*
+	rm -rf public
 	find . -iname \*~ | xargs rm -f
 
 build: export GCU_BASE_URL:=https://$(HOST)

@@ -100,7 +100,6 @@ def renderEverything(d=None, gcu=None, outdir=None, skip_static=False):
         os.mkdir(outdir)
 
     # Prepare the outdir.
-
     if skip_static:
         shutil.rmtree(outdir)
         os.mkdir(outdir)
