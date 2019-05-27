@@ -92,7 +92,6 @@ def renderEverything(d=None, gcu=None, outdir=None, skip_static=False):
         shutil.rmtree(outdir)
         os.mkdir(outdir)
     else:
-        os.chdir(d)
         static_dir = os.path.join(d, 'static')
         subprocess.call([
             'rsync',
