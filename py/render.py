@@ -66,6 +66,10 @@ class Renderer(object):
         except OSError, e:
             if e.errno == 17:
                 pass
+        if os.path.isfile(fn):
+            raise RuntimeError(
+                'Asked to generate a new page at %s. A file like that'
+                ' already exists. This should not happen.' % fn)
         with codecs.open(fn, 'w', 'utf-8') as f:
             if tmpl_fn:
                 template = self.jinja.get_template(tmpl_fn)
