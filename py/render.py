@@ -93,7 +93,6 @@ def renderEverything(d=None, gcu=None, outdir=None, skip_static=False):
         subprocess.call([
             'rsync',
             '-a',
-            '--exclude=.gitignore',
             # Make sure files other than ones from static/ are deleted.
             '--delete',
             # Make a hardlink to static/ if possible, for speedup.
