@@ -69,6 +69,7 @@ def build(output_dir, skip_static):
 
 
 def serve_cmd(args):
+    os.environ[render.BASE_URL_ENV_NAME] = 'http://localhost:8000'
     outdir = os.path.join(WORKDIR, 'public')
     build(outdir, False)
     os.chdir(outdir)

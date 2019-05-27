@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import codecs
+import datetime
 import email
 import os
 import re
@@ -43,13 +44,26 @@ class Renderer(object):
         def stripUrlForCustomSearch(url):
             return re.sub('^https?://', '', url)
 
+        # There are couple of places where we need to construct absolute URLs.
+        # Sitemap and RSS are two examples. We try to divine the best value
+        # here.
+        # Explicitly requested.
+        if BASE_URL_ENV_NAME in os.environ:
+            base_url = os.environ[BASE_URL_ENV_NAME]
+        # Work out an URL from Netlify context.
+        elif 'CONTEXT' in os.environ:
+            if os.environ['CONTEXT'] == 'production':
+                base_url = os.getenv('URL', DEFAULT_BASE_URL)
+            else:
+                base_url = os.getenv('DEPLOY_PRIME_URL', DEFAULT_BASE_URL)
+        else:
+            base_url = DEFAULT_BASE_URL
+
+        print '%s Using base_url = %s' % (datetime.datetime.now(), base_url)
+
         self.jinja = jinja2.Environment(trim_blocks=True,
                                         lstrip_blocks=True,
                                         loader=jinja2.FileSystemLoader(d))
-        if BASE_URL_ENV_NAME in os.environ:
-            base_url = os.environ[BASE_URL_ENV_NAME]
-        else:
-            base_url = DEFAULT_BASE_URL
         self.jinja.globals['base_url'] = base_url
         self.jinja.filters['datetime_to_iso'] = datetimeToISO
         self.jinja.filters['datetime_to_rfc822'] = datetimeToRFC822
