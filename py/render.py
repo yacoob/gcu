@@ -5,6 +5,7 @@ import email
 import os
 import re
 import shutil
+import subprocess
 import jinja2
 
 SPECIAL_PAGES = {
@@ -72,34 +73,34 @@ class Renderer(object):
             f.close()
 
 
-def renderEverything(d=None, gcu=None):
-    outdir = os.path.join(d, 'public')
+def renderEverything(d=None, gcu=None, outdir=None, skip_static=False):
     r = Renderer(os.path.join(d, 'templates'))
 
-    # Remove old output.
-    # Can't just rmtree outdir, as we want httpd to reuse it, plus we keep
-    # photos/* there checked in. Instead, we just remove outdir/* instead.
-    for p in os.listdir(outdir):
-        fp = os.path.join(outdir, p)
-        if os.path.isfile(fp) or os.path.islink(fp):
-            os.remove(fp)
-            continue
-        if os.path.isdir(fp):
-            if fp != os.path.join(outdir, PHOTOS_SUBDIR):
-                shutil.rmtree(fp)
-            continue
-        raise RuntimeError(
-            'Unexpected item: %s is not a file, symlink or a directory' % fp)
+    # Create outdir if it doesn't exist.
+    if not outdir:
+        outdir = os.path.join(d, 'public')
+    if not os.path.isdir(outdir):
+        os.mkdir(outdir)
 
-    # copy static content
-    static_dir = os.path.join(d, 'static')
-    for item in os.listdir(static_dir):
-        src = os.path.join(static_dir, item)
-        dst = os.path.join(outdir, item)
-        if os.path.isdir(src):
-            shutil.copytree(src, dst)
-        else:
-            shutil.copy2(src, dst)
+    # Prepare the outdir.
+
+    if skip_static:
+        shutil.rmtree(outdir)
+        os.mkdir(outdir)
+    else:
+        os.chdir(d)
+        static_dir = os.path.join(d, 'static')
+        subprocess.call([
+            'rsync',
+            '-a',
+            '--exclude=.gitignore',
+            # Make sure files other than ones from static/ are deleted.
+            '--delete',
+            # Make a hardlink to static/ if possible, for speedup.
+            '--link-dest=%s' % static_dir,
+            os.path.join(static_dir, ''),
+            outdir
+        ])
 
     sitemap_urls = []
     # for every grade:
