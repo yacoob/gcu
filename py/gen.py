@@ -99,8 +99,22 @@ def once():
     renderSite()
 
 
+def print_usage():
+    print """Usage: %s COMMAND [ARGS]
+Commands:
+    build [outputdir] - renders site to outputdir ('public/' by default)
+    serve             - renders site, serves it locally, updates when input
+                        changes
+""" % sys.argv[0]
+
+
 if __name__ == '__main__':
-    if len(sys.argv) > 1 and sys.argv[1] == 'serve':
-        watch()
+    if len(sys.argv) > 1:
+        if sys.argv[1] == 'serve':
+            watch()
+        elif sys.argv[1] == 'build':
+            once()
+        else:
+            print_usage()
     else:
-        once()
+        print_usage()
