@@ -9,7 +9,7 @@ Plus some [Python libraries](Pipfile).
 
 ## TODO
 
-* new layout to get rid of bootstrap dep
+* switch the live site to Netlify
+* get rid of the bootstrap, maybe a new layout
 * better caching headers
-* consider switching away from YAML
-* rewrite the generator in rust
+* rewrite the generator in rust (maybe change YAML to TOML too)
