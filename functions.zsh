@@ -9,7 +9,7 @@ gcu-gallery() {
   last=${last#${prefix}}
   echo '  photos:'
   foreach n ($(seq -f %05g $(($last - ${1} + 1)) ${last})) {
-    echo "  - href: /p/full/${prefix}${n}.jpg"
+    echo "  - href: /photos/full/${prefix}${n}.jpg"
   }
 }
 
