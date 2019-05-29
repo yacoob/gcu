@@ -16,9 +16,12 @@
 {% if page_social_img %}
   <link href='{{ page_social_img  }}' rel='image_src'/>
   <meta property='og:image' content='{{ base_url}}{{ page_social_img }}'/>
+  <meta name='twitter:card' content='summary'/>
+  <meta name='twitter:image' content='{{ base_url}}{{ page_social_img }}'/>
 {% endif %}
 {% if page_description %}
   <meta name='description' content='{{ page_description }}'/>
+  <meta name='twitter:title' content='{{ page_description }}'/>
 {% endif %}
 {% if page_url %}
   <link href='{{ base_url + page_url }}' rel='canonical'/>
