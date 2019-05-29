@@ -27,7 +27,8 @@ publish: .check-for-clean-repo clean
 # files and set GCU_GOLDEN variable. Then make golden-diff
 # will diff the currently buildable set of files against the one in $GCU_GOLDEN.
 golden-build: D:=$(GOLD_DIR)/$(shell git rev-parse --short HEAD)
-golden-build: clean golden-clean .check-for-clean-repo
+golden-build: clean .check-for-clean-repo
+	@rm -rf $(D)
 	@mkdir -p $(D)
 	@pipenv run python py/gen.py build --output_dir=$(D) --skip_static >/dev/null 2>&1
 	@echo export GCU_GOLDEN=$(D)
