@@ -9,7 +9,9 @@ Plus some [Python libraries](Pipfile).
 
 ## TODO
 
-* switch the live site to Netlify
-* get rid of the bootstrap, maybe a new layout
-* better caching headers
+* consider having two set of thumbs; the gallery ones don't
+  get larger than 165x165 so with current 400x400 thumbs >75% of the image
+  "bulk" is wasted anyway
+* verify netlify caching headers
+* get rid of the bootstrap
 * rewrite the generator in rust (maybe change YAML to TOML too)
