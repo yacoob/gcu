@@ -22,10 +22,10 @@ publish: .check-for-clean-repo clean
 
 # Golden files management.
 golden-build: clean
-	pipenv run python py/gen.py build --output_dir=golden --skip_static && git diff golden
+	pipenv run python py/gen.py build --output_dir=golden --skip_static && git add golden && git diff --cached golden
 
 golden-reset:
-	git checkout -- golden
+	git reset HEAD golden && rm -rf golden && git checkout -- golden
 
 golden-diff: golden-build golden-reset
 
