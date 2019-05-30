@@ -9,6 +9,7 @@ Plus some [Python libraries](Pipfile).
 
 ## TODO
 
+* fix RSS entry links to link to the lightbox instead of the thumb
 * consider having two set of thumbs; the gallery ones don't
   get larger than 165x165 so with current 400x400 thumbs >75% of the image
   "bulk" is wasted anyway
