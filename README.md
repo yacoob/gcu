@@ -5,7 +5,14 @@
 * [Bootstrap](http://getbootstrap.com/)
 * [lightgallery](https://github.com/sachinchoolur/lightGallery.js)
 
-Plus some [Python libraries](Pipfile).
+
+## Zola migration next TODO
+* realistic templates
+* rss
+* sitemap.xml that excludes the leaf files
+* make a decision about the switch
+* document the templates
+
 
 ## TODO
 
@@ -14,4 +21,3 @@ Plus some [Python libraries](Pipfile).
   "bulk" is wasted anyway
 * verify netlify caching headers
 * get rid of the bootstrap
-* rewrite the generator in rust (maybe change YAML to TOML too)
