@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block main %}
+{% set grade = get_section(path=section.ancestors[1]) %}
+<h1>{{ grade.title }}: {{ section.title }}</h1>
+{% for p in section.pages|reverse -%}
+  <h2>{{ p.date }}</h2>
+  {% for photo in p.extra.photos -%}
+  {{ macros::photo(p=photo) }}
+  {% endfor %}
+{% endfor %}
+{% endblock main %}

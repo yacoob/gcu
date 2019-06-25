@@ -1,0 +1,30 @@
+{% extends "base.html" -%}
+{% block main -%}
+
+{# get all entries #}
+{% set entries = [] -%}
+{% for g in config.extra.grades -%}
+  {% set grade = get_section(path=g ~ "/_index.md") -%}
+  {% for k in grade.subsections -%}
+    {% set kit = get_section(path=k) -%}
+    {% for p in kit.pages -%}
+      {%- set_global entries = entries | concat(with=p) -%}
+  {% endfor -%}
+  {% endfor -%}
+{% endfor -%}
+
+
+<h1>tactical grace</h1>
+{% set seen = [] -%}
+{% for entry in entries|sort(attribute="date")|reverse -%}
+  {% if seen is containing(entry.ancestors.2) -%}
+    {% continue -%}
+  {% else -%}
+    <a href={{ macros::kit_link(entry=entry) }}>{{ macros::cover(thing=entry) }}</a>
+    {%- set_global seen = seen|concat(with=entry.ancestors.2) -%}
+  {% endif -%}
+  {% if seen|length == config.extra.recent_entry_count -%}
+    {% break -%}
+  {% endif %}
+{% endfor %}
+{% endblock main -%}

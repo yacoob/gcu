@@ -1,0 +1,28 @@
+{% macro cover(thing) -%}
+<img width=262 src="{{ self::thumb(href=thing.extra.cover) }}"/>
+{%- endmacro cover -%}
+
+{% macro kit_link(entry) -%}
+/{{ entry.path|split(pat="/")|slice(end=2)|join(sep="/")|safe }}/#{{ entry.date }}
+{%- endmacro kit_link %}
+
+{% macro thumb(href) -%}
+{{ config.extra.imgurl ~ '/thumb/' ~ href }}
+{%- endmacro thumb %}
+
+{% macro full(href) -%}
+{{ config.extra.imgurl ~ '/full/' ~ href  }}
+{%- endmacro full %}
+
+{% macro kit_cover(kit) %}
+{%- set s = get_section(path=kit) -%}
+<a href="/{{ s.path|safe }}">
+{{ self::cover(thing=s) }}
+</a>
+{%- endmacro kit_cover %}
+
+{% macro photo(p) -%}
+{%- set src = p.thumb|default(value=p.href) -%}
+{%- set title = p.title|default(value="") -%}
+<img width=185 src="{{ self::thumb(href=src) }}" title="{{ title }}" description="{{ title }}" />
+{%- endmacro photo -%}

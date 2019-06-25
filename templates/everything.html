@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block main %}
+{% set_global all_kits = [] %}
+<h1>Everything!</h1>
+{% for g in config.extra.grades %}
+{% set grade = get_section(path=g ~ "/_index.md") %}
+<h2>{{ grade.description }}</h2>
+{% for k in grade.subsections %}
+{{ macros::kit_cover(kit=k) }}
+{% endfor %}
+{% endfor %}
+{% endblock main %}
