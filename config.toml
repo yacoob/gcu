@@ -1,4 +1,5 @@
 base_url = 'https://gcu.tactical-grace.net'
+title = 'tactical grace'
 description = 'Welcome to tactical grace!'
 generate_rss = true
 hard_link_static = true
