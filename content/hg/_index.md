@@ -1,5 +1,6 @@
 +++
-title = "HG"
-template = "grade.html"
-page_template = "empty.html"
+title = 'HG'
+description = 'HG kits at tactical grace'
+template = 'grade.html'
+page_template = 'empty.html'
 +++
