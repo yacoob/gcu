@@ -1,6 +1,7 @@
-HOST:=gcu.tactical-grace.net
+ZOLA:=zola-hardlink
 GOLD_DIR:=/tmp/gcu-golden
 GOLD_OUT:=/tmp/gcu-out
+HOST?=gcu.tactical-grace.net
 
 all: build
 
@@ -12,12 +13,11 @@ clean:
 	@[ `git status --porcelain | wc -l` -eq 0 ] || ( echo "There are unchecked files in the repository, please fix that."; exit 1 )
 
 
-build: export GCU_BASE_URL:=https://$(HOST)
 build:
-	pipenv run python py/gen.py build
+	$(ZOLA) build
 
 serve:
-	pipenv run python py/gen.py serve
+	$(ZOLA) serve
 
 publish: .check-for-clean-repo clean
 	git remote | xargs -L1 git push --all
@@ -30,7 +30,7 @@ golden-build: D:=$(GOLD_DIR)/$(shell git rev-parse --short HEAD)
 golden-build: clean .check-for-clean-repo
 	@rm -rf $(D)
 	@mkdir -p $(D)
-	@pipenv run python py/gen.py build --output_dir=$(D) --skip_static >/dev/null 2>&1
+	@$(ZOLA) build --output-dir=$(D) >/dev/null 2>&1
 	@echo export GCU_GOLDEN=$(D)
 
 # On OSX diff doesn't support --color. Well, we can abuse git for this... :D
@@ -38,7 +38,7 @@ golden-diff:
 	test $(GCU_GOLDEN) || ( echo "Please set GCU_GOLDEN variable."; exit 1 )
 	rm -rf $(GOLD_OUT)
 	mkdir -p $(GOLD_OUT)
-	pipenv run python py/gen.py build --output_dir=$(GOLD_OUT) --skip_static
+	$(ZOLA) build --output-dir=$(GOLD_OUT)
 	-git diff --no-index ${GCU_GOLDEN} $(GOLD_OUT)
 
 golden-clean:
