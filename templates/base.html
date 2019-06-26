@@ -1,5 +1,6 @@
 {# vim: set tw=0 ft=jinja: #}
 {% import 'macros.html' as macros -%}
+{% block page_vars -%}{% endblock page_vars -%}
 {% if page_title -%}
   {% set title_suffix = ' | tactical grace' -%}
 {% else -%}
@@ -7,7 +8,6 @@
   {% set title_suffix = '' -%}
 {% endif -%}
 {% set page_url = '/' ~ current_path|safe -%}
-{% block page_vars -%}{% endblock page_vars -%}
 <html lang='en'>
 <head>
   <meta charset='utf-8'>
