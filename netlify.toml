@@ -1,12 +1,12 @@
 [build]
   publish = "public"
-  command = "zola build && find public -type f -empty -delete && find public -type d -empty -delete"
+  command = "make build"
 
 [build.environment]
   ZOLA_VERSION = "0.8.0"
 
 [context.deploy-preview]
-  command = "zola build --base-url $DEPLOY_PRIME_URL && find public -type f -empty -delete && find public -type d -empty -delete"
+  command = "make build-netlify-preview"
 
 [context.branch-deploy]
-  command = "zola build --base-url $DEPLOY_PRIME_URL && find public -type f -empty -delete && find public -type d -empty -delete"
+  command = "make build-netlify-preview"
