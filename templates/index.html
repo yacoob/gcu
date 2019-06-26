@@ -1,30 +1,33 @@
-{% extends "base.html" -%}
+{% extends 'base.html' -%}
+{% block page_vars -%}
+{% set navbar = False -%}
+{% set searchbar = True -%}
+{% set page_description = config.description -%}
+{% endblock page_vars -%}
 {% block main -%}
-
-{# get all entries #}
-{% set entries = [] -%}
+{% set entry_pages = [] -%}
 {% for g in config.extra.grades -%}
-  {% set grade = get_section(path=g ~ "/_index.md") -%}
+  {% set grade = get_section(path=g ~ '/_index.md') -%}
   {% for k in grade.subsections -%}
     {% set kit = get_section(path=k) -%}
     {% for p in kit.pages -%}
-      {%- set_global entries = entries | concat(with=p) -%}
+      {%- set_global entry_pages = entry_pages | concat(with=p) -%}
   {% endfor -%}
   {% endfor -%}
 {% endfor -%}
-
-
-<h1>tactical grace</h1>
+<div class='row voffset-top'>
 {% set seen = [] -%}
-{% for entry in entries|sort(attribute="date")|reverse -%}
-  {% if seen is containing(entry.ancestors.2) -%}
+{% for page in entry_pages|sort(attribute='date')|reverse -%}
+  {% set kit_on_page = page.ancestors.2 -%}
+  {% if seen is containing(kit_on_page) -%}
     {% continue -%}
   {% else -%}
-    <a href={{ macros::kit_link(entry=entry) }}>{{ macros::cover(thing=entry) }}</a>
-    {%- set_global seen = seen|concat(with=entry.ancestors.2) -%}
+    {{ macros::kit_cover(kit=page, width=4) }}
+    {%- set_global seen = seen|concat(with=kit_on_page) -%}
   {% endif -%}
   {% if seen|length == config.extra.recent_entry_count -%}
     {% break -%}
   {% endif %}
 {% endfor %}
+</div> <!-- row -->
 {% endblock main -%}

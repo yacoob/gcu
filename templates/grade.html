@@ -2,6 +2,7 @@
 {% block main %}
 <h1>{{ section.description }}</h1>
 {% for k in section.subsections|sort %}
-{{ macros::kit_cover(kit=k) }}
+{% set kit = get_section(path=k) -%}
+{{ macros::kit_cover(kit=kit) }}
 {% endfor %}
 {% endblock main %}

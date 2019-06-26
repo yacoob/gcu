@@ -6,7 +6,8 @@
 {% set grade = get_section(path=g ~ "/_index.md") %}
 <h2>{{ grade.description }}</h2>
 {% for k in grade.subsections %}
-{{ macros::kit_cover(kit=k) }}
+{% set kit=get_section(path=k) -%}
+{{ macros::kit_cover(kit=kit) }}
 {% endfor %}
 {% endfor %}
 {% endblock main %}
