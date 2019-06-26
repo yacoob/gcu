@@ -1,14 +1,20 @@
 {# vim: set tw=0 ft=jinja: #}
-{% extends "base.html" %}
-{% block main %}
-{% set_global all_kits = [] %}
-<h1>Everything!</h1>
-{% for g in config.extra.grades %}
-{% set grade = get_section(path=g ~ "/_index.md") %}
-<h2>{{ grade.description }}</h2>
-{% for k in grade.subsections %}
+{% extends 'base.html' %}
+{% block page_vars -%}
+{% set debug = True -%}
+{% endblock page_vars -%}
+{% block main -%}
+{% set_global all_kits = [] -%}
+{% for g in config.extra.grades -%}
+{% set grade = get_section(path=g ~ '/_index.md') -%}
+<div class='row voffset-top'>
+  <h2>{{ grade.title }}</h2>
+</div>
+<div class='row voffset-small'>
+{% for k in grade.subsections -%}
 {% set kit=get_section(path=k) -%}
 {{ macros::kit_cover(kit=kit) }}
-{% endfor %}
-{% endfor %}
+{% endfor -%}
+</div> <!-- row -->
+{% endfor -%}
 {% endblock main %}
