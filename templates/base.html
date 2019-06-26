@@ -2,12 +2,13 @@
 {% import 'macros.html' as macros -%}
 {% set navbar = True -%}
 {% set searchbar = False -%}
+{% set page_title = section.title|default(value=config.title) -%}
+{% set page_description = section.description|default(value=config.description) -%}
 {% block page_vars -%}{% endblock page_vars -%}
-{% if page_title -%}
-  {% set title_suffix = ' | tactical grace' -%}
-{% else -%}
-  {% set page_title = 'tactical grace' -%}
+{% if page_title == config.title -%}
   {% set title_suffix = '' -%}
+{% else -%}
+  {% set title_suffix = ' | tactical grace' -%}
 {% endif -%}
 {% set page_url = '/' ~ current_path|safe -%}
 <html lang='en'>
