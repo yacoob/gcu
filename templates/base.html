@@ -1,5 +1,7 @@
 {# vim: set tw=0 ft=jinja: #}
 {% import 'macros.html' as macros -%}
+{% set navbar = True -%}
+{% set searchbar = False -%}
 {% block page_vars -%}{% endblock page_vars -%}
 {% if page_title -%}
   {% set title_suffix = ' | tactical grace' -%}
@@ -32,7 +34,7 @@
 {% block top -%}
 <div class='row'><!-- title and mininav -->
   {{ macros::title_row(title=page_title, url=page_url) }}
-  {% if navbar|default(value=True) -%}
+  {% if navbar -%}
   <div class='col-sm-12 col-md-4 text-right voffset-top'>
     <a data-toggle='tooltip' title='main page' href='/'>
     <button class='btn btn-default btn-sm' type='button'><span class='glyphicon glyphicon-home'></span></button></a>
@@ -40,19 +42,15 @@
     <button class='btn btn-default btn-sm' type='button'><span class='glyphicon glyphicon-envelope'></span></button></a>
     {% if nav_top -%}
     <a data-toggle='tooltip' title='grade page' href='{{ nav_top }}'>
-    <button class='btn btn-default btn-sm' type='button'><span class='glyphicon glyphicon-th'></span></button></a>
-    {% endif -%}
+    <button class='btn btn-default btn-sm' type='button'><span class='glyphicon glyphicon-th'></span></button></a>{% endif -%}
     {% if nav_prev -%}
     <a data-toggle='tooltip' title='previous kit' href='{{ nav_prev }}'>
-    <button class='btn btn-default btn-sm' type='button'><span class='glyphicon glyphicon-chevron-left'></span></button></a>
-    {% endif -%}
+    <button class='btn btn-default btn-sm' type='button'><span class='glyphicon glyphicon-chevron-left'></span></button></a>{% endif -%}
     {% if nav_next -%}
     <a data-toggle='tooltip' title='next kit' href='{{ nav_next }}'>
-    <button class='btn btn-default btn-sm' type='button'><span class='glyphicon glyphicon-chevron-right'></span></button></a>
-    {% endif -%}
-  </div>
-  {% endif -%}
-  {% if searchbar|default(value=False) -%}
+    <button class='btn btn-default btn-sm' type='button'><span class='glyphicon glyphicon-chevron-right'></span></button></a>{% endif -%}
+  </div>{% endif -%}
+  {% if searchbar -%}
   <div class='col-xs-12 col-sm-10 col-sm-offset-2 col-md-4 col-md-offset-0 text-center voffset-top'>
     <form action='//www.google.com/search' role='search'>
       <div class='input-group input-group-sm'>

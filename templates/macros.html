@@ -22,7 +22,7 @@
   <div class='model'>
     {{ self::cover(thing=kit) }}
     <div class='overlay'>
-      <a href='{{ self::kit_link(kit=kit) }}'></a>
+      <a href='{{ self::kit_link(kit=kit)|safe }}'></a>
       <h3>{{ self::kit_title(kit=kit) }}</h3>
     </div>
   </div>
@@ -31,7 +31,7 @@
 
 {% macro kit_link(kit) -%}
 {% if kit.relative_path is ending_with('_index.md') -%}
-/{{ kit.path }}
+/{{ kit.path|safe }}
 {%- else -%}
 /{{ kit.path|split(pat="/")|slice(end=2)|join(sep="/")|safe }}/#{{ kit.date }}
 {%- endif -%}
