@@ -2,8 +2,13 @@
 {% import 'macros.html' as macros -%}
 {% set navbar = True -%}
 {% set searchbar = False -%}
-{% set page_title = section.title|default(value=config.title) -%}
-{% set page_description = section.description|default(value=config.description) -%}
+{% if page -%}
+  {% set page_title = page.title|default(value=config.title) -%}
+  {% set page_description = page.description|default(value=config.description) -%}
+{% else -%}
+  {% set page_title = section.title|default(value=config.title) -%}
+  {% set page_description = section.description|default(value=config.description) -%}
+{% endif -%}
 {% block page_vars -%}{% endblock page_vars -%}
 {% if page_title == config.title -%}
   {% set title_suffix = '' -%}
