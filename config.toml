@@ -1,8 +1,10 @@
-base_url = "https://gcu.tactical-grace.net"
+base_url = 'https://gcu.tactical-grace.net'
+description = 'Welcome to tactical grace!'
 generate_rss = true
 hard_link_static = true
 
 [extra]
-grades = [ "hg", "mg", "pg", "rg", "varia" ]
+grades = [ 'hg', 'mg', 'pg', 'rg', 'varia' ]
 recent_entry_count = 3
-imgurl = "https://gcu.tactical-grace.net/photos"
+photo_full = '/photos/full/'
+photo_thumb = '/photos/thumb/'
