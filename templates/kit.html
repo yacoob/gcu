@@ -1,12 +1,36 @@
 {# vim: set tw=0 ft=jinja: #}
-{% extends "base.html" %}
-{% block main %}
-{% set grade = get_section(path=section.ancestors[1]) %}
-<h1>{{ grade.title }}: {{ section.title }}</h1>
+{% extends 'base.html' %}
+{% block page_vars -%}
+{% set debug = True -%}
+{% set gcujs = True -%}
+{% set grade = get_section(path=section.ancestors[1]) -%}
+{% set page_title = grade.title ~ ': ' ~ section.title -%}
+{% set page_description = 'tactical grace presents: ' ~ section.title -%}
+{% set page_social_img = macros::full(href=section.extra.cover) -%}
+{% set nav_top = '/' ~ grade.path -%}
+{% set kits = grade.subsections|sort -%}
+{% for kit in kits -%}
+{%   if macros::kit_path(path=section.relative_path) == macros::kit_path(path=kit) -%}
+{%     if loop.index0 > 0 -%}
+{%       set prev_idx = loop.index0 - 1 -%}
+{%       set_global nav_prev = macros::kit_path(path=kits[prev_idx]) -%}
+{%     endif -%}
+{%     if loop.index < kits|length -%}
+{%       set_global nav_next = macros::kit_path(path=kits[loop.index]) -%}
+{%     endif -%}
+{%     break -%}
+{%  endif -%}
+{% endfor -%}
+{% endblock page_vars -%}
+{% block main -%}
 {% for p in section.pages|reverse -%}
-  <h2>{{ p.date }}</h2>
-  {% for photo in p.extra.photos -%}
-  {{ macros::photo(p=photo) }}
-  {% endfor %}
-{% endfor %}
-{% endblock main %}
+<div class='row voffset-top'>
+  <h2 id='{{ p.date }}'>{{ p.date }}</h2>
+</div>
+<div class='row voffset-small'>
+{%   for photo in p.extra.photos -%}
+{{     macros::photo(p=photo) }}
+{%   endfor -%}
+</div>
+{% endfor -%}
+{% endblock main -%}

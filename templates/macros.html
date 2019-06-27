@@ -29,11 +29,15 @@
 </div>
 {%- endmacro kit_cover %}
 
+{% macro kit_path(path) -%}
+/{{ path|truncate(length=path|length-9, end='')|safe }}
+{%- endmacro dirname %}
+
 {% macro kit_link(kit) -%}
 {% if kit.relative_path is ending_with('_index.md') -%}
 /{{ kit.path|safe }}
 {%- else -%}
-/{{ kit.path|split(pat="/")|slice(end=2)|join(sep="/")|safe }}/#{{ kit.date }}
+{{ self::kit_path(path=kit.path) }}#{{ kit.date }}
 {%- endif -%}
 {%- endmacro kit_link %}
 
@@ -47,7 +51,19 @@
 
 
 {% macro photo(p) -%}
-{%- set src = p.thumb|default(value=p.href) -%}
-{%- set title = p.title|default(value="") -%}
-<img width=185 src="{{ self::thumb(href=src) }}" title="{{ title }}" description="{{ title }}" />
+{% set src = p.thumb|default(value=p.href) -%}
+{% set title = p.title|default(value='') -%}
+{% if src is containing('youtu') -%}
+{%   set icon = 'glyphicon-play-circle' -%}
+{% else -%}
+{%   set icon = '' -%}
+{% endif -%}
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='{{ macros::full(href=src) }}'{% if title %} data-sub-html='{{ title }}'{% endif %}>
+      <img class='img-rounded img-responsive' src='{{ macros::thumb(href=src) }}'{% if title %} alt='{{ title }}'{% endif %} />
+      <span class='glyphicon {{icon}} gallery-icon'></span>
+    </a>
+  </div>
+</div>
 {%- endmacro photo -%}
