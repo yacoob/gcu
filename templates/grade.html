@@ -1,12 +1,10 @@
 {# vim: set tw=0 ft=jinja: #}
-{% extends 'base.html' %}
-{% block page_vars -%}
-{% endblock page_vars -%}
-{% block main -%}
+{%- extends 'base.html' %}
+{%- block main %}
 <div class='row voffset-top'>
-{% for k in section.subsections|sort -%}
-{% set kit = get_section(path=k) -%}
+{%- for k in section.subsections|sort %}
+{%- set kit = get_section(path=k) %}
 {{ macros::kit_cover(kit=kit) }}
-{% endfor -%}
+{%- endfor %}
 </div> <!-- row -->
-{% endblock main %}
+{%- endblock main %}

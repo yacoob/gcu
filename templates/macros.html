@@ -1,26 +1,42 @@
 {# vim: set tw=0 ft=jinja: #}
+
 {% macro thumb(href) -%}
 {{ config.extra.photo_thumb ~ href }}
 {%- endmacro thumb %}
+
 
 {% macro full(href) -%}
 {{ config.extra.photo_full ~ href  }}
 {%- endmacro full %}
 
-{% macro cover(thing) -%}
-<img class='img-rounded img-responsive' src='{{ self::thumb(href=thing.extra.cover) }}'>
-{%- endmacro cover %}
 
-{% macro title_row(title, url) -%}
-<div class='col-sm-12 col-md-8 text-right'>
-  <h1 class='title'><a href='{{ url|safe }}'>{{ title }}</a></h1>
-</div> <!-- column -->
-{%- endmacro %}
+{% macro kit_path(path) -%}
+/{{ path|split(pat='/')|slice(end=2)|join(sep='/')|safe }}/
+{%- endmacro dirname %}
+
+
+{% macro kit_link(kit) -%}
+{%- if kit.relative_path is ending_with('_index.md') -%}
+/{{ kit.path|safe }}
+{%- else -%}
+{{ self::kit_path(path=kit.path) }}#{{ kit.date }}
+{%- endif %}
+{%- endmacro kit_link %}
+
+
+{% macro kit_title(kit) -%}
+{%- if kit.relative_path is ending_with('_index.md') -%}
+{%- else -%}
+  {%- set kit = get_section(path=kit.ancestors.2) %}
+{%- endif -%}
+{{ kit.title }}
+{%- endmacro kit_title %}
+
 
 {% macro kit_cover(kit, width=3) -%}
 <div class='col-xs-12 col-sm-4 col-md-{{ width }} text-center'>
   <div class='model'>
-    {{ self::cover(thing=kit) }}
+    <img class='img-rounded img-responsive' src='{{ self::thumb(href=kit.extra.cover) }}'>
     <div class='overlay'>
       <a href='{{ self::kit_link(kit=kit)|safe }}'></a>
       <h3>{{ self::kit_title(kit=kit) }}</h3>
@@ -29,35 +45,15 @@
 </div>
 {%- endmacro kit_cover %}
 
-{% macro kit_path(path) -%}
-/{{ path|split(pat='/')|slice(end=2)|join(sep='/')|safe }}/
-{%- endmacro dirname %}
-
-{% macro kit_link(kit) -%}
-{% if kit.relative_path is ending_with('_index.md') -%}
-/{{ kit.path|safe }}
-{%- else -%}
-{{ self::kit_path(path=kit.path) }}#{{ kit.date }}
-{%- endif -%}
-{%- endmacro kit_link %}
-
-{% macro kit_title(kit) -%}
-{% if kit.relative_path is ending_with('_index.md') -%}
-{% else -%}
-  {% set kit = get_section(path=kit.ancestors.2) -%}
-{% endif -%}
-{{ kit.title }}
-{%- endmacro kit_title %}
-
 
 {% macro photo(p) -%}
-{% set src = p.thumb|default(value=p.href) -%}
-{% set title = p.title|default(value='') -%}
-{% if src is containing('youtu') -%}
-{%   set icon = 'glyphicon-play-circle' -%}
-{% else -%}
-{%   set icon = '' -%}
-{% endif -%}
+{%- set src = p.thumb|default(value=p.href) %}
+{%- set title = p.title|default(value='') %}
+{%- if src is containing('youtu') %}
+  {%- set icon = 'glyphicon-play-circle' %}
+{%- else %}
+  {%- set icon = '' %}
+{%- endif -%}
 <div class='col-xs-6 col-md-3 col-lg-2'>
   <div class='gallery-entry voffset-bottom-small'>
     <a class='gallery' href='{{ macros::full(href=src) }}'{% if title %} data-sub-html='{{ title }}'{% endif %}>
@@ -66,4 +62,4 @@
     </a>
   </div>
 </div>
-{%- endmacro photo -%}
+{%- endmacro photo %}

@@ -1,33 +1,33 @@
 {# vim: set tw=0 ft=jinja: #}
-{% extends 'base.html' -%}
-{% block page_vars -%}
-{% set navbar = False -%}
-{% set searchbar = True -%}
-{% endblock page_vars -%}
-{% block main -%}
-{% set entry_pages = [] -%}
-{% for g in config.extra.grades -%}
-  {% set grade = get_section(path=g ~ '/_index.md') -%}
-  {% for k in grade.subsections -%}
-    {% set kit = get_section(path=k) -%}
-    {% for p in kit.pages -%}
-      {%- set_global entry_pages = entry_pages | concat(with=p) -%}
-  {% endfor -%}
-  {% endfor -%}
-{% endfor -%}
+{%- extends 'base.html' %}
+{%- block page_vars %}
+{%- set navbar = false %}
+{%- set searchbar = true %}
+{%- endblock page_vars %}
+{%- block main %}
+{%- set entry_pages = [] %}
+{%- for g in config.extra.grades %}
+  {%- set grade = get_section(path=g ~ '/_index.md') %}
+  {%- for k in grade.subsections %}
+    {%- set kit = get_section(path=k) %}
+    {%- for p in kit.pages %}
+      {%- set_global entry_pages = entry_pages | concat(with=p) %}
+  {%- endfor %}
+  {%- endfor %}
+{%- endfor %}
 <div class='row voffset-top'>
-{% set seen = [] -%}
-{% for page in entry_pages|sort(attribute='date')|reverse -%}
-  {% set kit_on_page = page.ancestors.2 -%}
-  {% if seen is containing(kit_on_page) -%}
-    {% continue -%}
-  {% else -%}
-    {{ macros::kit_cover(kit=page, width=4) }}
-    {%- set_global seen = seen|concat(with=kit_on_page) -%}
-  {% endif -%}
-  {% if seen|length == config.extra.recent_entry_count -%}
-    {% break -%}
-  {% endif %}
-{% endfor %}
+{%- set seen = [] %}
+{%- for page in entry_pages|sort(attribute='date')|reverse %}
+  {%- set kit_on_page = page.ancestors.2 %}
+  {%- if seen is containing(kit_on_page) %}
+    {%- continue %}
+  {%- else %}
+{{ macros::kit_cover(kit=page, width=4) }}
+    {%- set_global seen = seen|concat(with=kit_on_page) %}
+  {%- endif %}
+  {%- if seen|length == config.extra.recent_entry_count %}
+    {%- break %}
+  {%- endif %}
+{%- endfor %}
 </div> <!-- row -->
-{% endblock main -%}
+{%- endblock main %}
