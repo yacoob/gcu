@@ -30,7 +30,7 @@
 {%- endmacro kit_cover %}
 
 {% macro kit_path(path) -%}
-/{{ path|truncate(length=path|length-9, end='')|safe }}
+/{{ path|split(pat='/')|slice(end=2)|join(sep='/')|safe }}/
 {%- endmacro dirname %}
 
 {% macro kit_link(kit) -%}
