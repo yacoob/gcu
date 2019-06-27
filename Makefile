@@ -35,6 +35,13 @@ zola-build-override-base-url:
 serve:
 	$(ZOLA) serve
 
+.PHONY: serve-debug
+serve-debug: TF:=$(shell mktemp)
+serve-debug:
+	cp -f config.toml $(TF)
+	echo 'debug = true' >> $(TF)
+	$(ZOLA) -c $(TF) serve && rm -f $(TF)
+
 .PHONY: build build-netlify-preview
 build: zola-build .cleanup-kit-pages
 build-netlify-preview: zola-build-override-base-url .cleanup-kit-pages

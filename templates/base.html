@@ -123,10 +123,10 @@
 document.addEventListener('DOMContentLoaded', gcu.postPageHandler);
 </script>
 {% endif -%}
-{% if debug|default(value=False) -%}
+{%- if config.extra.debug|default(value=False) %}
 <hr />
 <pre>
 {{ __tera_context | escape}}
 </pre>
-{% endif -%}
+{%- endif %}
 </body></html>
