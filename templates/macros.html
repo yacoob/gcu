@@ -6,7 +6,11 @@
 
 
 {% macro full(href) -%}
+{%- if href is containing('://') -%}
+{{ href|safe }}
+{%- else -%}
 {{ config.extra.photo_full ~ href  }}
+{%- endif -%}
 {%- endmacro full %}
 
 
@@ -49,15 +53,15 @@
 {% macro photo(p) -%}
 {%- set src = p.thumb|default(value=p.href) %}
 {%- set title = p.title|default(value='') %}
-{%- if src is containing('youtu') %}
+{%- if p.href is containing('youtu') %}
   {%- set icon = 'glyphicon-play-circle' %}
 {%- else %}
   {%- set icon = '' %}
 {%- endif -%}
 <div class='col-xs-6 col-md-3 col-lg-2'>
   <div class='gallery-entry voffset-bottom-small'>
-    <a class='gallery' href='{{ macros::full(href=src) }}'{% if title %} data-sub-html='{{ title }}'{% endif %}>
-      <img class='img-rounded img-responsive' src='{{ macros::thumb(href=src) }}'{% if title %} alt='{{ title }}'{% endif %} />
+    <a class='gallery' href='{{ self::full(href=p.href) }}'{% if title %} data-sub-html='{{ title }}'{% endif %}>
+      <img class='img-rounded img-responsive' src='{{ self::thumb(href=src) }}'{% if title %} alt='{{ title }}'{% endif %} />
       <span class='glyphicon {{icon}} gallery-icon'></span>
     </a>
   </div>
