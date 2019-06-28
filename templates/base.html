@@ -2,6 +2,7 @@
 {%- import 'macros.html' as macros %}
 {%- set navbar = true %}
 {%- set searchbar = false %}
+{%- set include_canonical = true %}
 {%- if page %}
   {%- set page_title = page.title|default(value=config.title) %}
   {%- set page_description = page.description|default(value=config.description) %}
@@ -34,7 +35,9 @@
   <meta name='description' content='{{ page_description }}'/>
   <meta name='twitter:title' content='{{ page_description }}'/>
   {%- endif %}
-  <link href='{{ config.base_url ~ page_url }}' rel='canonical'/>
+  {%- if include_canonical %}
+  <link href='{{ config.base_url ~ '/' ~ current_path|safe }}' rel='canonical'/>
+  {%- endif %}
   <link rel='alternate' type='application/rss+xml' title='tactical grace feed' href='/index.xml'>
   <title>{{ page_title ~ title_suffix }}</title>
   <meta content='{{ page_title ~ title_suffix }}' itemprop='name'/>
@@ -44,7 +47,7 @@
 {%- block top %}
 <div class='row'><!-- title and mininav -->
   <div class='col-sm-12 col-md-8 text-right'>
-    <h1 class='title'><a href='{{ page_url|safe }}'>{{ page_title }}</a></h1>
+    <h1 class='title'>{% if current_path != '' %}<a href='/{{ current_path|safe }}'>{% endif %}{{ page_title }}{% if current_path %}</a>{% endif %}</h1>
   </div> <!-- column -->
   {%- if navbar %}
   <div class='col-sm-12 col-md-4 text-right voffset-top'>
