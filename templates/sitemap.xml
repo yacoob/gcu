@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+{%- set dates = [] %}
+{%- for sitemap_entry in entries|sort(attribute='permalink')|reverse %}
+  {%- if sitemap_entry.permalink is matching('.+/20..-..-../') %}
+    {%- set date =  sitemap_entry.permalink|truncate(length=sitemap_entry.permalink|length-1, end='')|split(pat='/')|last %}
+    {%- set_global dates = dates|concat(with=date) -%}
+    {%- continue %}
+  {%- endif %}
+  <url>
+    <loc>{{ sitemap_entry.permalink|safe }}</loc>
+    {%- if dates|length > 0 %}
+    <lastmod>{{ dates|sort|last }}</lastmod>
+    {%- set_global dates = [] %}
+    {%- endif %}
+  </url>
+{%- endfor %}
+</urlset>
