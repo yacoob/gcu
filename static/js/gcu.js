@@ -3,7 +3,7 @@
 
 var gcu = gcu || {
   hashPrefix: "p/",
-  dateHashPrefix: /\d\d\d\d-\d\d-\d\d/,
+  dateHashPrefix: /(\d\d\d\d-\d\d-\d\d)(?:\/(\d+))?/,
   // FIXME: captions seem to be gone :(
   lgOptions: {
     hideBarsDelay: 2000,
@@ -46,9 +46,12 @@ gcu.getHashIdx = function() {
    */
   var hash_string = location.hash.substr(1);
   // Handle #YYYY-MM-DD; translate it to index of first photo for that date.
-  if (hash_string.match(gcu.dateHashPrefix)) {
+  var matchResult;
+  if ((matchResult = hash_string.match(gcu.dateHashPrefix))) {
+    var requestedDay = matchResult[1];
+    var photoNumber = parseInt(matchResult[2]) || 1;
     var first_photo_of_day = document
-      .getElementById(hash_string)
+      .getElementById(requestedDay)
       .parentNode.nextElementSibling.querySelector(gcu.lgOptions.selector);
     if (first_photo_of_day) {
       var pos = -1;
@@ -58,7 +61,7 @@ gcu.getHashIdx = function() {
         }
       }
       if (pos >= 0) {
-        return pos + 1;
+        return pos + photoNumber;
       }
     }
   }
