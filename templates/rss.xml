@@ -1,0 +1,36 @@
+{# vim: set tw=0 ft=jinja: #}
+{%- import 'macros.html' as macros %}
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>{{ config.title }}</title>
+    <link>{{ config.base_url|safe }}</link>
+    <description>Newest kits from GCU tactical grace.</description>
+    <dc:creator>yacoob</dc:creator>
+    <language>{{ config.default_language }}</language>
+    <lastBuildDate>{{ last_build_date | date(format="%a, %d %b %Y %H:%M:%S %z") }}</lastBuildDate>
+    <atom:link href="{{ feed_url|safe }}" rel="self" type="application/rss+xml"/>
+    {%- for page in pages %}
+    {%- set kit = get_section(path=page.ancestors.2) %}
+<item>
+  <title>{{ page.date }}: {{ kit.title }}</title>
+  <link>{{ config.base_url|safe }}{{ macros::kit_link(kit=page) }}</link>
+  <pubDate>{{ page.date | date(format="%a, %d %b %Y %H:%M:%S %z") }} </pubDate>
+  <guid>{{ config.base_url|safe }}{{ macros::kit_link(kit=page) }}</guid>
+  <dc:creator>yacoob</dc:creator>
+  <content:encoded><![CDATA[
+    <div class='row voffset-small'>
+    {%- for photo in page.extra.photos %}
+    <div><a href="{{ macros::kit_link(kit=page) }}/{{ loop.index }}">
+        <img src="{{ config.base_url|safe }}{{ macros::thumb(href=photo.href) }}" />
+    </a></div>
+    {%- endfor %}
+    </div>
+  ]]></content:encoded>
+</item>
+    {%- endfor %}
+  </channel>
+</rss>
