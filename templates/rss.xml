@@ -24,8 +24,9 @@
   <content:encoded><![CDATA[
     <div class='row voffset-small'>
     {%- for photo in page.extra.photos %}
+    {%- set img_src = photo.thumb|default(value=photo.href) %}
     <div><a href="{{ macros::kit_link(kit=page) }}/{{ loop.index }}">
-        <img src="{{ config.base_url|safe }}{{ macros::thumb(href=photo.href) }}" />
+        <img src="{{ config.base_url|safe }}{{ macros::thumb(href=img_src) }}" />
     </a></div>
     {%- endfor %}
     </div>
