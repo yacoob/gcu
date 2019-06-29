@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{% for (url, dt) in sitemap_urls|sort %}
-  <url>
-    <loc>{{ base_url + url }}</loc>
-    <lastmod>{{ dt|datetime_to_iso }}</lastmod>
-  </url>
-{% endfor %}
-</urlset>
