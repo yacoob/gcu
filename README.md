@@ -7,11 +7,6 @@
 
 
 ## Zola migration next TODO
-* check `|safe` markings
-* work out whitespace control
-* verify whether all macros are needed
-* rss
-* sitemap.xml that excludes the leaf files
 * make a decision about the switch
 * document the templates
 
