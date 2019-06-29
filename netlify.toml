@@ -10,3 +10,7 @@
 
 [context.branch-deploy]
   command = "make build-netlify-preview"
+
+[[redirects]]
+  from = "/index.xml"
+  to = "rss.xml"
