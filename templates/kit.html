@@ -28,7 +28,21 @@
 </div>
 <div class='row voffset-small'>
 {%- for photo in p.extra.photos %}
-{{ macros::photo(p=photo) }}
+  {%- set img_src = photo.thumb|default(value=photo.href) %}
+  {%- set title = photo.title|default(value='') %}
+  {%- if photo.href is containing('youtu') %}
+    {%- set icon = 'glyphicon-play-circle' %}
+  {%- else %}
+    {%- set icon = '' %}
+  {%- endif %}
+<div class='col-xs-6 col-md-3 col-lg-2'>
+  <div class='gallery-entry voffset-bottom-small'>
+    <a class='gallery' href='{{ macros::full(href=photo.href) }}'{% if title %} data-sub-html='{{ title }}'{% endif %}>
+      <img class='img-rounded img-responsive' src='{{ self::thumb(href=img_src) }}'{% if title %} alt='{{ title }}'{% endif %} />
+      <span class='glyphicon {{icon}} gallery-icon'></span>
+    </a>
+  </div>
+</div>
 {%- endfor %}
 </div>
 {%- endfor %}
