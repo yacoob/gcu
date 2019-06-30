@@ -1,0 +1,25 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "5965da97e0394100366035140cc1a2a0463eca140342d2651c82bab046b181bc"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.7"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "smartcrop": {
+            "git": "git://github.com/hhatto/smartcrop.py",
+            "ref": "74fd5b64f36900dc1ad0f8b9e537a2ea924ce579"
+        }
+    },
+    "develop": {}
+}
