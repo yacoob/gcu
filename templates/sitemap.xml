@@ -1,6 +1,11 @@
+{# vim: set tw=0 ft=jinja: #}
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 {%- set dates = [] %}
+{# `entries` contains all rendered pages, including the leaves which we want to
+   ignore. We use them, however, to work out the lastmod for a kit. Reverse sort
+   gives us all pages for a kit before the kit itself, we collate the dates
+   (from URLs) and pick the oldest. Horrible, isn't it? :D #}
 {%- for sitemap_entry in entries|sort(attribute='permalink')|reverse %}
   {%- if sitemap_entry.permalink is matching('.+/20..-..-../') %}
     {%- set date =  sitemap_entry.permalink|truncate(length=sitemap_entry.permalink|length-1, end='')|split(pat='/')|last %}

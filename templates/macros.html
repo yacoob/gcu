@@ -6,6 +6,7 @@
 
 
 {% macro full(href) -%}
+{# href might be a fully qualified URL (eg. youtube) #}
 {%- if href is containing('://') -%}
 {{ href|safe }}
 {%- else -%}
@@ -29,6 +30,7 @@
 
 
 {% macro kit_cover(kit, width=3) -%}
+{# `kit` might be a page or section #}
 {%- if kit.relative_path is ending_with('_index.md') -%}
 {%- else -%}
   {%- set kit = get_section(path=kit.ancestors.2) %}

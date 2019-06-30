@@ -6,7 +6,12 @@ rss_limit = 15
 hard_link_static = true
 
 [extra]
+# List of all grades. Anything else than this might be rendered but won't get
+# enumerated by the summary pages.
 grades = [ 'hg', 'mg', 'pg', 'rg', 'varia' ]
+# How many entries should be shown on the main page?
 recent_entry_count = 3
+# Directory with full photos.
 photo_full = '/photos/full/'
+# Directory with thumbnails.
 photo_thumb = '/photos/thumb/'

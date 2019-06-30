@@ -3,7 +3,7 @@
 {%- block main %}
 <div class='row voffset-top'>
 {%- for k in section.subsections|sort %}
-{%- set kit = get_section(path=k) %}
+  {%- set kit = get_section(path=k) %}
 {{ macros::kit_cover(kit=kit) }}
 {%- endfor %}
 </div> <!-- row -->

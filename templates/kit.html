@@ -7,6 +7,7 @@
 {%- set page_description = 'tactical grace presents: ' ~ section.title %}
 {%- set page_social_img = macros::full(href=section.extra.cover) %}
 {%- set nav_top = '/' ~ grade.path %}
+{# work out prev/next links; we need to iterate through entire grade in order to find ourselves #}
 {%- set kits = grade.subsections|sort %}
 {%- for kit in kits %}
   {%- if macros::kit_path(path=section.relative_path) == macros::kit_path(path=kit) %}

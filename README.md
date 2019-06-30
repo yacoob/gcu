@@ -6,11 +6,6 @@
 * [lightgallery](https://github.com/sachinchoolur/lightGallery.js)
 
 
-## Zola migration next TODO
-* make a decision about the switch
-* document the templates
-
-
 ## TODO
 
 * consider having two set of thumbs; the gallery ones don't
