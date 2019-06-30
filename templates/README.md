@@ -1,8 +1,9 @@
 ## File layout
 
-Each grade is a section. Each kit is a subsection in a grade. Each entry (a
-batch of photos for a given kit) is a page in that subsection. Pages for entries
-are rendered to empty files, then removed together with their directories.
+Each grade is a top level zola section. Each kit is a subsection in a grade.
+Each entry (a batch of photos for a given kit) is a zola page in that
+subsection. Pages for entries are rendered to empty files, then removed together
+with their parent directories after `zola build` in the Makefile.
 
 ## Example page content
 
@@ -25,9 +26,9 @@ All of the templates have:
 ```jinja
 {# vim: set tw=0 ft=jinja: #}
 ```
-in their first line; vim+ale is auto-setting `html+jinja` filetype and is more
-than happy to wreck the formatting. `{%- foo %}` is preferred for whitespace
-control.
+in their first line; `vim` is auto-setting `html+jinja` filetype and `ale` is
+more than happy to wreck the formatting on save. `{%- foo %}` is preferred for
+whitespace control.
 
 * `base.html`: base for almost all other templates, has configurable `page_vars`
   section, and an optional context dump.
@@ -40,7 +41,7 @@ control.
   kit).
 * `kit.html`: single kit; enumerates all kits for same grade, then loops through
   them until it finds itself in order to establish prev/next.
-* `rss.xml`: feed of lates entries.
+* `rss.xml`: feed of the latest entries.
 * `sitemap.xml`: sitemap; iterates over its own `entries` struct, a dirty trick
   is used to work out `lastmod` for a kit.
 * `404.html`: 404 handler.
