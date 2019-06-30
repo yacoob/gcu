@@ -43,4 +43,4 @@ control.
 * `rss.xml`: feed of lates entries.
 * `sitemap.xml`: sitemap; iterates over its own `entries` struct, a dirty trick
   is used to work out `lastmod` for a kit.
-* `404.html`: 404 handler
+* `404.html`: 404 handler.
