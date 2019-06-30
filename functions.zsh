@@ -2,15 +2,23 @@
 GCU_ROOT_DIR=$(git rev-parse --show-toplevel)
 PHOTO_DIR=${GCU_ROOT_DIR}/static/photos
 
-# Generate YAML bit for last N photos.
+# Generate markup bit for last N photos.
 gcu-gallery() {
   local prefix='gcu-'
   local last=${$(basename $(ls ${PHOTO_DIR}/full | tail -1))%.*}
   last=${last#${prefix}}
-  echo '  photos:'
+  echo "\
+date = $(date +%Y-%m-%d)
+
+[extra]
+cover = \"\"
+photos = ["
   foreach n ($(seq -f %05g $(($last - ${1} + 1)) ${last})) {
-    echo "  - href: /photos/full/${prefix}${n}.jpg"
+    echo "{ href = \"${prefix}${n}.jpg\", title = \"\" },"
   }
+  echo "\
+]
++++"
 }
 
 # Update thumbnails for selected photos.
@@ -33,7 +41,6 @@ gcu-update-thumbs() {
     local thumbfile=${PHOTO_DIR}/thumb/$(basename ${file})
     pipenv run smartcroppy --width 400 --height 400 ${file} ${thumbfile} && ls -l ${thumbfile}
   }
-  chmod -R a+rX ${PHOTO_DIR}
 }
 
 # Convenience function.
