@@ -5,5 +5,5 @@ sort_by = "date"
 template = "kit.html"
 
 [extra]
-cover = "gcu-00265.jpg"
+cover = "gcu-01062.jpg"
 +++
