@@ -4,7 +4,7 @@
 
 * [Bootstrap](http://getbootstrap.com/)
 * [lightgallery](https://github.com/sachinchoolur/lightGallery.js)
-* [smartcrop.py](https://github.com/smartcrop/smartcrop.py)
+* [smartcrop.rs](https://github.com/hhatto/smartcrop.rs)
 
 
 ## TODO

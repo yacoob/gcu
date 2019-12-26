@@ -39,7 +39,7 @@ gcu-update-thumbs() {
   }
   foreach file ($list[@]) {
     local thumbfile=${PHOTO_DIR}/thumb/$(basename ${file})
-    pipenv run smartcroppy --width 400 --height 400 ${file} ${thumbfile} && ls -l ${thumbfile}
+    smartcrop-rs ${file} ${thumbfile} && ls -l ${thumbfile}
   }
 }
 
