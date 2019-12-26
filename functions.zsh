@@ -41,6 +41,7 @@ gcu-update-thumbs() {
     local thumbfile=${PHOTO_DIR}/thumb/$(basename ${file})
     smartcrop-rs ${file} ${thumbfile} && ls -l ${thumbfile}
   }
+  rm -f debug.thumb.jpg
 }
 
 # Convenience function.
