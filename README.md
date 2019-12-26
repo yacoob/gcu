@@ -9,6 +9,8 @@
 
 ## TODO
 
+* add enough code to be able to recreate smartcrop-rs binary if it's not
+  available
 * consider having two set of thumbs; the gallery ones don't
   get larger than 165x165 so with current 400x400 thumbs >75% of the image
   "bulk" is wasted anyway
