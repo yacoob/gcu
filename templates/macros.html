@@ -16,15 +16,15 @@
 
 
 {% macro kit_path(path) -%}
-/{{ path|split(pat='/')|slice(end=2)|join(sep='/')|safe }}/
+{{ path|trim_start_matches(pat='/')|trim_end_matches(pat='/')|split(pat='/')|slice(end=2)|join(sep='/')|safe }}/
 {%- endmacro dirname %}
 
 
 {% macro kit_link(kit) -%}
 {%- if kit.relative_path is ending_with('_index.md') -%}
-/{{ kit.path|safe }}
+{{ kit.path|safe }}
 {%- else -%}
-{{ self::kit_path(path=kit.path) }}#{{ kit.date }}
+/{{ self::kit_path(path=kit.path) }}#{{ kit.date }}
 {%- endif %}
 {%- endmacro kit_link %}
 

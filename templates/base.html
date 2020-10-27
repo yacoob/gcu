@@ -15,8 +15,7 @@
   {%- set title_suffix = '' %}
 {%- else %}
   {%- set title_suffix = ' | tactical grace' %}
-{%- endif %}
-{%- set page_url = '/' ~ current_path|safe -%}
+{%- endif -%}
 <html lang='en'>
 <head>
   <meta charset='utf-8'>
@@ -36,7 +35,7 @@
   <meta name='twitter:title' content='{{ page_description }}'/>
   {%- endif %}
   {%- if include_canonical %}
-  <link href='{{ config.base_url ~ '/' ~ current_path|safe }}' rel='canonical'/>
+  <link href='{{ config.base_url ~ current_path|safe }}' rel='canonical'/>
   {%- endif %}
   <link rel='alternate' type='application/rss+xml' title='tactical grace feed' href='/rss.xml'>
   <title>{{ page_title ~ title_suffix }}</title>
@@ -47,7 +46,7 @@
 {%- block top %}
 <div class='row'><!-- title and mininav -->
   <div class='col-sm-12 col-md-8 text-right'>
-    <h1 class='title'>{% if current_path != '' %}<a href='/{{ current_path|safe }}'>{% endif %}{{ page_title }}{% if current_path %}</a>{% endif %}</h1>
+    <h1 class='title'>{% if current_path != '' %}<a href='{{ current_path|safe }}'>{% endif %}{{ page_title }}{% if current_path %}</a>{% endif %}</h1>
   </div> <!-- column -->
   {%- if navbar %}
   <div class='col-sm-12 col-md-4 text-right voffset-top'>
@@ -60,11 +59,11 @@
     <button class='btn btn-default btn-sm' type='button'><span class='glyphicon glyphicon-th'></span></button></a>
     {%- endif %}
     {%- if nav_prev %}
-    <a data-toggle='tooltip' title='previous kit' href='{{ nav_prev|safe }}'>
+    <a data-toggle='tooltip' title='previous kit' href='/{{ nav_prev|safe }}'>
     <button class='btn btn-default btn-sm' type='button'><span class='glyphicon glyphicon-chevron-left'></span></button></a>
     {%- endif %}
     {%- if nav_next %}
-    <a data-toggle='tooltip' title='next kit' href='{{ nav_next|safe }}'>
+    <a data-toggle='tooltip' title='next kit' href='/{{ nav_next|safe }}'>
     <button class='btn btn-default btn-sm' type='button'><span class='glyphicon glyphicon-chevron-right'></span></button></a>
     {%- endif %}
   </div>
@@ -137,7 +136,7 @@ document.addEventListener('DOMContentLoaded', gcu.postPageHandler);
 {%- endif %}
 {%- if config.extra.debug|default(value=False) %}
 <hr /><pre>
-{{ __tera_context | escape}}
+{{ __tera_context }}
 </pre>
 {%- endif %}
 </body></html>
