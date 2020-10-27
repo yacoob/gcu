@@ -1,11 +1,14 @@
 base_url = 'https://gcu.tactical-grace.net'
 title = 'tactical grace'
 description = 'Welcome to tactical grace!'
-generate_rss = true
-rss_limit = 15
+generate_feed = true
+feed_filename = "rss.xml"
+feed_limit = 15
 hard_link_static = true
 
 [extra]
+# Will dump entire Tera context at the bottom of the page if enabled.
+debug = false
 # List of all grades. Anything else than this might be rendered but won't get
 # enumerated by the summary pages.
 grades = [ 'hg', 'mg', 'pg', 'rg', 'varia' ]

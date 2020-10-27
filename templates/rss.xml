@@ -11,7 +11,7 @@
     <description>Newest kits from GCU tactical grace.</description>
     <dc:creator>yacoob</dc:creator>
     <language>{{ config.default_language }}</language>
-    <lastBuildDate>{{ last_build_date | date(format="%a, %d %b %Y %H:%M:%S %z") }}</lastBuildDate>
+    <lastBuildDate>{{ last_updated | date(format="%a, %d %b %Y %H:%M:%S %z") }}</lastBuildDate>
     <atom:link href="{{ feed_url|safe }}" rel="self" type="application/rss+xml"/>
     {%- for page in pages %}
     {%- set kit = get_section(path=page.ancestors.2) %}
