@@ -3,7 +3,7 @@
   command = "make build"
 
 [build.environment]
-  ZOLA_VERSION = "0.8.0"
+  ZOLA_VERSION = "0.12.2"
 
 [context.deploy-preview]
   command = "make build-netlify-preview"
