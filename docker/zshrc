@@ -91,9 +91,12 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' verbose yes
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
 
+typeset -U path manpath
+path=(~/bin $path[@])
 umask 027
 autoload -U zmv
 bindkey -v
 source /usr/share/doc/fzf/examples/key-bindings.zsh
+source ~/.netlify/helper/path.zsh.inc
 eval $(starship init zsh)
 :

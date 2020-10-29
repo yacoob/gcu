@@ -1,0 +1,3 @@
+source ~/bin/init.sh
+git clone -o github git@github.com:yacoob/gcu.git
+eval $(ssh-agent)

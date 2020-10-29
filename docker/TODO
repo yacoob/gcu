@@ -1,7 +1,5 @@
-* test netlify operations with ~/.netlify set to ro
-* test git clone
-* test netlify operations
 * forward ssh agent
+* forward actual workarea dir
 * test git push
 * test `zola serve`
 * test new post workflow
