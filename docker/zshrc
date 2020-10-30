@@ -96,6 +96,12 @@ path=(~/bin $path[@])
 umask 027
 autoload -U zmv
 bindkey -v
+
+# Initialize tabcompletion.
+autoload -Uz compinit
+[[ -d "${ZDOTDIR:-$HOME}/.zcompdumps"  ]] || mkdir -m 0700 -p "${ZDOTDIR:-$HOME}/.zcompdumps"
+compinit -i -d "${ZDOTDIR:-$HOME}/.zcompdumps/${HOST%%.*}-$ZSH_VERSION"
+
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source ~/.netlify/helper/path.zsh.inc
 eval $(starship init zsh)
