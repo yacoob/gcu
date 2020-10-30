@@ -6,6 +6,10 @@ RUN npm install netlify-cli -g
 # Install convenience tooling.
 RUN curl -fsSL https://starship.rs/install.sh | bash -s -- -y
 RUN apt-get update && apt-get install -y curl fzf git-lfs less sudo vim-nox zsh && apt-get clean
+# Install zola.
+ENV ZOLA_VERSION v0.12.2
+RUN curl -L https://github.com/getzola/zola/releases/download/$ZOLA_VERSION/zola-$ZOLA_VERSION-x86_64-unknown-linux-gnu.tar.gz | tar xz
+RUN mv zola /usr/bin
 # node image comes with a 'node' user; I'm taking it over to:
 #  - reuse uid and gid
 #  - keep the familiar name
