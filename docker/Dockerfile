@@ -21,10 +21,11 @@ RUN passwd -d yacoob
 WORKDIR /home/yacoob
 USER yacoob
 RUN netlify plugins:install netlify-lm-plugin
-COPY --chown=yacoob:yacoob init.sh /home/yacoob/bin/init.sh
-COPY --chown=yacoob:yacoob zshrc /home/yacoob/.zshrc
-COPY --chown=yacoob:yacoob zsh_history /home/yacoob/.zsh_history
-COPY --chown=yacoob:yacoob gitconfig /home/yacoob/.gitconfig
-COPY --chown=yacoob:yacoob starship.toml /home/yacoob/.config/starship.toml
+COPY --chown=yacoob:yacoob init.sh bin/init.sh
+COPY --chown=yacoob:yacoob zshrc .zshrc
+COPY --chown=yacoob:yacoob zsh_history .zsh_history
+COPY --chown=yacoob:yacoob gitconfig .gitconfig
+COPY --chown=yacoob:yacoob starship.toml .config/starship.toml
+RUN mkdir ~/workarea
 EXPOSE 1111
 ENTRYPOINT ["/usr/bin/zsh"]
