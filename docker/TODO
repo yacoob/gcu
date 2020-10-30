@@ -1,5 +1,4 @@
-* forward ssh agent
-* forward actual workarea dir
-* test git push
-* test `zola serve`
+* work out port forwarding for `zola serve`
+* mount an actual workarea dir
 * test new post workflow
+* work out tab-completion and prompt borkage
