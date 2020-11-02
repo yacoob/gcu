@@ -26,4 +26,3 @@ RUN curl -L https://github.com/getzola/zola/releases/download/$ZOLA_VERSION/zola
 USER yacoob
 WORKDIR /home/yacoob
 EXPOSE 1111
-ENTRYPOINT ["/usr/bin/zsh"]
