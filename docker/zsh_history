@@ -1,1 +1,3 @@
 git clone -o github git@github.com:yacoob/gcu.git
+git push-everywhere
+git push-all
