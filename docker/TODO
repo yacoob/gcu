@@ -1,4 +1,10 @@
+* try an approach with independent helper from
+https://github.com/netlify/netlify-credential-helper
+and an env var containing the token from
+https://app.netlify.com/user/applications
+or putting it in a
+`{ "access_token": "bla" }`
+json file
 * work out port forwarding for `zola serve`
 * mount an actual workarea dir
 * test new post workflow
-* work out tab-completion and prompt borkage
