@@ -1,0 +1,6 @@
+# The first line resets the list of helpers so we can check Netlify's first.
+[credential]
+  helper = ""
+
+[credential]
+  helper = netlify

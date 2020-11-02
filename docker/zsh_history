@@ -1,4 +1,1 @@
-source ~/bin/init.sh
-eval $(ssh-agent)
 git clone -o github git@github.com:yacoob/gcu.git
-mkdir ~/workarea

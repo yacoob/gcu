@@ -22,7 +22,12 @@ RUN curl -L https://github.com/netlify/netlify-credential-helper/releases/downlo
 ENV ZOLA_VERSION=v0.12.2
 RUN curl -L https://github.com/getzola/zola/releases/download/$ZOLA_VERSION/zola-$ZOLA_VERSION-x86_64-unknown-linux-gnu.tar.gz | tar xz
 
-# Ready to run.
 USER yacoob
 WORKDIR /home/yacoob
+ARG CTX=/tmp/ctx
+COPY --chown=yacoob:yacoob . ${CTX}
+RUN cat ${CTX}/zlogin >> .zlogin &&\
+    cat ${CTX}/gitconfig >> .gitconfig &&\
+    cp ${CTX}/zsh_history .zsh_history
+# Ready to run.
 EXPOSE 1111
