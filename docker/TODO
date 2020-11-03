@@ -1,2 +1,3 @@
-* work out port forwarding for `zola serve`
+* add --interface 0.0.0.0 to zola serve if it's running in Docker
+* add functions.zsh to the container
 * test new post workflow
