@@ -1,12 +1,12 @@
 # Build https://github.com/muesli/smartcrop binary.
-FROM golang:buster as smartcrop-build
+FROM golang:buster AS smartcrop-build
 ENV SRC_URL=github.com/muesli/smartcrop
 ENV GO111MODULE=on
 ENV SMARTCROP_VERSION=e13d445
 RUN go get -d -v ${SRC_URL}@${SMARTCROP_VERSION} && cd pkg/mod/${SRC_URL}* && go install -mod=mod -v ./...
 
 # Debian-based node environment
-FROM yacoob/interactive:latest
+FROM yacoob/interactive AS gcu-dev
 # Install necessary software.
 USER root
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -32,3 +32,14 @@ RUN cat ${CTX}/zlogin >> .zlogin &&\
     cp ${CTX}/zsh_history .zsh_history
 # Ready to run.
 EXPOSE 1111
+
+FROM yacoob/gcu-dev AS gcu-dbg
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      iproute2 \
+      lsof \
+      net-tools \
+      strace \
+      telnet \
+    && apt-get clean
+USER yacoob
