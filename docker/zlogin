@@ -1,6 +1,11 @@
-[[ -d ~/workarea/gcu ]] && cd ~/workarea/gcu
-
 local _netlify_config=~/.config/netlify
 local _netlify_url='https://app.netlify.com/user/applications'
 grep --silent access_token ${_netlify_config} 2>/dev/null || echo \
-  "-!- Visit ${_netlify_url} to get a token\n    then put it in ${_netlify_config} as '{\"access_token\": \"...\"}'"
+  "-!- Visit ${_netlify_url} to get a token\n    then put it in ${_netlify_config} as '{\"access_token\": \"...\"}'."
+
+local _workdir=~/workarea/gcu
+if [[ -d ${_workdir} ]]; then
+  cd ${_workdir}
+else
+  echo "-!- Restart the container with the work directory mounted at ${_workdir}."
+fi
