@@ -1,12 +1,13 @@
-GOLD_DIR := /tmp/gcu-golden
-GOLD_OUT := /tmp/gcu-out
-BASE_URL := ${DEPLOY_PRIME_URL}
-ZOLA     ?= zola
-HOST     ?= gcu.tactical-grace.net
+GOLD_ROOT  := tmp
+GOLD_DIR   := ${GOLD_ROOT}/gcu-golden
+GOLD_OUT   := ${GOLD_ROOT}/gcu-out
+BASE_URL   := ${DEPLOY_PRIME_URL}
+ZOLA       ?= zola
+HOST       ?= gcu.tactical-grace.net
 # Make zola bind to all interfaces instead of locahost if we're running in
 # Docker. This is necessary for the port forward to work without further
 # fiddling.
-SERVE_FLAG   := $(or $(and $(wildcard /.dockerenv),--interface=0.0.0.0),)
+SERVE_FLAG := $(or $(and $(wildcard /.dockerenv),--interface=0.0.0.0),)
 
 
 .PHONY: all
@@ -14,7 +15,7 @@ all: build
 
 
 .PHONY: clean
-clean:
+clean: golden-clean
 	@rm -rf public
 	@find . -iname \*~ | xargs rm -f
 
@@ -61,24 +62,23 @@ publish: .check-for-clean-repo clean
 # will diff the currently buildable set of files against the one in $GCU_GOLDEN.
 .PHONY: golden-build
 golden-build: D:=$(GOLD_DIR)/$(shell git rev-parse --short HEAD)
-golden-build: clean .check-for-clean-repo
+golden-build: .check-for-clean-repo clean
 	@rm -rf $(D)
 	@mkdir -p $(D)
 	@$(ZOLA) build --output-dir=$(D) >/dev/null 2>&1
 	@echo export GCU_GOLDEN=$(D)
 
-# On OSX diff doesn't support --color. Well, we can abuse git for this... :D
 .PHONY: golden-diff
 golden-diff:
 	test $(GCU_GOLDEN) || ( echo "Please set GCU_GOLDEN variable."; exit 1 )
 	rm -rf $(GOLD_OUT)
 	mkdir -p $(GOLD_OUT)
 	$(ZOLA) build --output-dir=$(GOLD_OUT)
-	-git diff --no-index ${GCU_GOLDEN} $(GOLD_OUT)
+	-diff --color=always -Naru ${GCU_GOLDEN} $(GOLD_OUT) | less
 
 .PHONY: golden-clean
 golden-clean:
-	rm -rf $(GOLD_DIR) $(GOLD_OUT)
+	rm -rf $(GOLD_ROOT)
 
 
 # A helper to verify whether everything is reachable on the published site.

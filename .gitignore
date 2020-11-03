@@ -1,4 +1,4 @@
 .netlify/
-.venv/
 public/
+tmp/
 golden/
