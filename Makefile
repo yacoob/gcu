@@ -37,14 +37,14 @@ zola-build-override-base-url:
 
 .PHONY: serve
 serve:
-	$(ZOLA) serve ${SERVE_FLAG}
+	$(ZOLA) serve $(SERVE_FLAG)
 
 .PHONY: serve-debug
 serve-debug: TF:=$(shell mktemp)
 serve-debug:
 	cp -f config.toml $(TF)
 	echo 'debug = true' >> $(TF)
-	$(ZOLA) -c $(TF) serve ${SERVE_FLAG} && rm -f $(TF)
+	$(ZOLA) -c $(TF) serve $(SERVE_FLAG) && rm -f $(TF)
 
 .PHONY: build build-netlify-preview
 build: zola-build .cleanup-kit-pages
