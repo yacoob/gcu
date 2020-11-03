@@ -22,6 +22,7 @@ jobs:
       - name: Build and push image
         uses: docker/build-push-action@v2
         with:
+          target: gcu-dev
           context: docker/
           file: docker/Dockerfile
           push: true
