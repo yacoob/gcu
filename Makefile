@@ -3,6 +3,10 @@ GOLD_OUT := /tmp/gcu-out
 BASE_URL := ${DEPLOY_PRIME_URL}
 ZOLA     ?= zola
 HOST     ?= gcu.tactical-grace.net
+# Make zola bind to all interfaces instead of locahost if we're running in
+# Docker. This is necessary for the port forward to work without further
+# fiddling.
+SERVE_FLAG   := $(or $(and $(wildcard /.dockerenv),--interface=0.0.0.0),)
 
 
 .PHONY: all
@@ -33,14 +37,14 @@ zola-build-override-base-url:
 
 .PHONY: serve
 serve:
-	$(ZOLA) serve
+	$(ZOLA) serve ${SERVE_FLAG}
 
 .PHONY: serve-debug
 serve-debug: TF:=$(shell mktemp)
 serve-debug:
 	cp -f config.toml $(TF)
 	echo 'debug = true' >> $(TF)
-	$(ZOLA) -c $(TF) serve && rm -f $(TF)
+	$(ZOLA) -c $(TF) serve ${SERVE_FLAG} && rm -f $(TF)
 
 .PHONY: build build-netlify-preview
 build: zola-build .cleanup-kit-pages
