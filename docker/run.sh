@@ -1,4 +1,5 @@
 #!/bin/sh
+DOCKER_IMAGE=${DOCKER_IMAGE:-gcu-dev}
 netlify_config=~/.config/netlify
 ssh_socket=${SSH_AUTH_SOCK:-~/.ssh/agent.sock}
 workdir=~/workarea/gcu
@@ -8,10 +9,10 @@ fi
 
 exec </dev/tty
 docker run -it --rm \
-  --hostname gcu-dev \
+  --hostname ${DOCKER_IMAGE} \
   -p 1111:1111 \
   -v ${netlify_config}:${netlify_config} \
   -v ${ssh_socket}:${ssh_socket} \
   -e SSH_AUTH_SOCK=${ssh_socket} \
   ${workdir_opt} \
-  yacoob/gcu-dev
+  yacoob/${DOCKER_IMAGE}
