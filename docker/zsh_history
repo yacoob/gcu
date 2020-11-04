@@ -1,3 +1,6 @@
+gcu-markup 10
+gcu-thumbs 10
+gcu-process-photos 10
 git clone -o github git@github.com:yacoob/gcu.git
 git push-all
 git push-everywhere
