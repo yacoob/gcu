@@ -1,9 +1,15 @@
+$(make golden-build)
 gcu-markup 10
-gcu-thumbs 10
 gcu-process-photos 10
+gcu-thumbs 10
 git clone -o github git@github.com:yacoob/gcu.git
 git push-all
 git push-everywhere
+make build
 make clean
+make golden-clean
+make golden-diff
+make publish
 make serve
+make serve-dbg
 ssh-add -l
