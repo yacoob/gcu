@@ -37,7 +37,7 @@ gcu-thumbs() {
   }
   foreach file ($list[@]) {
     local thumbfile=${GCU_PHOTO_DIR}/thumb/$(basename ${file})
-    echo smartcrop --input ${file} --output ${thumbfile} --width 400 --height 400 --quality 90 && ls -l ${thumbfile}
+    smartcrop --input ${file} --output ${thumbfile} --width 400 --height 400 --quality 90 && ls -l ${thumbfile}
   }
 }
 
