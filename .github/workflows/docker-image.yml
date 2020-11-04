@@ -3,6 +3,8 @@ name: Build and push image to Docker Hub
 on:
   push:
     branches: [ master ]
+  repository_dispatch:
+    types: dependency-updated
 
 jobs:
   build:
