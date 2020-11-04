@@ -31,15 +31,14 @@ ARG CTX=/tmp/ctx
 COPY --chown=yacoob:yacoob . ${CTX}
 ENV ZDOTDIR=/home/yacoob/.zsh-gcu
 WORKDIR ${ZDOTDIR}
-RUN cp ${CTX}/zlogin .zlogin && \
-    cp ${CTX}/zshenv .zshenv && \
-    ln -s ~/.zshrc && \
-    cat ${CTX}/gitconfig >> ~/.gitconfig && \
-    cp ${CTX}/zsh_history ~/.zsh_history
+RUN for f in zshenv zshrc zlogin zsh_history; do cp ${CTX}/${f} .${f}; done && \
+     cat ${CTX}/gitconfig >> ~/.gitconfig && \
+     rm -rf ${CTX}
 # Ready to run.
 EXPOSE 1111
 
 # Debug flavour: normal dev image + some debugging tools.
+#
 FROM gcu-dev AS gcu-dbg
 USER root
 # I'm not cleaning the apt lists here; I'm likely to need them to install
