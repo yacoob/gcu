@@ -1,4 +1,4 @@
-# The first line resets the list of helpers so we can check Netlify's first.
+# The first line resets the list of helpers so we Netlify has the priority.
 [credential]
   helper = ""
 
