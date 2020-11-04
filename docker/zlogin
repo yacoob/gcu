@@ -1,11 +1,68 @@
+# GCU helper functions.
+#
+# Generate markup bit for last N photos.
+gcu-markup() {
+  local prefix='gcu-'
+  local last=${$(basename $(ls ${GCU_PHOTO_DIR}/full | tail -1))%.*}
+  last=${last#${prefix}}
+  echo "\
+date = $(date +%Y-%m-%d)
+
+[extra]
+cover = \"\"
+photos = ["
+  foreach n ($(seq -f %05g $(($last - ${1} + 1)) ${last})) {
+    echo "{ href = \"${prefix}${n}.jpg\", title = \"\" },"
+  }
+  echo "\
+]
++++"
+}
+
+# Update thumbnails for selected photos.
+gcu-thumbs() {
+  local -a list
+  local photos=(${GCU_PHOTO_DIR}/full/*jpg)
+  if [[ "${1}" =~ "[0-9]+" ]] {
+    list=($photos[-${1},-1])
+  } elif [[ "${1}" == "-f" ]] {
+    list=(${photos})
+  } else {
+    foreach file ($photos[@]) {
+      local sn=$(basename ${file})
+      if [[ ${file} -nt ${GCU_PHOTO_DIR}/thumb/${sn} ]] {
+        list+=${file}
+      }
+    }
+  }
+  foreach file ($list[@]) {
+    local thumbfile=${GCU_PHOTO_DIR}/thumb/$(basename ${file})
+    echo smartcrop --input ${file} --output ${thumbfile} --width 400 --height 400 --quality 90 && ls -l ${thumbfile}
+  }
+}
+
+# Generate thumbnails AND markup.
+gcu-process-photos() {
+  if [[ "${1}" =~ "[0-9]+" ]] {
+    gcu-thumbs ${1}
+    gcu-markup ${1}
+  }
+}
+
+
+# Actual zlogin code.
+#
 local _netlify_config=~/.config/netlify
 local _netlify_url='https://app.netlify.com/user/applications'
 grep --silent access_token ${_netlify_config} 2>/dev/null || echo \
   "-!- Visit ${_netlify_url} to get a token\n    then put it in ${_netlify_config} as '{\"access_token\": \"...\"}'."
 
-local _workdir=~/workarea/gcu
-if [[ -d ${_workdir} ]]; then
-  cd ${_workdir}
+local _dir=${GCU_ROOT_DIR}
+if [[ -d ${_dir} ]]; then
+  cd ${_dir}
 else
-  echo "-!- Restart the container with the work directory mounted at ${_workdir}."
+  echo "-!- Restart the container with the work directory mounted at ${_dir}."
 fi
+
+# Call the original zlogin too.
+source ~/.zlogin

@@ -23,16 +23,23 @@ RUN curl -L https://github.com/netlify/netlify-credential-helper/releases/downlo
 ENV ZOLA_VERSION=v0.12.2
 RUN curl -L https://github.com/getzola/zola/releases/download/$ZOLA_VERSION/zola-$ZOLA_VERSION-x86_64-unknown-linux-gnu.tar.gz | tar xz
 
+# Set up config files. ZDOTDIR overrides the location of the main zsh config
+# files. I can then source the original files from ~ as needed.
 USER yacoob
-WORKDIR /home/yacoob
 ARG CTX=/tmp/ctx
 COPY --chown=yacoob:yacoob . ${CTX}
-RUN cat ${CTX}/zlogin >> .zlogin &&\
-    cat ${CTX}/gitconfig >> .gitconfig &&\
-    cp ${CTX}/zsh_history .zsh_history
+ENV ZDOTDIR=/home/yacoob/.zsh-gcu
+WORKDIR ${ZDOTDIR}
+RUN cp ${CTX}/zlogin .zlogin && \
+    cp ${CTX}/zshenv .zshenv && \
+    ln -s ~/.zshrc && \
+    cat ${CTX}/gitconfig >> ~/.gitconfig && \
+    cp ${CTX}/zsh_history ~/.zsh_history
+
 # Ready to run.
 EXPOSE 1111
 
+# Debug flavour: normal dev image + some debugging tools.
 FROM yacoob/gcu-dev AS gcu-dbg
 USER root
 RUN apt-get update && apt-get install -y --no-install-recommends \

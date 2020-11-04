@@ -1,0 +1,5 @@
+GCU_ROOT_DIR=~/workarea/gcu
+GCU_PHOTO_DIR=${GCU_ROOT_DIR}/static/photos
+
+# Load the original zshenv too.
+source ~/.zshenv
