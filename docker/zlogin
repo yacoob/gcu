@@ -5,7 +5,7 @@ gcu-markup() {
   local prefix='gcu-'
   local last=${$(basename $(ls ${GCU_PHOTO_DIR}/full | tail -1))%.*}
   last=${last#${prefix}}
-  echo "\
+  echo "+++\
 date = $(date +%Y-%m-%d)
 
 [extra]
