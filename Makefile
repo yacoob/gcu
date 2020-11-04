@@ -78,7 +78,7 @@ golden-diff:
 
 .PHONY: golden-clean
 golden-clean:
-	rm -rf $(GOLD_ROOT)
+	@rm -rf $(GOLD_ROOT)
 
 
 # A helper to verify whether everything is reachable on the published site.
