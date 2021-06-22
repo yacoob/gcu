@@ -46,4 +46,4 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
           tags: |
             ${{ steps.docker_meta.outputs.tags }}
-            ${{ env.PUSH_TO_MASTER == 'true' && 'yacoob/gcu-dev:latest' }}
+            ${{ env.PUSH_TO_MASTER == 'true' && 'yacoob/gcu-dev:latest' || ''}}
