@@ -32,7 +32,7 @@ export default {
         const vId = this.photoFile.split("/").pop();
         return "https://img.youtube.com/vi/" + vId + "/0.jpg";
       } else {
-        return "https://gunp.la/photos/thumb/" + this.photoFile;
+        return "/photos/thumb/" + this.photoFile;
       }
     },
   },

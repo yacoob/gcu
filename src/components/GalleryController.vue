@@ -88,10 +88,8 @@ export default {
     });
     // Transform photo objects into objects that LG expects.
     const lgImages = this.images.map((p) => ({
-      src: p.href.startsWith("https")
-        ? p.href
-        : "https://gunp.la/photos/full/" + p.href,
-      thumb: "https://gunp.la/photos/thumb/" + p.href,
+      src: p.href.startsWith("https") ? p.href : "/photos/full/" + p.href,
+      thumb: "/photos/thumb/" + p.href,
       subHtml: p.title,
     }));
     this.lg = lightGallery(lg_element, {
