@@ -1,4 +1,8 @@
-.netlify/
-public/
-tmp/
-golden/
+*.log
+.cache
+.DS_Store
+src/.temp
+node_modules
+dist
+.env
+.env.*
