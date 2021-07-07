@@ -77,7 +77,7 @@ query ($id: ID!) {
     }
     cover
     entries {
-      date
+      date(format:"YYYY-MM-DD")
       photos {
         title
         href
