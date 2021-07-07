@@ -4,7 +4,7 @@
 
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
-
+const crypto = require('crypto')
 
 module.exports = function (api) {
   api.onCreateNode(options => {
@@ -18,10 +18,27 @@ module.exports = function (api) {
         options.grade = dirName.toUpperCase()
       }
     }
-  })
-  api.loadSource(({ addCollection }) => {
-    // Use the Data Store API here: https://gridsome.org/docs/data-store-api/
-  })
+  }),
+
+    api.loadSource(async actions => {
+      // Go through kits, add separate nodes for Entries. They're needed for RSS
+      // and main page, url is sufficient.
+      const entries = actions.addCollection('EntriesCache')
+      const kits = actions.addCollection('Kit')
+      kits.addReference('kit', 'Kit')
+      kits.data().forEach((kit) => {
+        kit.entries.forEach((entry) => {
+          const date = entry.date.toISOString().slice(0, 10)
+          const id = crypto.createHash('md5').update(date).update(kit.path).digest('hex')
+          entries.addNode({
+            id,
+            date,
+            url: [kit.path, '#', date].join(''),
+            kit: actions.createReference(kit)
+          })
+        })
+      })
+    })
 
   api.createPages(({ createPage }) => {
     // Use the Pages API here: https://gridsome.org/docs/pages-api/
