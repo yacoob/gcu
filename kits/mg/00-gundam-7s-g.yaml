@@ -2,18 +2,30 @@
 title: 00 Gundam 7S/G
 cover: gcu-00425.jpg
 entries:
-- date: 2014-11-27 21:46:41+01:00
-  cover: gcu-00583.jpg
+- date: 2013-05-06
+  cover: gcu-00179.jpg
   photos:
-  - href: gcu-00582.jpg
-    title: Ultimate showdown of ultimate destiny!
-  - href: gcu-00583.jpg
-    title: Fiery RED.
-  - href: gcu-00584.jpg
-    title: Icy BLU.
-  - href: gcu-00585.jpg
-    title: '*Newtype flash sound*'
-- date: 2014-02-26 23:18:10+01:00
+  - href: gcu-00179.jpg
+    title: So. Many. RUNNERS.
+  - href: gcu-00180.jpg
+  - href: gcu-00178.jpg
+  - href: gcu-00183.jpg
+  - href: gcu-00184.jpg
+  - href: gcu-00185.jpg
+    title: '>180°!'
+  - href: gcu-00181.jpg
+    title: /flex
+  - href: gcu-00212.jpg
+    title: GN Drives, currently without LEDs.
+  - href: gcu-00211.jpg
+  - href: gcu-00213.jpg
+    title: His codpiece made of metal...
+  - href: gcu-00214.jpg
+    title: That's a huge... sword. Shield. Piece of plastic.
+  - href: gcu-00215.jpg
+  - href: gcu-00234.jpg
+    title: Mmm, swords.
+- date: 2014-02-26
   cover: gcu-00417.jpg
   photos:
   - href: gcu-00417.jpg
@@ -39,26 +51,14 @@ entries:
     title: To battle!
   - href: gcu-00416.jpg
     title: Assembling the W fin back.
-- date: 2013-05-06 23:18:10+01:00
-  cover: gcu-00179.jpg
+- date: 2014-11-27
+  cover: gcu-00583.jpg
   photos:
-  - href: gcu-00179.jpg
-    title: So. Many. RUNNERS.
-  - href: gcu-00180.jpg
-  - href: gcu-00178.jpg
-  - href: gcu-00183.jpg
-  - href: gcu-00184.jpg
-  - href: gcu-00185.jpg
-    title: '>180°!'
-  - href: gcu-00181.jpg
-    title: /flex
-  - href: gcu-00212.jpg
-    title: GN Drives, currently without LEDs.
-  - href: gcu-00211.jpg
-  - href: gcu-00213.jpg
-    title: His codpiece made of metal...
-  - href: gcu-00214.jpg
-    title: That's a huge... sword. Shield. Piece of plastic.
-  - href: gcu-00215.jpg
-  - href: gcu-00234.jpg
-    title: Mmm, swords.
+  - href: gcu-00582.jpg
+    title: Ultimate showdown of ultimate destiny!
+  - href: gcu-00583.jpg
+    title: Fiery RED.
+  - href: gcu-00584.jpg
+    title: Icy BLU.
+  - href: gcu-00585.jpg
+    title: '*Newtype flash sound*'

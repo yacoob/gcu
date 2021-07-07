@@ -2,7 +2,7 @@
 title: Zee Zulu
 cover: gcu-00701.jpg
 entries:
-- date: 2015-11-21 23:20:39+01:00
+- date: 2015-11-21
   cover: gcu-00697.jpg
   photos:
   - href: gcu-00695.jpg
@@ -19,3 +19,4 @@ entries:
   - href: gcu-00701.jpg
     title: '*snikt*'
   - href: https://youtu.be/_4nB5vC1epE
+    thumb: gcu-00702.jpg

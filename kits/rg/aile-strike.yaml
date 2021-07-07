@@ -2,7 +2,33 @@
 title: Aile Strike
 cover: gcu-00404.jpg
 entries:
-- date: 2014-01-03 23:18:10+01:00
+- date: 2013-04-22
+  cover: gcu-00173.jpg
+  photos:
+  - href: gcu-00173.jpg
+    title: Brothers gonna work it out
+  - href: gcu-00174.jpg
+    title: Come back! Give me my head back!
+  - href: gcu-00176.jpg
+    title: Hand base courtesy of &quot;Action Base 1 and 2 have different tips&quot;
+      :o
+  - href: gcu-00177.jpg
+    title: Life imitates art.
+- date: 2013-10-07
+  cover: gcu-00258.jpg
+  photos:
+  - href: gcu-00259.jpg
+    title: Before...
+  - href: gcu-00262.jpg
+    title: ' ...and after.'
+  - href: gcu-00258.jpg
+    title: Panel lining heaven.
+  - href: gcu-00261.jpg
+  - href: gcu-00260.jpg
+    title: Tools of tonight's trade.
+  - href: gcu-00263.jpg
+    title: 'Next stop: decals.'
+- date: 2014-01-03
   cover: gcu-00405.jpg
   photos:
   - href: gcu-00405.jpg
@@ -44,28 +70,3 @@ entries:
     title: Now, Sailor Moon! Transform!
   - href: gcu-00395.jpg
     title: Keep'em flying.
-- date: 2013-10-07 23:18:10+01:00
-  cover: gcu-00258.jpg
-  photos:
-  - href: gcu-00259.jpg
-    title: Before...
-  - href: gcu-00262.jpg
-    title: ' ...and after.'
-  - href: gcu-00258.jpg
-    title: Panel lining heaven.
-  - href: gcu-00261.jpg
-  - href: gcu-00260.jpg
-    title: Tools of tonight's trade.
-  - href: gcu-00263.jpg
-    title: 'Next stop: decals.'
-- date: 2013-04-22 23:18:10+01:00
-  cover: gcu-00173.jpg
-  photos:
-  - href: gcu-00173.jpg
-    title: Brothers gonna work it out
-  - href: gcu-00174.jpg
-    title: Come back! Give me my head back!
-  - href: gcu-00176.jpg
-    title: Hand base courtesy of &quot;Action Base 1 and 2 have different tips&quot; :o
-  - href: gcu-00177.jpg
-    title: Life imitates art.
