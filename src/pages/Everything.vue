@@ -4,7 +4,7 @@
     <ul>
       <li v-for="edge in $page.allKit.edges" :key="edge.node">
         <g-link :to="edge.node.path"
-          >{{ edge.node.grade.title }}: {{ edge.node.title }}</g-link
+          >{{ edge.node.grade }}: {{ edge.node.title }}</g-link
         >
       </li>
     </ul>
@@ -18,9 +18,7 @@ query allAvailableKits {
       node {
         path
         title
-        grade {
-          title
-        }
+        grade
       }
     }
   }

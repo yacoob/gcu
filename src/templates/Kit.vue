@@ -3,7 +3,7 @@
     <i>{{ $page.kit.id }} </i>
     <h1>
       <Thumb :width="200" :height="200" :photoFile="$page.kit.cover" />
-      {{ $page.kit.grade.title }}:
+      {{ $page.kit.grade }}:
       {{ $page.kit.title }}
     </h1>
     <ClientOnly>
@@ -72,9 +72,7 @@ query ($id: ID!) {
   kit(id: $id) {
     id
     title
-    grade {
-      title
-    }
+    grade
     cover
     entries {
       date(format:"YYYY-MM-DD")
