@@ -1,7 +1,6 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/39fb5576-3cb9-4a94-b61c-4e9eb0fd9108/deploy-status)](https://app.netlify.com/sites/gcu/deploys)
 
 # The road to avuesome site
-* convert data to yaml
 * write down scenarios for data access, decide whether grade as a separate type is needed
 * add global metadata with sorted entries (needed for main/rss)
 * add prev/next links on the kit page
