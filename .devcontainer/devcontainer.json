@@ -14,10 +14,6 @@
 		// My config files reset entire PATH by default. This variable inhibits this behaviour. It's needed because vscode adds a dynamically created directory with helpers under /vscode.
 		"__PRESERVE_PATH": "true"
 	},
-	// Set *default* container specific settings.json values on container create.
-	"settings": {
-		"terminal.integrated.shell.linux": "/bin/zsh"
-	},
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"dbaeumer.vscode-eslint",
