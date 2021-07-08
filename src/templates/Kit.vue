@@ -64,6 +64,24 @@ export default {
       return _.flatMap(this.orderedEntries, "photos");
     },
   },
+  mounted() {
+    // Handle url fragment.
+    const dateRe = /#\d\d\d\d-\d\d-\d\d/;
+    const photoRe = /#p\/\d/;
+    const fragment = location.hash;
+    console.log(fragment);
+    if (dateRe.test(fragment)) {
+      console.log("it's a date!");
+    } else if (photoRe.test(fragment)) {
+      console.log("it's a photo number!");
+      const n = Number(fragment.slice(3));
+      if (n > 0 && n < this.allPhotos.length) {
+        console.log("Setting current photo to " + n)
+        // this.currentPhoto = fragment.slice(3);
+      }
+      console.log("meh, weird fragment");
+    }
+  },
 };
 </script>
 
