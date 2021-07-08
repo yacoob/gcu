@@ -34,6 +34,7 @@ module.exports = function (api) {
             id,
             date,
             url: [kit.path, '#', date].join(''),
+            cover: entry.cover,
             kit: actions.createReference(kit)
           })
         })
