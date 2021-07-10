@@ -15,10 +15,10 @@
 | sitemap     | `/sitemap.xml`   |                          plugin |   ❌   |
 
 ## The road to avuesome site
-* handle url fragment on kit page load - both `#YYYY-MM-DD` and `#p/1`
-  * do I want to simplify `#p/1` into just `#1`? probably not.
-  * check out lightgallery's hash plugin
-  * decide whether I want to keep pushing new slides to `history` - it
+* handle url hash on kit page load - both `#YYYY-MM-DD` and `#p/1`
+* handle url hash change once page is loaded - supposedly there's vue-router hook called then
+* update the hash on gallery navigation
+* decide whether I want to keep pushing new slides to `history` - it
     is nice, but spams the entries
 * add prev/next fields for the kit nodes
 * add prev/next links on the kit page
