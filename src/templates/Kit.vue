@@ -21,6 +21,7 @@
         :key="photo.href"
         :title="photo.title"
         :photoFile="photo.href"
+        :id="'photo' + getGalleryIdx(photo.href)"
         @click.native="setCurrentPhoto"
       />
     </div>
@@ -69,9 +70,12 @@ export default {
     },
     // Brings up gallery displaying a specific photo.
     setCurrentPhoto: function (e) {
-      this.currentPhoto = _.map(this.allPhotos, "href").indexOf(
-        e.target.dataset.gcuPhoto
+      this.updateCurrentPhoto(
+        _.map(this.allPhotos, "href").indexOf(e.target.dataset.gcuPhoto)
       );
+    },
+    getGalleryIdx: function (filename) {
+      return _.map(this.allPhotos, "href").indexOf(filename);
     },
   },
   computed: {
