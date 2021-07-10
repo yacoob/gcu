@@ -74,8 +74,26 @@ export default {
         _.map(this.allPhotos, "href").indexOf(e.target.dataset.gcuPhoto)
       );
     },
+    setCurrentPhoto: function (value) {},
     getGalleryIdx: function (filename) {
       return _.map(this.allPhotos, "href").indexOf(filename);
+    },
+    // Handle url fragment.
+    handleHash: function () {
+      const dateRe = /#\d\d\d\d-\d\d-\d\d/;
+      const photoRe = /#photo\d+/;
+      const fragment = location.hash;
+      if (dateRe.test(fragment)) {
+        console.log("it's a date!");
+      } else if (photoRe.test(fragment)) {
+        console.log("it's a photo number!");
+        const n = Number(fragment.slice(6));
+        if (n > 0 && n < this.allPhotos.length) {
+          this.currentPhoto = n - 1;
+        }
+      } else {
+        console.log("meh, weird fragment");
+      }
     },
   },
   computed: {
@@ -88,21 +106,15 @@ export default {
       return _.flatMap(this.orderedEntries, "photos");
     },
   },
+  watch: {
+    $route(to, from) {
+      console.log(`$route watcher(): ${to}`);
+      this.handleHash();
+    },
+  },
   mounted() {
-    // Handle url fragment.
-    // const dateRe = /#\d\d\d\d-\d\d-\d\d/;
-    // const photoRe = /#p\/\d/;
-    // const fragment = location.hash;
-    // if (dateRe.test(fragment)) {
-    //   console.log("it's a date!");
-    // } else if (photoRe.test(fragment)) {
-    //   console.log("it's a photo number!");
-    //   const n = Number(fragment.slice(3));
-    //   if (n > 0 && n < this.allPhotos.length) {
-    //     // this.currentPhoto = fragment.slice(3);
-    //   }
-    //   console.log("meh, weird fragment");
-    // }
+    console.log("mounted()");
+    this.handleHash();
   },
 };
 </script>
