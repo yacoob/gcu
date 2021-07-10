@@ -31,6 +31,16 @@
 import _ from "lodash";
 import Thumb from "~/components/Thumb.vue";
 
+// Redirect '#p/NN' to '#photoNN'.
+function _rewriteHash(to, from, next) {
+  const reMatch = to.hash.match(/^#p\/(\d+)/);
+  if (reMatch) {
+    console.log(`redirecting to new anchor format: #photo${reMatch[1]}`);
+    next({ path: `${to.path}#photo${reMatch[1]}`, replace: true });
+  } else {
+    next();
+  }
+}
 export default {
   components: {
     Thumb,
@@ -40,6 +50,16 @@ export default {
     return {
       currentPhoto: null,
     };
+  },
+  // I need to call _rewriteHash in two places: beforeRouteEnter works when this page is
+  // loaded from scratch, beforeRouteUpdate works when the hash is updated after
+  // page is loaded.
+  // https://router.vuejs.org/guide/advanced/navigation-guards.html#the-full-navigation-resolution-flow
+  beforeRouteEnter(to, from, next) {
+    _rewriteHash(to, from, next);
+  },
+  beforeRouteUpdate(to, from, next) {
+    _rewriteHash(to, from, next);
   },
   methods: {
     // Update currentPhoto from the underlying gallery controller.
@@ -66,21 +86,19 @@ export default {
   },
   mounted() {
     // Handle url fragment.
-    const dateRe = /#\d\d\d\d-\d\d-\d\d/;
-    const photoRe = /#p\/\d/;
-    const fragment = location.hash;
-    console.log(fragment);
-    if (dateRe.test(fragment)) {
-      console.log("it's a date!");
-    } else if (photoRe.test(fragment)) {
-      console.log("it's a photo number!");
-      const n = Number(fragment.slice(3));
-      if (n > 0 && n < this.allPhotos.length) {
-        console.log("Setting current photo to " + n)
-        // this.currentPhoto = fragment.slice(3);
-      }
-      console.log("meh, weird fragment");
-    }
+    // const dateRe = /#\d\d\d\d-\d\d-\d\d/;
+    // const photoRe = /#p\/\d/;
+    // const fragment = location.hash;
+    // if (dateRe.test(fragment)) {
+    //   console.log("it's a date!");
+    // } else if (photoRe.test(fragment)) {
+    //   console.log("it's a photo number!");
+    //   const n = Number(fragment.slice(3));
+    //   if (n > 0 && n < this.allPhotos.length) {
+    //     // this.currentPhoto = fragment.slice(3);
+    //   }
+    //   console.log("meh, weird fragment");
+    // }
   },
 };
 </script>
