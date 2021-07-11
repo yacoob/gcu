@@ -15,11 +15,7 @@
 | sitemap     | `/sitemap.xml`   |                          plugin |   ❌   |
 
 ## The road to avuesome site
-* handle url hash on kit page load - both `#YYYY-MM-DD` and `#p/1`
-* handle url hash change once page is loaded - supposedly there's vue-router hook called then
-* update the hash on gallery navigation
-* decide whether I want to keep pushing new slides to `history` - it
-    is nice, but spams the entries
+* handle date hash (`#YYYY-MM-DD`)
 * add prev/next fields for the kit nodes
 * add prev/next links on the kit page
 * add a component that creates a clickable image that links to a specific kit (and maybe entry)

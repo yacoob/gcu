@@ -40,10 +40,13 @@ export default {
     // Update URL hash if current photo has changed.
     currentPhoto(newValue, oldValue) {
       console.log(`HashController watcher: ${oldValue} --> ${newValue}`);
-      history.replaceState(null, null, this.$route.path + this.expectedHash);
+      this.setUrlsHashToExpectations();
     },
   },
   methods: {
+    setUrlsHashToExpectations: function () {
+      history.replaceState(null, null, this.$route.path + this.expectedHash);
+    },
     // Handle url hash.
     parseUrlAndUpdateHash: function () {
       const dateRe = /#\d\d\d\d-\d\d-\d\d/;
@@ -80,11 +83,7 @@ export default {
         // targetPhoto==currentPhoto==null already, the above $emit doesn't
         // clear the hash in url.
         if (targetPhoto == null && this.currentPhoto == null) {
-          history.replaceState(
-            null,
-            null,
-            this.$route.path + this.expectedHash
-          );
+          this.setUrlsHashToExpectations();
         }
       }
     },
