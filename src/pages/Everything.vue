@@ -13,7 +13,7 @@
 
 <page-query>
 query allAvailableKits {
-  allKit(sort: [{by: "grade", order: ASC}, {by: "title", order: ASC}]) {
+  allKit(sort: [{ by: "grade", order: ASC }, { by: "title", order: ASC }]) {
     edges {
       node {
         id
@@ -24,5 +24,4 @@ query allAvailableKits {
     }
   }
 }
-
 </page-query>
