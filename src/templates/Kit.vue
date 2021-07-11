@@ -13,7 +13,6 @@
     />
     <ClientOnly>
       <GalleryController
-        @gallery-closed="currentPhoto = null"
         @gallery-moved-to="updateCurrentPhoto"
         :images="allPhotos"
         :requestedPhoto="currentPhoto"

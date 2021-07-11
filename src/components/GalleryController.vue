@@ -79,7 +79,7 @@ export default {
     // Close LG -> update currentPhoto, tell parent about this.
     lg_element.addEventListener("lgAfterClose", () => {
       this.currentPhoto = null;
-      this.$emit("gallery-closed");
+      this.$emit("gallery-moved-to", null)
     });
     // LG moved to another slide -> update currentPhoto, tell parent about this.
     lg_element.addEventListener("lgAfterSlide", () => {
