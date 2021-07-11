@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <h1>🤖😺😻😽</h1>
+    <h1>🤖😺😺😺</h1>
     <ul>
       <li v-for="entry in $page.entries.edges" :key="entry.url">
         <g-link :to="entry.node.url">
@@ -29,7 +29,7 @@ export default {
 
 <page-query>
 query allEntries {
-  entries: allEntriesCache(sortBy:"date", limit:3, skip: 3) {
+  entries: allEntriesCache(sortBy:"date", limit:3, skip: 5) {
     edges {
       node {
         id
