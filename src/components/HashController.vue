@@ -53,7 +53,7 @@ export default {
       const photoRe = /#photo(\d+)/;
       const hash = location.hash;
       if (hash) {
-        // If we determine a photo number from the hash, we will emit a signal
+        // If I determine a photo number from the hash, we will emit a signal
         // that page should move.
         let targetPhoto = this.currentPhoto;
         if (dateRe.test(hash)) {
@@ -73,7 +73,7 @@ export default {
           // There was a hash, but I couldn't parse it.
           targetPhoto = null;
         }
-        // Inform parent about new photo that we've worked out from the hash.
+        // Inform parent about new photo number that I've worked out from the hash.
         this.$emit("gallery-moved-to", targetPhoto);
         // Special case:
         // - there was a hash

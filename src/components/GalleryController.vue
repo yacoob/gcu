@@ -57,7 +57,7 @@ export default {
       if (this.currentPhoto == newValue) {
         return;
       }
-      // Were we asked to close the gallery?
+      // Was I asked to close the gallery?
       if (newValue === null) {
         if (this.lg.lgOpened) {
           this.lg.closeGallery();
