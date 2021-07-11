@@ -74,14 +74,6 @@ export default {
       return _.flatMap(this.orderedEntries, "photos");
     },
   },
-  // watch: {
-  //   $route(to, from) {
-  //     this.handleHash();
-  //   },
-  // },
-  // mounted() {
-  //   this.handleHash();
-  // },
 };
 </script>
 
