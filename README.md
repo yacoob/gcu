@@ -15,8 +15,6 @@
 | sitemap     | `/sitemap.xml`   |                          plugin |     ❌     |   ❌   |
 
 ## The road to avuesome site
-* add prev/next fields for the kit nodes
-* add prev/next links on the kit page
 * add a component that creates a clickable image that links to a specific kit (and maybe entry)
 * get rid of lodash, or play with webpack and see if that import can be shaven down to that one function
 * clean up the header and meta files
@@ -26,9 +24,8 @@
 
 ## Further improvements
 * consider replacing pregenerated thumbnails by netlify's transforms
-  * I need to see the actual smartcropped images during development/preview,
-    either images go in first or I grow my own smartscaler that does the same as
-    netlify
+  * would need to add a live smartcropper for `gridsome develop` server:
+  * https://gridsome.org/docs/server-api/#apiconfigureserverfn
 * check out whether netlifycms will work for gcu
 * test page transitions
 * consider algolia
