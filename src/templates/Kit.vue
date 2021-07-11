@@ -32,16 +32,6 @@
 import _ from "lodash";
 import Thumb from "~/components/Thumb.vue";
 
-// Redirect '#p/NN' to '#photoNN'.
-function _rewriteHash(to, from, next) {
-  const reMatch = to.hash.match(/^#p\/(\d+)/);
-  if (reMatch) {
-    console.log(`redirecting to new anchor format: #photo${reMatch[1]}`);
-    next({ path: `${to.path}#photo${reMatch[1]}`, replace: true });
-  } else {
-    next();
-  }
-}
 export default {
   components: {
     Thumb,
@@ -51,16 +41,6 @@ export default {
     return {
       currentPhoto: null,
     };
-  },
-  // I need to call _rewriteHash in two places: beforeRouteEnter works when this page is
-  // loaded from scratch, beforeRouteUpdate works when the hash is updated after
-  // page is loaded.
-  // https://router.vuejs.org/guide/advanced/navigation-guards.html#the-full-navigation-resolution-flow
-  beforeRouteEnter(to, from, next) {
-    _rewriteHash(to, from, next);
-  },
-  beforeRouteUpdate(to, from, next) {
-    _rewriteHash(to, from, next);
   },
   methods: {
     // Update currentPhoto from the underlying gallery controller.

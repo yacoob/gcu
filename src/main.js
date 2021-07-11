@@ -4,6 +4,17 @@
 import DefaultLayout from '~/layouts/Default.vue'
 
 export default function (Vue, { router, head, isClient }) {
+
+  // Rewrite hash fragment from '#p/NN' to '#photoNN'.
+  router.beforeResolve((to, from, next) => {
+    const reMatch = to.hash.match(/^#p\/(\d+)/);
+    if (reMatch) {
+      console.log(`redirecting to new anchor format: #photo${reMatch[1]}`);
+      next({ path: `${to.path}#photo${reMatch[1]}`, replace: true });
+    } else {
+      next();
+    }
+  })
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)
 }
