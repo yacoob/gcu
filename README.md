@@ -4,15 +4,15 @@
 
 ## Pages clasification
 
-| description | url              |                     data needed | done  |
-| :---------- | :--------------- | ------------------------------: | :---: |
-| kit page    | `/:grade/:title` |                single kit entry |   ❌️   |
-| grade page  | `/:grade`        |          all kits of that grade |   ❌   |
-| all kits    | `/everything`    | all kits with grade information |   ❌   |
-| main page   | `/`              |                3 newest entries |   ❌   |
-| rss         | `/rss.xml`       |               15 newest entries |   ❌   |
-| 404 page    |                  |                              :3 |   ❌   |
-| sitemap     | `/sitemap.xml`   |                          plugin |   ❌   |
+| description | url              |                     data needed | structure | ready |
+| :---------- | :--------------- | ------------------------------: | :-------: | :---: |
+| kit page    | `/:grade/:title` |                single kit entry |     ✔️     |   ❌️   |
+| grade page  | `/:grade`        |          all kits of that grade |     ❌     |   ❌   |
+| all kits    | `/everything`    | all kits with grade information |     ❌     |   ❌   |
+| main page   | `/`              |                3 newest entries |     ✔️     |   ❌   |
+| rss         | `/rss.xml`       |               15 newest entries |     ❌     |   ❌   |
+| 404 page    |                  |                              :3 |     ❌     |   ❌   |
+| sitemap     | `/sitemap.xml`   |                          plugin |     ❌     |   ❌   |
 
 ## The road to avuesome site
 * add prev/next fields for the kit nodes
