@@ -5,8 +5,3 @@
 [[redirects]]
   from = "/index.xml"
   to = "rss.xml"
-
-[[redirects]]
-  from = "/"
-  to = "/everything/"
-  force = true
