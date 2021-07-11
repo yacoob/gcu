@@ -17,6 +17,10 @@ export default {
       type: Number,
       required: true,
     },
+    dateMapping: {
+      type: Map,
+      required: true,
+    },
   },
   computed: {
     numberInHash: function () {
@@ -52,7 +56,7 @@ export default {
     },
     // Handle url hash.
     parseUrlAndUpdateHash: function () {
-      const dateRe = /#\d\d\d\d-\d\d-\d\d/;
+      const dateRe = /#(\d\d\d\d-\d\d-\d\d)/;
       const photoRe = /#photo(\d+)/;
       const hash = location.hash;
       if (hash) {
@@ -61,7 +65,9 @@ export default {
         let targetPhoto = this.currentPhoto;
         if (dateRe.test(hash)) {
           // There's an YYYY-MM-DD date in the hash.
-          console.log("it's a date! I should totally do something about it...");
+          console.log("it's a date!");
+          const n = Number(this.dateMapping.get(hash.match(dateRe)[1]));
+          targetPhoto = n >= 0 ? n : null;
         } else if (photoRe.test(hash)) {
           // There's a photo indicator in the hash.
           console.log("it's a photo number!");

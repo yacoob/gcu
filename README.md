@@ -15,7 +15,6 @@
 | sitemap     | `/sitemap.xml`   |                          plugin |   ❌   |
 
 ## The road to avuesome site
-* handle date hash (`#YYYY-MM-DD`)
 * add prev/next fields for the kit nodes
 * add prev/next links on the kit page
 * add a component that creates a clickable image that links to a specific kit (and maybe entry)

@@ -10,6 +10,7 @@
       @gallery-moved-to="updateCurrentPhoto"
       :currentPhoto="currentPhoto"
       :photoCount="allPhotos.length"
+      :dateMapping="firstPhotoPerEntry"
     />
     <ClientOnly>
       <GalleryController
