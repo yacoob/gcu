@@ -2,9 +2,7 @@
 
 lightGallery (LG) has an official vue wrapper but it only works with v3 of vue.
 This wrapper is rather crude and most likely doesn't handle all use cases well -
-but it does work for my purposes.
-
---->
+but it does work for my purposes. --->
 <template>
   <div :id="id" />
 </template>
@@ -79,7 +77,7 @@ export default {
     // Close LG -> update currentPhoto, tell parent about this.
     lg_element.addEventListener("lgAfterClose", () => {
       this.currentPhoto = null;
-      this.$emit("gallery-moved-to", null)
+      this.$emit("gallery-moved-to", null);
     });
     // LG moved to another slide -> update currentPhoto, tell parent about this.
     lg_element.addEventListener("lgAfterSlide", () => {

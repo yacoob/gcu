@@ -1,3 +1,6 @@
+<!-- "He who controls the hash controls the gallery.
+                          -- Princess Irulan,
+                             (or sth idk, never read Dune 8) -->
 <template>
   <div id="hash-controller" />
 </template>
