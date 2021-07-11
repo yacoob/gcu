@@ -5,11 +5,6 @@
 <script>
 export default {
   name: "HashController",
-  data() {
-    return {
-      numberInHash: null,
-    };
-  },
   props: {
     currentPhoto: {
       type: Number,
@@ -17,6 +12,13 @@ export default {
     },
   },
   computed: {
+    numberInHash: function () {
+      if (this.currentPhoto !== null) {
+        return this.currentPhoto + 1;
+      } else {
+        return null;
+      }
+    },
     expectedHash: function () {
       if (this.numberInHash !== null) {
         return "#photo" + this.numberInHash;
@@ -29,11 +31,6 @@ export default {
     // Update URL hash if current photo has changed.
     currentPhoto(newValue, oldValue) {
       console.log(`HashController watcher: ${oldValue} --> ${newValue}`);
-      if (newValue !== null) {
-        this.numberInHash = newValue + 1;
-      } else {
-        this.numberInHash = null;
-      }
       history.replaceState(null, null, this.$route.path + this.expectedHash);
     },
   },
