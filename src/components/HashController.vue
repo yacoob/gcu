@@ -1,4 +1,6 @@
-<template><div id="hash-controller" /></template>
+<template>
+  <div id="hash-controller" />
+</template>
 
 <script>
 export default {
