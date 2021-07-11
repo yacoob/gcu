@@ -60,7 +60,6 @@ export default {
         }
       }
       if (targetPhoto != this.currentPhoto) {
-        history.replaceState(null, null, this.$route.path + this.expectedHash);
         this.$emit("gallery-moved-to", targetPhoto);
       }
     },
