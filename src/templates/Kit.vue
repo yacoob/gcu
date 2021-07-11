@@ -73,6 +73,14 @@ export default {
     allPhotos: function () {
       return _.flatMap(this.orderedEntries, "photos");
     },
+    firstPhotoPerEntry: function () {
+      return new Map(
+        this.orderedEntries.map((entry) => [
+          entry.date,
+          this.allPhotos.indexOf(entry.photos[0]),
+        ])
+      );
+    },
   },
 };
 </script>
