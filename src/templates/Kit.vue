@@ -1,7 +1,15 @@
 <template>
-  <!-- eslint-disable vue/max-attributes-per-line -->
+  <!-- eslint-disable vue/max-attributes-per-line vue/html-self-closing -->
   <div>
-    <i>{{ $page.kit.id }} </i>
+    <i>{{ $page.kit.id }} </i><br />
+    <g-link v-if="links.previous" :to="links.previous.path">
+      ⬅️ {{ links.previous.title }}
+    </g-link>
+    <br />
+    <g-link v-if="links.next" :to="links.next.path">
+      ➡️ {{ links.next.title }}
+    </g-link>
+    <hr />
     <h1>
       <Thumb :width="200" :height="200" :photo-file="$page.kit.cover" />
       {{ $page.kit.grade }}:
@@ -67,6 +75,12 @@ export default {
         ])
       );
     },
+    // Current kits prev/next links.
+    links: function () {
+      return this.$page.gradeKits.edges.find(
+        (kit) => kit.node.id == this.$page.kit.id
+      );
+    },
   },
   methods: {
     // Update currentPhoto from the underlying gallery controller.
@@ -87,7 +101,7 @@ export default {
 </script>
 
 <page-query>
-query ($id: ID!) {
+query ($id: ID!, $grade: String) {
   kit(id: $id) {
     id
     title
@@ -98,6 +112,27 @@ query ($id: ID!) {
       photos {
         title
         href
+      }
+    }
+  }
+  gradeKits: allKit(
+    sortBy: "title"
+    order: ASC
+    filter: { grade: { eq: $grade } }
+  ) {
+    edges {
+      node {
+        id
+        title
+        path
+      }
+      next {
+        title
+        path
+      }
+      previous {
+        title
+        path
       }
     }
   }
