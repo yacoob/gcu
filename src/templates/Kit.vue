@@ -1,32 +1,33 @@
 <template>
+  <!-- eslint-disable vue/max-attributes-per-line -->
   <div>
     <i>{{ $page.kit.id }} </i>
     <h1>
-      <Thumb :width="200" :height="200" :photoFile="$page.kit.cover" />
+      <Thumb :width="200" :height="200" :photo-file="$page.kit.cover" />
       {{ $page.kit.grade }}:
       {{ $page.kit.title }}
     </h1>
     <HashController
+      :current-photo="currentPhoto"
+      :date-mapping="firstPhotoPerEntry"
+      :photo-count="allPhotos.length"
       @gallery-moved-to="updateCurrentPhoto"
-      :currentPhoto="currentPhoto"
-      :photoCount="allPhotos.length"
-      :dateMapping="firstPhotoPerEntry"
     />
     <ClientOnly>
       <GalleryController
-        @gallery-moved-to="updateCurrentPhoto"
         :images="allPhotos"
-        :requestedPhoto="currentPhoto"
+        :requested-photo="currentPhoto"
+        @gallery-moved-to="updateCurrentPhoto"
       />
     </ClientOnly>
     <div v-for="entry in orderedEntries" :key="entry.date">
       <h2>{{ entry.date }}</h2>
       <Thumb
         v-for="photo in entry.photos"
+        :id="'photo' + getGalleryIdx(photo.href)"
         :key="photo.href"
         :title="photo.title"
-        :photoFile="photo.href"
-        :id="'photo' + getGalleryIdx(photo.href)"
+        :photo-file="photo.href"
         @click.native="photoClicked"
       />
     </div>
@@ -49,22 +50,6 @@ export default {
       currentPhoto: null,
     };
   },
-  methods: {
-    // Update currentPhoto from the underlying gallery controller.
-    updateCurrentPhoto: function (value) {
-      this.currentPhoto = value;
-    },
-    // Brings up gallery displaying a specific photo.
-    photoClicked: function (e) {
-      this.updateCurrentPhoto(
-        _.map(this.allPhotos, "href").indexOf(e.target.dataset.gcuPhoto)
-      );
-    },
-    setCurrentPhoto: function (value) {},
-    getGalleryIdx: function (filename) {
-      return _.map(this.allPhotos, "href").indexOf(filename);
-    },
-  },
   computed: {
     // All entry objects in chronological order.
     orderedEntries: function () {
@@ -83,6 +68,21 @@ export default {
       );
     },
   },
+  methods: {
+    // Update currentPhoto from the underlying gallery controller.
+    updateCurrentPhoto: function (value) {
+      this.currentPhoto = value;
+    },
+    // Brings up gallery displaying a specific photo.
+    photoClicked: function (e) {
+      this.updateCurrentPhoto(
+        _.map(this.allPhotos, "href").indexOf(e.target.dataset.gcuPhoto)
+      );
+    },
+    getGalleryIdx: function (filename) {
+      return _.map(this.allPhotos, "href").indexOf(filename);
+    },
+  },
 };
 </script>
 
@@ -94,7 +94,7 @@ query ($id: ID!) {
     grade
     cover
     entries {
-      date(format:"YYYY-MM-DD")
+      date(format: "YYYY-MM-DD")
       photos {
         title
         href

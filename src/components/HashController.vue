@@ -50,6 +50,15 @@ export default {
       this.setUrlsHashToExpectations();
     },
   },
+  mounted() {
+    console.log(
+      `HashController: I think there are ${this.photoCount} photos here.`
+    );
+    console.log(
+      `HashController: my current idea about what is the number in hash: ${this.numberInHash}`
+    );
+    this.parseUrlAndUpdateHash();
+  },
   methods: {
     setUrlsHashToExpectations: function () {
       history.replaceState(null, null, this.$route.path + this.expectedHash);
@@ -96,15 +105,6 @@ export default {
         }
       }
     },
-  },
-  mounted() {
-    console.log(
-      `HashController: I think there are ${this.photoCount} photos here.`
-    );
-    console.log(
-      `HashController: my current idea about what is the number in hash: ${this.numberInHash}`
-    );
-    this.parseUrlAndUpdateHash();
   },
 };
 </script>

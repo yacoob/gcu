@@ -1,4 +1,5 @@
 <template>
+  <!-- eslint-disable-next-line vue/html-self-closing -->
   <img
     :width="width"
     :height="height"
@@ -24,7 +25,10 @@ export default {
       type: String,
       required: true,
     },
-    title: String,
+    title: {
+      type: String,
+      default: null,
+    },
   },
   computed: {
     href: function () {

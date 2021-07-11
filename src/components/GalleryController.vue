@@ -18,15 +18,6 @@ import "lightgallery/css/lightgallery-bundle.css";
 
 export default {
   name: "GalleryController",
-  data() {
-    return {
-      // LG plugin instance, once initialised
-      lg: null,
-      // LG's idea of which photo is being currently displayed, null if gallery is hidden
-      // LG has lg.index property, but it retains old value after closing the gallery, so it can't be used as a reliable information.
-      currentPhoto: null,
-    };
-  },
   props: {
     // images to be managed by LG
     images: {
@@ -44,6 +35,15 @@ export default {
       type: Number,
       default: null,
     },
+  },
+  data() {
+    return {
+      // LG plugin instance, once initialised
+      lg: null,
+      // LG's idea of which photo is being currently displayed, null if gallery is hidden
+      // LG has lg.index property, but it retains old value after closing the gallery, so it can't be used as a reliable information.
+      currentPhoto: null,
+    };
   },
   watch: {
     // Handle new values of requestedPhoto, most likely assigned by the parent component.
