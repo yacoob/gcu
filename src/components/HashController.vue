@@ -52,26 +52,40 @@ export default {
       if (hash) {
         // If we determine a photo number from the hash, we will emit a signal
         // that page should move.
-      let targetPhoto = this.currentPhoto;
-      if (dateRe.test(hash)) {
+        let targetPhoto = this.currentPhoto;
+        if (dateRe.test(hash)) {
           // There's an YYYY-MM-DD date in the hash.
-        console.log("it's a date! I should totally do something about it...");
-      } else if (photoRe.test(hash)) {
+          console.log("it's a date! I should totally do something about it...");
+        } else if (photoRe.test(hash)) {
           // There's a photo indicator in the hash.
-        console.log("it's a photo number!");
+          console.log("it's a photo number!");
           const n = Number(hash.match(photoRe)[1]);
           // Check whether requested photo is within expected range.
-        if (n >= 1 && n <= this.photoCount) {
-          targetPhoto = n - 1;
+          if (n >= 1 && n <= this.photoCount) {
+            targetPhoto = n - 1;
           } else {
             targetPhoto = null;
-        }
+          }
         } else {
           // There was a hash, but I couldn't parse it.
           targetPhoto = null;
-      }
+        }
         // Inform parent about new photo that we've worked out from the hash.
         this.$emit("gallery-moved-to", targetPhoto);
+        // Special case:
+        // - there was a hash
+        // - and parsing of it suggests it doesn't point at any sensible photo
+        // - and gallery is closed.
+        // This might happen during initial page load, and because
+        // targetPhoto==currentPhoto==null already, the above $emit doesn't
+        // clear the hash in url.
+        if (targetPhoto == null && this.currentPhoto == null) {
+          history.replaceState(
+            null,
+            null,
+            this.$route.path + this.expectedHash
+          );
+        }
       }
     },
   },
