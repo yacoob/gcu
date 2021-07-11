@@ -6,6 +6,8 @@ import DefaultLayout from '~/layouts/Default.vue'
 export default function (Vue, { router, head, isClient }) {
 
   // Rewrite hash fragment from '#p/NN' to '#photoNN'.
+  // Previously GCU allowed using `#p/N` to show Nth photo on the page on load.
+  // The hash has been renamed, this handler takes care of old URLs.
   router.beforeResolve((to, from, next) => {
     const reMatch = to.hash.match(/^#p\/(\d+)/);
     if (reMatch) {
@@ -15,6 +17,7 @@ export default function (Vue, { router, head, isClient }) {
       next();
     }
   })
+
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)
 }
