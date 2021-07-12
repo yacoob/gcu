@@ -26,8 +26,8 @@ export default {
 </script>
 
 <page-query>
-query allHgKits {
-  grade(id: "RG") {
+query allHgKits($id: ID!) {
+  grade(id: $id) {
     title
     belongsTo(sortBy: "title", order: ASC) {
       edges {
