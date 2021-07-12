@@ -31,10 +31,36 @@ module.exports = function (api) {
   })
 
   api.loadSource(async actions => {
+    // Go through kits, add prev/next fields within a grade.
+    const kits = actions.getCollection('Kit')
+    kits.addReference('prevGradeKit', 'Kit')
+    kits.addReference('nextGradeKit', 'Kit')
+    // Enumerate grades.
+    const grades = actions.getCollection('Grade')
+    for (const grade of grades.data()) {
+      // Enumerate kits of single grade and sort them by kit title.
+      const gradeKits = kits.findNodes({ 'grade': grade.id })
+      gradeKits.sort((a, b) => {
+        if (a.title == b.title) {
+          return 0
+        } else {
+          return a.title > b.title ? 1 : -1
+        }
+      })
+      var prev = null
+      // Go through kits of a single grade, populate prev/next fields.
+      for (const kit of gradeKits) {
+        if (prev) {
+          kit.prevGradeKit = actions.createReference(prev)
+          prev.nextGradeKit = actions.createReference(kit)
+        }
+        prev = kit
+      }
+    }
+
     // Go through kits, add separate nodes for Entries. They're needed for RSS
     // and main page, url is sufficient.
     const entries = actions.addCollection('EntriesCache')
-    const kits = actions.getCollection('Kit')
     entries.addReference('kit', 'Kit')
     kits.data().forEach((kit) => {
       kit.entries.forEach((entry) => {
