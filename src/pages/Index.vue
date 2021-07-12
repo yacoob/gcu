@@ -1,6 +1,15 @@
 <template>
   <Layout>
     <h1>🤖😺😺😺</h1>
+    <span v-for="grade in $page.grades.edges" :key="grade.node.id">
+      ▶️
+      <g-link :to="grade.node.path">
+        {{ grade.node.id }}
+      </g-link>
+    </span>
+    🔀
+    <g-link to="/everything/">EVERYTHING!</g-link>
+    <hr />
     <g-link
       v-for="entry in $page.entries.edges"
       :key="entry.url"
@@ -10,8 +19,6 @@
         {{ entry.node.date }}: {{ entry.node.kit.title }}
       </Cover>
     </g-link>
-    <hr />
-    <small><g-link to="/everything/">...or just see EVERYTHING!</g-link></small>
   </Layout>
 </template>
 
@@ -40,6 +47,14 @@ query allEntries {
         kit {
           title
         }
+      }
+    }
+  }
+  grades: allGrade(sortBy: "id", order: ASC) {
+    edges {
+      node {
+        id
+        path
       }
     }
   }
