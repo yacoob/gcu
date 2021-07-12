@@ -3,12 +3,12 @@
   <div>
     <i>{{ $page.kit.id }}</i>
     <br />
-    <g-link v-if="links.previous" :to="links.previous.path">
-      ⬅️ {{ links.previous.title }}
+    <g-link v-if="$page.kit.prev" :to="$page.kit.prev.path">
+      ⬅️ {{ $page.kit.prev.title }}
     </g-link>
     <br />
-    <g-link v-if="links.next" :to="links.next.path">
-      ➡️ {{ links.next.title }}
+    <g-link v-if="$page.kit.next" :to="$page.kit.next.path">
+      ➡️ {{ $page.kit.next.title }}
     </g-link>
     <hr />
     <h1>
@@ -75,12 +75,6 @@ export default {
           this.allPhotos.indexOf(entry.photos[0])
         ])
       );
-    },
-    // Current kits prev/next links.
-    links: function () {
-      return this.$page.gradeKits.edges.find(
-        (kit) => kit.node.id == this.$page.kit.id
-      );
     }
   },
   methods: {
@@ -102,12 +96,22 @@ export default {
 </script>
 
 <page-query>
-query ($id: ID!, $grade: ID!) {
+query ($id: ID!) {
   kit(id: $id) {
     id
     title
     grade {
       title
+    }
+    prev: prevGradeKit {
+      id
+      title
+      path
+    }
+    next: nextGradeKit {
+      id
+      title
+      path
     }
     cover
     entries {
@@ -115,27 +119,6 @@ query ($id: ID!, $grade: ID!) {
       photos {
         title
         href
-      }
-    }
-  }
-  gradeKits: allKit(
-    sortBy: "title"
-    order: ASC
-    filter: { grade: { eq: $grade } }
-  ) {
-    edges {
-      node {
-        id
-        title
-        path
-      }
-      next {
-        title
-        path
-      }
-      previous {
-        title
-        path
       }
     }
   }
