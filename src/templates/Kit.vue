@@ -2,7 +2,7 @@
   <div>
     <i>{{ $page.kit.id }}</i>
     <br />
-    <g-link :to="gradeLink">↖️ {{ $page.kit.grade.title }}</g-link>
+    <g-link :to="$page.kit.grade.path">↖️ {{ $page.kit.grade.title }}</g-link>
     <br />
     <g-link v-if="$page.kit.prev" :to="$page.kit.prev.path">
       ⬅️ {{ $page.kit.prev.title }}
@@ -76,9 +76,6 @@ export default {
           this.allPhotos.indexOf(entry.photos[0])
         ])
       );
-    },
-    gradeLink: function () {
-      return '/' + this.$page.kit.grade.title.toLowerCase();
     }
   },
   methods: {
@@ -106,6 +103,7 @@ query ($id: ID!) {
     title
     grade {
       title
+      path
     }
     prev: prevGradeKit {
       id
