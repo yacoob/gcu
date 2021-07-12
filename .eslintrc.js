@@ -3,13 +3,14 @@ module.exports = {
     node: true,
     es6: true
   },
-  plugins: ["gridsome"],
-  "extends": [
-    "eslint:recommended",
-    "plugin:vue/recommended"
+  plugins: ['gridsome'],
+  'extends': [
+    'eslint:recommended',
+    'plugin:vue/recommended',
+    'prettier'
   ],
   rules: {
-    "gridsome/format-query-block": "error"
+    'gridsome/format-query-block': 'error',
   },
-  parser: "vue-eslint-parser"
+  parser: 'vue-eslint-parser'
 }

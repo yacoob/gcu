@@ -1,4 +1,4 @@
 module.exports = {
   singleQuote: true,
-  htmlWhitespaceSensitivity: "ignore",
+  htmlWhitespaceSensitivity: 'ignore',
 }
