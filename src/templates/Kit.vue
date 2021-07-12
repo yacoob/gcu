@@ -1,7 +1,8 @@
 <template>
   <!-- eslint-disable vue/max-attributes-per-line vue/html-self-closing -->
   <div>
-    <i>{{ $page.kit.id }} </i><br />
+    <i>{{ $page.kit.id }}</i>
+    <br />
     <g-link v-if="links.previous" :to="links.previous.path">
       ⬅️ {{ links.previous.title }}
     </g-link>
@@ -12,7 +13,7 @@
     <hr />
     <h1>
       <Thumb :width="200" :height="200" :photo-file="$page.kit.cover" />
-      {{ $page.kit.grade }}:
+      {{ $page.kit.grade.title }}:
       {{ $page.kit.title }}
     </h1>
     <HashController
@@ -43,35 +44,35 @@
 </template>
 
 <script>
-import _ from "lodash";
-import Thumb from "~/components/Thumb.vue";
-import HashController from "~/components/HashController.vue";
+import _ from 'lodash';
+import Thumb from '~/components/Thumb.vue';
+import HashController from '~/components/HashController.vue';
 
 export default {
   components: {
-    GalleryController: () => import("~/components/GalleryController.vue"),
+    GalleryController: () => import('~/components/GalleryController.vue'),
     HashController,
-    Thumb,
+    Thumb
   },
   data() {
     return {
-      currentPhoto: null,
+      currentPhoto: null
     };
   },
   computed: {
     // All entry objects in chronological order.
     orderedEntries: function () {
-      return _.orderBy(this.$page.kit.entries, "date");
+      return _.orderBy(this.$page.kit.entries, 'date');
     },
     // All photo objects across all entries in chronological order.
     allPhotos: function () {
-      return _.flatMap(this.orderedEntries, "photos");
+      return _.flatMap(this.orderedEntries, 'photos');
     },
     firstPhotoPerEntry: function () {
       return new Map(
         this.orderedEntries.map((entry) => [
           entry.date,
-          this.allPhotos.indexOf(entry.photos[0]),
+          this.allPhotos.indexOf(entry.photos[0])
         ])
       );
     },
@@ -80,7 +81,7 @@ export default {
       return this.$page.gradeKits.edges.find(
         (kit) => kit.node.id == this.$page.kit.id
       );
-    },
+    }
   },
   methods: {
     // Update currentPhoto from the underlying gallery controller.
@@ -90,22 +91,24 @@ export default {
     // Brings up gallery displaying a specific photo.
     photoClicked: function (e) {
       this.updateCurrentPhoto(
-        _.map(this.allPhotos, "href").indexOf(e.target.dataset.gcuPhoto)
+        _.map(this.allPhotos, 'href').indexOf(e.target.dataset.gcuPhoto)
       );
     },
     getGalleryIdx: function (filename) {
-      return _.map(this.allPhotos, "href").indexOf(filename);
-    },
-  },
+      return _.map(this.allPhotos, 'href').indexOf(filename);
+    }
+  }
 };
 </script>
 
 <page-query>
-query ($id: ID!, $grade: String) {
+query ($id: ID!, $grade: ID!) {
   kit(id: $id) {
     id
     title
-    grade
+    grade {
+      title
+    }
     cover
     entries {
       date(format: "YYYY-MM-DD")

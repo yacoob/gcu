@@ -4,7 +4,7 @@
     <ul>
       <li v-for="entry in $page.entries.edges" :key="entry.url">
         <g-link :to="entry.node.url">
-          <Thumb :width="200" :height="200" :photoFile="entry.node.cover" />
+          <Thumb :width="200" :height="200" :photo-file="entry.node.cover" />
           {{ entry.node.date }}: {{ entry.node.kit.title }}
         </g-link>
       </li>
@@ -15,21 +15,21 @@
 </template>
 
 <script>
-import Thumb from "~/components/Thumb.vue";
+import Thumb from '~/components/Thumb.vue';
 
 export default {
   components: {
-    Thumb,
+    Thumb
   },
   metaInfo: {
-    title: "Welcome to GCU Tactical Grace!",
-  },
+    title: 'Welcome to GCU Tactical Grace!'
+  }
 };
 </script>
 
 <page-query>
 query allEntries {
-  entries: allEntriesCache(sortBy:"date", limit:3, skip: 5) {
+  entries: allEntriesCache(sortBy: "date", limit: 3, skip: 5) {
     edges {
       node {
         id

@@ -7,20 +7,20 @@
 
 <script>
 export default {
-  name: "HashController",
+  name: 'HashController',
   props: {
     currentPhoto: {
       type: Number,
-      default: null,
+      default: null
     },
     photoCount: {
       type: Number,
-      required: true,
+      required: true
     },
     dateMapping: {
       type: Map,
-      required: true,
-    },
+      required: true
+    }
   },
   computed: {
     numberInHash: function () {
@@ -32,11 +32,11 @@ export default {
     },
     expectedHash: function () {
       if (this.numberInHash !== null) {
-        return "#photo" + this.numberInHash;
+        return '#photo' + this.numberInHash;
       } else {
-        return "";
+        return '';
       }
-    },
+    }
   },
   watch: {
     $route(to, from) {
@@ -48,7 +48,7 @@ export default {
     currentPhoto(newValue, oldValue) {
       console.log(`HashController watcher: ${oldValue} --> ${newValue}`);
       this.setUrlsHashToExpectations();
-    },
+    }
   },
   mounted() {
     console.log(
@@ -92,7 +92,7 @@ export default {
           targetPhoto = null;
         }
         // Inform parent about new photo number that I've worked out from the hash.
-        this.$emit("gallery-moved-to", targetPhoto);
+        this.$emit('gallery-moved-to', targetPhoto);
         // Special case:
         // - there was a hash
         // - and parsing of it suggests it doesn't point at any sensible photo
@@ -104,7 +104,7 @@ export default {
           this.setUrlsHashToExpectations();
         }
       }
-    },
-  },
+    }
+  }
 };
 </script>

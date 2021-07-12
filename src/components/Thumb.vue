@@ -11,34 +11,34 @@
 
 <script>
 export default {
-  name: "Thumb",
+  name: 'Thumb',
   props: {
     width: {
       type: Number,
-      default: 100,
+      default: 100
     },
     height: {
       type: Number,
-      default: 100,
+      default: 100
     },
     photoFile: {
       type: String,
-      required: true,
+      required: true
     },
     title: {
       type: String,
-      default: null,
-    },
+      default: null
+    }
   },
   computed: {
     href: function () {
-      if (this.photoFile.includes("youtu.be/")) {
-        const vId = this.photoFile.split("/").pop();
-        return "https://img.youtube.com/vi/" + vId + "/0.jpg";
+      if (this.photoFile.includes('youtu.be/')) {
+        const vId = this.photoFile.split('/').pop();
+        return 'https://img.youtube.com/vi/' + vId + '/0.jpg';
       } else {
-        return "/photos/thumb/" + this.photoFile;
+        return '/photos/thumb/' + this.photoFile;
       }
-    },
-  },
+    }
+  }
 };
 </script>
