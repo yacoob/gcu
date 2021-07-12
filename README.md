@@ -15,7 +15,6 @@
 | sitemap     | `/sitemap.xml`   |                          plugin |     ❌     |   ❌   |
 
 ## The road to avuesome site
-* add a component that creates a clickable image that links to a specific kit (and maybe entry)
 * get rid of lodash, or play with webpack and see if that import can be shaven down to that one function
 * clean up the header and meta files
 * basic look using bootstrap@3 or tailwind plugin

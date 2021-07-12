@@ -10,12 +10,10 @@
     <g-link v-if="$page.kit.next" :to="$page.kit.next.path">
       ➡️ {{ $page.kit.next.title }}
     </g-link>
+    <Cover :width="200" :height="200" :photo-file="$page.kit.cover">
+      {{ $page.kit.grade.title }}: {{ $page.kit.title }}
+    </Cover>
     <hr />
-    <h1>
-      <Thumb :width="200" :height="200" :photo-file="$page.kit.cover" />
-      {{ $page.kit.grade.title }}:
-      {{ $page.kit.title }}
-    </h1>
     <HashController
       :current-photo="currentPhoto"
       :date-mapping="firstPhotoPerEntry"
@@ -45,11 +43,13 @@
 
 <script>
 import _ from 'lodash';
+import Cover from '~/components/Cover.vue';
 import Thumb from '~/components/Thumb.vue';
 import HashController from '~/components/HashController.vue';
 
 export default {
   components: {
+    Cover,
     GalleryController: () => import('~/components/GalleryController.vue'),
     HashController,
     Thumb

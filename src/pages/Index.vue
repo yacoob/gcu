@@ -1,25 +1,26 @@
 <template>
   <Layout>
     <h1>🤖😺😺😺</h1>
-    <ul>
-      <li v-for="entry in $page.entries.edges" :key="entry.url">
-        <g-link :to="entry.node.url">
-          <Thumb :width="200" :height="200" :photo-file="entry.node.cover" />
-          {{ entry.node.date }}: {{ entry.node.kit.title }}
-        </g-link>
-      </li>
-    </ul>
+    <g-link
+      v-for="entry in $page.entries.edges"
+      :key="entry.url"
+      :to="entry.node.url"
+    >
+      <Cover :width="200" :height="200" :photo-file="entry.node.cover">
+        {{ entry.node.date }}: {{ entry.node.kit.title }}
+      </Cover>
+    </g-link>
     <hr />
     <small><g-link to="/everything/">...or just see EVERYTHING!</g-link></small>
   </Layout>
 </template>
 
 <script>
-import Thumb from '~/components/Thumb.vue';
+import Cover from '~/components/Cover.vue';
 
 export default {
   components: {
-    Thumb
+    Cover
   },
   metaInfo: {
     title: 'Welcome to GCU Tactical Grace!'
