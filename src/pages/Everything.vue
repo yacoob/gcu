@@ -2,7 +2,7 @@
   <div>
     <h1>All kits made by GCU.</h1>
     <ul>
-      <li v-for="edge in $page.allKit.edges" :key="edge.node.id">
+      <li v-for="edge in $page.kits.edges" :key="edge.node.id">
         <g-link :to="edge.node.path">
           {{ edge.node.grade.title }}: {{ edge.node.title }}
         </g-link>
@@ -13,7 +13,9 @@
 
 <page-query>
 query allAvailableKits {
-  allKit(sort: [{ by: "grade", order: ASC }, { by: "title", order: ASC }]) {
+  kits: allKit(
+    sort: [{ by: "grade", order: ASC }, { by: "title", order: ASC }]
+  ) {
     edges {
       node {
         id
