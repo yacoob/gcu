@@ -1,7 +1,8 @@
 <template>
-  <!-- eslint-disable vue/max-attributes-per-line vue/html-self-closing -->
   <div>
     <i>{{ $page.kit.id }}</i>
+    <br />
+    <g-link :to="gradeLink">↖️ {{ $page.kit.grade.title }}</g-link>
     <br />
     <g-link v-if="$page.kit.prev" :to="$page.kit.prev.path">
       ⬅️ {{ $page.kit.prev.title }}
@@ -75,6 +76,9 @@ export default {
           this.allPhotos.indexOf(entry.photos[0])
         ])
       );
+    },
+    gradeLink: function () {
+      return '/' + this.$page.kit.grade.title.toLowerCase();
     }
   },
   methods: {

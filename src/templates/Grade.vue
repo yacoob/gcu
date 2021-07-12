@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>{{ $page.grade.title }}</h1>
+    <g-link to="/">↖️ main page</g-link>
     <hr />
     <g-link
       v-for="kit in $page.grade.belongsTo.edges"
