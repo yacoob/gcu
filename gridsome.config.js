@@ -25,6 +25,7 @@ module.exports = {
     }
   ],
   templates: {
-    Kit: '/:fileInfo__directory/:fileInfo__name'
+    Kit: '/:fileInfo__directory/:fileInfo__name',
+    Grade: '/:title',
   },
 }
