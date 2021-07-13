@@ -4,7 +4,7 @@ lightGallery (LG) has an official vue wrapper but it only works with v3 of vue.
 This wrapper is rather crude and most likely doesn't handle all use cases well -
 but it does work for my purposes. --->
 <template>
-  <div :id="id" />
+  <div ref="lgElement" />
 </template>
 
 <script>
@@ -25,11 +25,6 @@ export default {
       required: true
       // TODO: add a validator
     },
-    // id of the node hosting the controller
-    id: {
-      type: String,
-      default: 'gallery-controller'
-    },
     // photo requested by parent component to be displayed; it is kept in sync with currentPhoto
     requestedPhoto: {
       type: Number,
@@ -45,12 +40,22 @@ export default {
       currentPhoto: null
     };
   },
+  computed: {
+    // List of images in a format that LG expects.
+    lgImages: function () {
+      return this.images.map((p) => ({
+        src: p.href.startsWith('https') ? p.href : '/photos/full/' + p.href,
+        thumb: '/photos/thumb/' + p.href,
+        subHtml: p.title
+      }));
+    },
+    lgElement: function () {
+      return this.$refs.lgElement;
+    }
+  },
   watch: {
     // Handle new values of requestedPhoto, most likely assigned by the parent component.
-    requestedPhoto(newValue, oldValue) {
-      console.log(
-        `GalleryController.vue: requestedPhoto watcher: changing ${oldValue} => ${newValue}`
-      );
+    requestedPhoto(newValue) {
       // Is the requested photo different form the current one?
       if (this.currentPhoto == newValue) {
         return;
@@ -73,42 +78,40 @@ export default {
     }
   },
   mounted() {
-    const lg_element = document.getElementById(this.id);
     // Close LG -> update currentPhoto, tell parent about this.
-    lg_element.addEventListener('lgAfterClose', () => {
+    this.lgElement.addEventListener('lgAfterClose', () => {
       this.currentPhoto = null;
       this.$emit('gallery-moved-to', null);
     });
     // LG moved to another slide -> update currentPhoto, tell parent about this.
-    lg_element.addEventListener('lgAfterSlide', () => {
+    this.lgElement.addEventListener('lgAfterSlide', () => {
       this.currentPhoto = this.lg.index;
       this.$emit('gallery-moved-to', this.currentPhoto);
     });
-    // Transform photo objects into objects that LG expects.
-    const lgImages = this.images.map((p) => ({
-      src: p.href.startsWith('https') ? p.href : '/photos/full/' + p.href,
-      thumb: '/photos/thumb/' + p.href,
-      subHtml: p.title
-    }));
-    this.lg = lightGallery(lg_element, {
-      plugins: [lgZoom, lgThumbnail, lgVideo, lgFullscreen, lgAutoplay],
-      dynamic: true,
-      dynamicEl: lgImages,
-      hideBarsDelay: 2000,
-      speed: 200,
-      preload: 2,
-      youtubePlayerParams: {
-        autoplay: 0,
-        controls: 0,
-        modestbranding: 1,
-        rel: 0,
-        showinfo: 0
-      }
-    });
+    this.setupLG();
     // Open after component creation if it has been requested.
     if (this.requestedPhoto !== null) {
       this.currentPhoto = this.requestedPhoto;
       this.lg.openGallery(this.requestedPhoto);
+    }
+  },
+  methods: {
+    setupLG: function () {
+      this.lg = lightGallery(this.lgElement, {
+        plugins: [lgZoom, lgThumbnail, lgVideo, lgFullscreen, lgAutoplay],
+        dynamic: true,
+        dynamicEl: this.lgImages,
+        hideBarsDelay: 2000,
+        speed: 200,
+        preload: 2,
+        youtubePlayerParams: {
+          autoplay: 0,
+          controls: 0,
+          modestbranding: 1,
+          rel: 0,
+          showinfo: 0
+        }
+      });
     }
   }
 };
