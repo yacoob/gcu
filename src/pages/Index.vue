@@ -41,7 +41,7 @@ query allEntries {
     edges {
       node {
         id
-        date
+        date(format: "YYYY-MM-DD")
         url
         cover
         kit {

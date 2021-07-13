@@ -64,12 +64,13 @@ module.exports = function (api) {
     entries.addReference('kit', 'Kit')
     kits.data().forEach((kit) => {
       kit.entries.forEach((entry) => {
-        const date = entry.date.toISOString().slice(0, 10)
-        const id = crypto.createHash('md5').update(date).update(kit.path).digest('hex')
+        const date = entry.date
+        const simpleDate = date.toISOString().slice(0, 10)
+        const id = crypto.createHash('md5').update(simpleDate).update(kit.path).digest('hex')
         entries.addNode({
           id,
           date,
-          url: [kit.path, '#', date].join(''),
+          url: [kit.path, '#', simpleDate].join(''),
           cover: entry.cover,
           kit: actions.createReference(kit)
         })
