@@ -45,18 +45,11 @@ export default {
       }
     },
     // Update URL hash if current photo has changed.
-    currentPhoto(newValue, oldValue) {
-      console.log(`HashController watcher: ${oldValue} --> ${newValue}`);
+    currentPhoto() {
       this.setUrlsHashToExpectations();
     }
   },
   mounted() {
-    console.log(
-      `HashController: I think there are ${this.photoCount} photos here.`
-    );
-    console.log(
-      `HashController: my current idea about what is the number in hash: ${this.numberInHash}`
-    );
     this.parseUrlAndUpdateHash();
   },
   methods: {
@@ -74,12 +67,10 @@ export default {
         let targetPhoto = this.currentPhoto;
         if (dateRe.test(hash)) {
           // There's an YYYY-MM-DD date in the hash.
-          console.log("it's a date!");
           const n = Number(this.dateMapping.get(hash.match(dateRe)[1]));
           targetPhoto = n >= 0 ? n : null;
         } else if (photoRe.test(hash)) {
           // There's a photo indicator in the hash.
-          console.log("it's a photo number!");
           const n = Number(hash.match(photoRe)[1]);
           // Check whether requested photo is within expected range.
           if (n >= 1 && n <= this.photoCount) {
