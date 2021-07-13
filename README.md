@@ -15,11 +15,14 @@
 | sitemap     | `/sitemap.xml`   |                          plugin |     ❌     |   ❌   |
 
 ## The road to avuesome site
+* fix gallerycontroller reuse, check for hashcontroller behaviour in the same situation
 * get rid of lodash, or play with webpack and see if that import can be shaven down to that one function
 * clean up the header and meta files
 * basic look using bootstrap@3 or tailwind plugin
   * font from npm instead of google fonts https://gridsome.org/docs/assets-fonts/
   * icon for youtube thumbs from fontawesome? https://gridsome.org/docs/assets-svg/
+* bring back some convenience functions in a form of a Makefile
+  * or move it to js scripts? 😼
 
 ## Further improvements
 * consider replacing pregenerated thumbnails by netlify's transforms
