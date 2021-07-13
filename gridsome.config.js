@@ -6,6 +6,7 @@
 
 module.exports = {
   siteName: 'GCU Tactical Grace',
+  siteUrl: 'https://gridsome--gcu.netlify.app/',
   plugins: [
     {
       use: '@gridsome/source-filesystem',
@@ -22,6 +23,9 @@ module.exports = {
           }
         }
       }
+    },
+    {
+      use: '@gridsome/plugin-sitemap',
     }
   ],
   templates: {

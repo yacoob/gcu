@@ -12,10 +12,9 @@
 | main page   | `/`              |                3 newest entries |     ✔️     |   ❌   |
 | rss         | `/rss.xml`       |               15 newest entries |     ❌     |   ❌   |
 | 404 page    |                  |                              :3 |     ❌     |   ❌   |
-| sitemap     | `/sitemap.xml`   |                          plugin |     ❌     |   ❌   |
+| sitemap     | `/sitemap.xml`   |                          plugin |     ✔️     |   ❌   |
 
 ## The road to avuesome site
-* fix gallerycontroller reuse, check for hashcontroller behaviour in the same situation
 * get rid of lodash, or play with webpack and see if that import can be shaven down to that one function
 * clean up the header and meta files
 * basic look using bootstrap@3 or tailwind plugin
