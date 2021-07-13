@@ -62,9 +62,7 @@ export default {
       }
       // Was I asked to close the gallery?
       if (newValue === null) {
-        if (this.lg.lgOpened) {
-          this.lg.closeGallery();
-        }
+        this.maybeClose();
       } else {
         // Is LG actually active right now?
         if (this.lg.lgOpened) {
@@ -75,8 +73,20 @@ export default {
       }
       // Sync our idea of current photo to the requested one.
       this.currentPhoto = newValue;
+    },
+    // Handle component reuse when new images are provided by the parent.
+    images(newValue, oldValue) {
+      // This watcher will fire on navigation from `/hg/foo` to `/hg/foo#photo2`.
+      // This component will be reused and new image list will be provided by
+      // parent, so we need to check if the "new" list is actually different
+      // from the old one.
+      if (oldValue.some((val, idx) => val != newValue[idx])) {
+        this.maybeClose({ andDestroy: true });
+        this.setupLG();
+      }
     }
   },
+  // Handle first creation of this component.
   mounted() {
     // Close LG -> update currentPhoto, tell parent about this.
     this.lgElement.addEventListener('lgAfterClose', () => {
@@ -95,7 +105,26 @@ export default {
       this.lg.openGallery(this.requestedPhoto);
     }
   },
+  // Handle component destruction. Normally wouldn't happen in the expected
+  // navigation flow, but just to be sure...
+  destroyed() {
+    this.maybeClose({ andDestroy: true });
+  },
   methods: {
+    // Close the gallery if visible, destroy the LG instance if requested.
+    maybeClose: function (options) {
+      if (this.lg) {
+        if (options === undefined) options = {};
+        if (options.andDestroy === undefined) options.andDestroy = false;
+        if (this.lg.lgOpened) {
+          this.lg.closeGallery();
+          this.currentPhoto = null;
+          this.$emit('gallery-moved-to', null);
+        }
+        if (options.andDestroy) this.lg.destroy();
+      }
+    },
+    // Create new LG instance.
     setupLG: function () {
       this.lg = lightGallery(this.lgElement, {
         plugins: [lgZoom, lgThumbnail, lgVideo, lgFullscreen, lgAutoplay],
