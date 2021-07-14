@@ -71,7 +71,9 @@ module.exports = function (api) {
           id,
           date,
           url: [kit.path, '#', simpleDate].join(''),
+          title: kit.title,
           cover: entry.cover,
+          photos: entry.photos,
           kit: actions.createReference(kit)
         })
       })
