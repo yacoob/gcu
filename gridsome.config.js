@@ -48,6 +48,9 @@ module.exports = {
           content: node.photos.map(p => `<img src="${_SITE_URL}/photos/thumb/${p.href}" />`).join('\n'),
         })
       }
+    },
+    {
+      use: '@gridsome/plugin-sitemap',
     }
   ],
   templates: {
